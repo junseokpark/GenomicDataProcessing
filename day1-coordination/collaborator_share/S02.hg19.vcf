@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##reference=hg19/GRCh37 (teaching mini-chr11)
+##contig=<ID=chr11,length=5300000>
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=NOTE,Number=1,Type=String,Description="Teaching annotation (synthetic data)">
+##FILTER=<ID=PASS,Description="All filters passed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth">
+##SYNTHETIC=These genotypes are teaching fiction; only the coordinates are real.
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	S02
+chr11	5248232	HBB_checkpoint	T	A	58	PASS	NOTE=public_coordinate_anchor	GT:DP	1/1:26
+chr11	5247500	S02_snv1	T	A	47	PASS	NOTE=synthetic	GT:DP	0/1:33

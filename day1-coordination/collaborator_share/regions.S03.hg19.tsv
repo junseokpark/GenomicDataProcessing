@@ -1,0 +1,2 @@
+region_id	chrom	start_1based	end_1based	note
+r08	chr11	5248200	5248299	declared_hg38_actually_hg19

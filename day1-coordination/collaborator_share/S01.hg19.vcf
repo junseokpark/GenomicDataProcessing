@@ -1,0 +1,17 @@
+##fileformat=VCFv4.2
+##reference=hg19/GRCh37 (teaching mini-chr11)
+##contig=<ID=chr11,length=5300000>
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=NOTE,Number=1,Type=String,Description="Teaching annotation (synthetic data)">
+##FILTER=<ID=PASS,Description="All filters passed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth">
+##SYNTHETIC=These genotypes are teaching fiction; only the coordinates are real.
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	S01
+chr11	5248232	HBB_checkpoint	T	A	60	PASS	NOTE=public_coordinate_anchor	GT:DP	0/1:26
+chr11	5248100	S01_del1	TCTC	T	55	PASS	NOTE=padded_deletion	GT:DP	0/1:13
+chr11	5248400	S01_ins1	C	CTA	52	PASS	NOTE=padded_insertion	GT:DP	0/1:26
+chr11	5246050	S01_offchain	A	G	44	PASS	NOTE=outside_teaching_chain;NOTE2=no_read_coverage_in_prepared_subset	GT:DP	0/1:.
+chr11	5248600	S01_symdel	T	<DEL>	30	PASS	SVTYPE=DEL;END=5248900;NOTE=symbolic_allele	GT:DP	0/1:14
+chr11	5249000	S01_bnd1	A	A[chr11:5252000[	25	PASS	SVTYPE=BND;NOTE=breakend_unsupported_by_exercise;NOTE2=no_read_coverage_in_prepared_subset	GT:DP	0/1:.

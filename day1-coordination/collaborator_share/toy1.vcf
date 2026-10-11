@@ -1,0 +1,13 @@
+##fileformat=VCFv4.2
+##reference=toy1 synthetic contig
+##contig=<ID=toy1,length=1000>
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=NOTE,Number=1,Type=String,Description="Teaching annotation (synthetic data)">
+##FILTER=<ID=PASS,Description="All filters passed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth">
+##SYNTHETIC=These genotypes are teaching fiction; only the coordinates are real.
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	TOY
+toy1	100	d1	ATC	A	60	PASS	NOTE=padded_deletion	GT:DP	0/1:30
+toy1	300	snv1	A	G	60	PASS	NOTE=substitution	GT:DP	0/1:30

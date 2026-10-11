@@ -1,0 +1,4 @@
+sample_id	source_assembly	target_assembly	source_fasta	target_fasta	chain	regions	vcf	bam	annotation_release	expected_status	note
+S01	hg19	hg38	collaborator_share/reference.hg19.fa	target/reference.hg38.fa	target/hg19ToHg38.teaching.over.chain	collaborator_share/regions.S01.hg19.tsv	collaborator_share/S01.hg19.vcf	collaborator_share/S01.hg19.sorted.bam	RefSeq Select (UCSC hg38, 2026-10)	pass	full teaching sample
+S02	hg19	hg38	collaborator_share/reference.hg19.fa	target/reference.hg38.fa	target/hg19ToHg38.teaching.over.chain	collaborator_share/regions.S02.hg19.tsv	collaborator_share/S02.hg19.vcf		RefSeq Select (UCSC hg38, 2026-10)	pass	variants only, no BAM
+S03	hg38	hg38	target/reference.hg38.fa	target/reference.hg38.fa		collaborator_share/regions.S03.hg19.tsv	collaborator_share/S03.hg19.vcf		RefSeq Select (UCSC hg38, 2026-10)	fail	manifest says the source is already hg38 - check before believing it

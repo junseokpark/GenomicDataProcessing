@@ -1,0 +1,6 @@
+region_id	chrom	start_1based	end_1based	note
+r01	chr11	5248232	5248232	HBB_checkpoint
+r02	chr11	5248160	5248251	HBB_exon1_cds
+r03	chr11	5248252	5248252	single_base_next_to_exon
+r04	chr11	5246010	5246100	outside_teaching_chain
+r05	chr11	5248500	5248401	invalid_start_gt_end

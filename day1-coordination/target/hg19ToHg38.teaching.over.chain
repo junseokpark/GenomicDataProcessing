@@ -1,0 +1,7 @@
+# TEACHING CHAIN -- NOT the UCSC hg19ToHg38.over.chain.gz file.
+# One ungapped block over chr11:5246500-5280000 (hg19). Within this span the two
+# assemblies are byte-identical, so hg38 = hg19 - 21230 exactly.
+# Anything outside the block is intentionally unmappable.
+chain 67000 chr11 5300000 + 5246500 5280000 chr11 5280000 + 5225270 5258770 1
+33500
+

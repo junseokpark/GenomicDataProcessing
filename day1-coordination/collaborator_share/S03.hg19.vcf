@@ -1,0 +1,12 @@
+##fileformat=VCFv4.2
+##reference=hg38/GRCh38  <-- DECLARED, but positions are hg19
+##contig=<ID=chr11,length=5280000>
+##INFO=<ID=SVTYPE,Number=1,Type=String,Description="Type of structural variant">
+##INFO=<ID=END,Number=1,Type=Integer,Description="End position of the variant">
+##INFO=<ID=NOTE,Number=1,Type=String,Description="Teaching annotation (synthetic data)">
+##FILTER=<ID=PASS,Description="All filters passed">
+##FORMAT=<ID=GT,Number=1,Type=String,Description="Genotype">
+##FORMAT=<ID=DP,Number=1,Type=Integer,Description="Read depth">
+##SYNTHETIC=These genotypes are teaching fiction; only the coordinates are real.
+#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT	S03
+chr11	5248232	S03_site1	T	A	51	PASS	NOTE=synthetic	GT:DP	0/1:29
