@@ -68,6 +68,11 @@ liftOver input.hg19.bed hg19ToHg38.over.chain.gz mapped.hg38.bed unmapped.hg19.b
 
 ## How the notebook maps onto the slides
 
+Slide numbers below were re-verified against `Lecture-Day1-Jun.pptx` (102 slides) on
+2026-10-12: all 20 slide references in this file and in the notebook resolve to the intended
+slide. Re-run the audit after any deck edit — and note that slides 1, 4 and 5 carry no footer
+page number, so the printed sequence reads 03 → … → 06 even though no slide is missing.
+
 | Notebook section | Slides | Practice step |
 |---|---|---|
 | 1 Reference / history | 59–62, 84 | 01–02 |
