@@ -31,9 +31,13 @@ contain numbers that look like positions. The numbers do not mean the same thing
 | `toy1` contig | **Synthetic**, exists only to make the VCF examples readable |
 
 Nothing here is a clinical result. We use a public variant site **only as a coordinate
-anchor**, exactly as slide 101 says.
+anchor**, exactly as slide 101, *Public coordinate-checkpoint provenance*, says.
 
-### Notebook sections (these match slide 83)
+Slide numbers below refer to the Day-1 deck and are given with the slide title, so a
+reference still resolves if the deck is renumbered. `build/check_slide_refs.py` re-verifies
+every one of them against a deck file.
+
+### Notebook sections (these match slide 83, *Practice workflow*)
 1. Reference / history 2. hg19 coordinates 3. VCF semantics 4. hg19 → hg38 mapping
 5. Assembly-matched IGV 6. Read realignment 7. Batch / QC 8. Evidence card
 """)
@@ -43,7 +47,11 @@ import os, gzip, re, textwrap
 from pathlib import Path
 import pandas as pd
 
-BASE = Path("practice_session")           # change this if you unpacked elsewhere
+# find the data directory whether you are above it (zip layout) or inside it (repo layout)
+BASE = next((c for c in (Path("."), Path("practice_session"), Path("day1-coordination"))
+             if (c / "manifest.tsv").exists()), None)
+if BASE is None:
+    raise FileNotFoundError("manifest.tsv not found - set BASE to the data directory")
 SHARE, TARGET = BASE / "collaborator_share", BASE / "target"
 CHECK, OUT = BASE / "checkpoints", BASE / "outputs"
 OUT.mkdir(exist_ok=True)
@@ -63,7 +71,7 @@ md(r"""
 ---
 ## 1 · Reference / history — *practice steps 01–02*
 
-> **Slide 59 asked:** you receive a folder of genomic files. Which file do you open first?
+> **Slide 59, *The collaborator’s folder*, asked:** you receive a folder of genomic files. Which file do you open first?
 
 Not the biggest one. Open the **manifest** and the **headers**, because those are the only
 places where a file says what reference it belongs to. A position without an assembly is
@@ -126,7 +134,7 @@ md(r"""
   catches the problem below.
 
 ### 1.2 The compatibility table
-We now produce the small table slide 60 asks for: one row per input, with `pass`,
+We now produce the small table slide 60, *Header and manifest inspection*, asks for: one row per input, with `pass`,
 `review` or `fail` **and a reason**. A tool that silently drops the reason is a tool that
 loses the only information you needed.
 """)
@@ -165,9 +173,9 @@ md(r"""
 its VCF header both claim the data are already on hg38, but the declared contig length is
 the hg19 mini-chromosome's. The positions inside are hg19 positions wearing an hg38 label.
 
-This is the controlled failure from slide 80. Notice what we did **not** do: we did not
+This is the controlled failure from slide 80, *Manifest-driven processing*. Notice what we did **not** do: we did not
 rename anything, and we did not convert S03 "just to see". A file whose source build is
-unknown or contradicted has no defensible starting point for conversion (slide 62).
+unknown or contradicted has no defensible starting point for conversion (slide 62, *Reference compatibility checks*).
 
 > **Q.** The manifest and the header disagree. Which one do you believe?
 > **A.** Neither, until a third piece of evidence breaks the tie. Record the conflict and stop.
@@ -201,7 +209,7 @@ def one_based_to_bed(start1, end1):
         raise ValueError(f"invalid interval: start {start1} > end {end1}")
     return start1 - 1, end1
 
-# the two cases you worked by hand on slide 63
+# the two cases you worked by hand on slide 63 ("Which bases are included?")
 assert one_based_to_bed(101, 200) == (100, 200)
 assert one_based_to_bed(101, 101) == (100, 101)
 assert (200 - 101 + 1) == (200 - 100) == 100        # length preserved
@@ -230,7 +238,7 @@ def convert_region_table(path):
             s0, e0 = one_based_to_bed(int(r.start_1based), int(r.end_1based))
             rec.update(bed_start=s0, bed_end=e0, length=e0 - s0, qc_status="pass", reason="-")
         except ValueError as err:
-            # slide 85: do NOT silently swap start and end
+            # slide 85 ("Convert ordinary intervals"): do NOT silently swap start and end
             rec.update(bed_start=pd.NA, bed_end=pd.NA, length=pd.NA,
                        qc_status="fail", reason=str(err))
         out.append(rec)
@@ -341,7 +349,7 @@ pd.DataFrame([{**{k: r[k] for k in ("vid", "pos", "ref", "alt")}, **vcf_to_inter
 """)
 
 md(r"""
-Check the two toy rows against what you worked out on slides 52–54:
+Check the two toy rows against what you worked out on slides 52–54 (*A one-base substitution* through *Two meanings of a VCF-derived interval*):
 `d1` → `[100, 102)` (the anchor at 100 is *excluded*), `snv1` → `[299, 300)` (one base, not
 the empty `[299, 299)`).
 
@@ -371,7 +379,7 @@ class MiniFasta:
 hg19 = MiniFasta(SHARE / "reference.hg19.fa")
 hg38 = MiniFasta(TARGET / "reference.hg38.fa")
 
-# sanity: the 18 reference bases drawn on slide 46
+# sanity: the 18 reference bases drawn on slide 46 ("Evidence in IGV")
 assert hg38.fetch(5226995, 5227012) == "CTTCTCCTCAGGAGTCAG"
 print("hg38 chr11:5,226,995-5,227,012 =", hg38.fetch(5226995, 5227012))
 
@@ -618,7 +626,7 @@ print("wrote", OUT / "session_hg19.xml", "and", OUT / "session_hg38.xml")
 """)
 
 md(r"""
-### 5.1 The empty-track exercise (slide 73)
+### 5.1 The empty-track exercise (slide 73, *Where did the variant go in IGV?*)
 You open the hg38 session, type `chr11:5,248,232` into the locus box, and the VCF track is
 empty. Before concluding anything biological, reproduce the situation here.
 """)
@@ -662,7 +670,7 @@ samtools index S01.hg38.sorted.bam
 ```
 
 What we run instead is a 20-line seed-and-extend aligner restricted to our 60 kb window.
-Slide 78 is explicit about what that means: **a tiny search space is an approximation, not
+Slide 78, *Comparing hg19 and hg38 alignments*, is explicit about what that means: **a tiny search space is an approximation, not
 full-reference mapping.** A read that is unique in 60 kb may have twenty equally good homes in
 3.1 billion. We use it to show the mechanics; we do not report its MAPQ as if it were real.
 """)
@@ -761,7 +769,7 @@ Compare that with the records we lifted in §4: those were *variant coordinates*
 with a chain file. These are *reads*, placed again by an aligner. Different operation,
 different failure modes, different evidence.
 
-### 6.1 Walk one CIGAR by hand (slides 45, 75–76)
+### 6.1 Walk one CIGAR by hand (slide 45, *Read length and reference span*, and slides 75–76)
 """)
 
 co(r"""
@@ -800,7 +808,7 @@ md(r"""
 ## 7 · Batch and QC — *practice step 09*
 
 One sample teaches you the file format. A cohort is where the science is — and where silent
-failures become invisible. The rule from slide 91: **a failed conversion must never become a
+failures become invisible. The rule from slide 91, *Repeat the workflow and inspect features*: **a failed conversion must never become a
 zero gene count.**
 
 * `0` = the overlap check ran against a declared annotation and found nothing. A result.
@@ -919,7 +927,7 @@ md(r"""
 ## 8 · Evidence card — *practice step 10*
 
 Four minutes, one minute of questions, at most three slides. Fill the template below with
-*your* assigned question (slide 82) and the checkpoint output you saved.
+*your* assigned question (slide 82, *Five questions about the legacy dataset*) and the checkpoint output you saved.
 
 > *"I used **[operation]** because **[problem]**. I checked **[evidence]**. The result supports
 > **[limited conclusion]**, while **[uncertainty]** remains."*
@@ -979,7 +987,7 @@ md(r"""
 
 The 63 bases everyone pasted into BLAST were the first 63 coding bases of *HBB*. Because
 *HBB* sits on the **minus** strand, they are the reverse complement of the reference. The
-cell below re-derives the coordinates you recorded on slide 25 — from the actual sequence,
+cell below re-derives the coordinates you recorded on slide 25, *Same sequence, two assemblies* — from the actual sequence,
 not from the slide.
 """)
 
