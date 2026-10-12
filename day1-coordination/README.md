@@ -69,9 +69,11 @@ liftOver input.hg19.bed hg19ToHg38.over.chain.gz mapped.hg38.bed unmapped.hg19.b
 ## How the notebook maps onto the slides
 
 Slide numbers were re-verified against `Lecture-Day1-Jun.pptx` (102 slides) on 2026-10-12.
-Every reference — the table below, prose in this file, and the notebook — resolves to the
-intended slide, and every table row points at the section it claims. Don't take that on
-trust after a deck edit; re-run the audit, which prints its own counts:
+Each row of the table below is checked against the deck section it claims, and each slide
+cited in prose — here and in the notebook — is checked against an expected title recorded in
+the audit script, so a citation that silently drifts onto a different slide fails the run
+rather than passing as "in range". Don't take it on trust after a deck edit; re-run the
+audit, which prints its own counts and exits non-zero on any problem:
 
 ```bash
 python build/check_slide_refs.py /path/to/deck.pptx

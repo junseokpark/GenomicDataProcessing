@@ -8,7 +8,9 @@ Scans three places, because they use different notations and it is easy to miss 
   * prose in README.md                                    ("slide 82", "slides 51-54")
   * the notebook's markdown and code                      (same prose forms)
 
-Exits non-zero if any reference is out of range or lands outside its claimed section.
+Every cited slide is checked against an expected eyebrow/title keyword, not merely for
+being in range. A cited slide with no expectation recorded is reported as UNVERIFIED and
+fails the run, so silence here never means "probably fine".
 """
 import json
 import re
@@ -31,6 +33,28 @@ EXPECT = {
     "8 Evidence card":        ("YOUR PRESENTATION", "PRACTICE", "PRESENTATIONS"),
     "Appendix":               ("ACTIVITY",),
 }
+# Expected eyebrow/title keyword for every slide cited in prose (README text and the
+# notebook). Keep in step with the text: if you cite a new slide, record what it should say.
+EXPECT_SLIDE = {
+    1: "Genomic Data Processing",   4: "LEARNING OUTCOMES",
+    25: "Same sequence, two assemblies",
+    45: "Read length and reference span",
+    46: "Evidence in IGV",
+    51: "The VCF record",           52: "A one-base substitution",
+    53: "The deletion anchor",      54: "Two meanings of a VCF-derived interval",
+    59: "The collaborator",         60: "Header and manifest inspection",
+    62: "Reference compatibility checks",
+    63: "Which bases are included?",
+    73: "Where did the variant go in IGV?",
+    75: "What does this CIGAR mean?",
+    78: "Comparing hg19 and hg38 alignments",
+    80: "Manifest-driven processing",
+    82: "Five questions about the legacy dataset",
+    83: "Practice workflow",        85: "Convert ordinary intervals",
+    91: "Repeat the workflow and inspect features",
+    101: "Public coordinate-checkpoint provenance",
+}
+
 PROSE = re.compile(
     r"slides?\s*((?:\d{1,3}(?:\s*[-–—]\s*\d{1,3})?)(?:\s*,\s*\d{1,3}(?:\s*[-–—]\s*\d{1,3})?)*)",
     re.I)
@@ -70,18 +94,34 @@ def main(deck_path):
             for n in expand(m.group(1)):
                 refs.append((src, n, m.group(0)[:40]))
 
-    problems = []
+    problems, checked = [], {"section": 0, "content": 0}
     for src, n, ctx in refs:
         if not 1 <= n <= total:
             problems.append(f"{src}: slide {n} is outside the deck (1-{total}) [{ctx}]")
             continue
+        eyebrow, title = deck_text(prs, n)
         if src == "README table":
             expected = EXPECT.get(ctx)
-            eyebrow, title = deck_text(prs, n)
-            if expected and not any(k in eyebrow for k in expected):
+            if expected is None:
+                problems.append(f"UNVERIFIED {src}: no expectation for row '{ctx}'")
+            elif not any(k in eyebrow for k in expected):
                 problems.append(
                     f"{src}: row '{ctx}' cites slide {n}, but that slide is "
                     f"'{eyebrow} | {title}' (expected one of {expected})")
+            else:
+                checked["section"] += 1
+        else:
+            want = EXPECT_SLIDE.get(n)
+            if want is None:
+                problems.append(
+                    f"UNVERIFIED {src}: slide {n} is cited [{ctx}] but no expected content is "
+                    f"recorded for it in EXPECT_SLIDE; it is '{eyebrow} | {title}'")
+            elif want not in f"{eyebrow} {title}":
+                problems.append(
+                    f"{src}: citation [{ctx}] expects slide {n} to be about '{want}', "
+                    f"but that slide is '{eyebrow} | {title}'")
+            else:
+                checked["content"] += 1
 
     by_src = {}
     for src, n, _ in refs:
@@ -91,6 +131,8 @@ def main(deck_path):
         print(f"  {src:14s} {len(by_src[src]):3d} distinct slides")
     print(f"  {'TOTAL':14s} {len(refs):3d} reference instances, "
           f"{len({n for _, n, _ in refs})} distinct slides")
+    print(f"  verified      {checked['section']:3d} table rows against their section, "
+          f"{checked['content']} prose/notebook citations against expected slide content")
 
     missing_footer = [i for i in range(1, total + 1)
                       if not any(re.fullmatch(r"\d+\s*/\s*\d+", sh.text_frame.text.strip())
@@ -103,7 +145,7 @@ def main(deck_path):
         for p in problems:
             print("  -", p)
         return 1
-    print("\nall slide references resolve correctly")
+    print("\nevery reference was content-checked and resolves correctly")
     return 0
 
 
