@@ -1,0 +1,13 @@
+sample_id	subject_id	specimen	source_detail	molecule	conc_ng_per_ul	volume_ul	a260_280	a260_230	din	rin	dv200	modal_fragment_kb	cell_count	requested_assay	study_question	matched_normal_id	consent_genomic_research
+S01	P001	blood (EDTA)	EDTA whole blood, high-molecular-weight extraction	DNA	45.0	50.0	1.86	2.1	9.2	NA	NA	48.0	NA	PACBIO_HIFI_WGS	Resolve structural variants and phase haplotypes	NA	yes
+S02	P002	saliva (Oragene)	Oragene saliva kit, column extraction	DNA	12.0	40.0	1.8	1.45	7.6	NA	NA	25.0	NA	ILMN_PCRFREE_WGS	Genome-wide SNVs and indels	NA	yes
+S03	P003	FFPE tumour	archival formalin-fixed paraffin-embedded tumour block	DNA	8.0	30.0	1.9	1.95	2.6	NA	NA	0.35	NA	PACBIO_HIFI_WGS	Somatic structural variants	NA	yes
+S04	P004	fresh-frozen tumour	tumour biopsy, snap-frozen	DNA	60.0	40.0	1.88	2.15	8.4	NA	NA	35.0	NA	ILMN_WES	Somatic coding mutations	S05	yes
+S05	P004	blood	EDTA whole blood; matched normal for S04 (same subject)	DNA	40.0	30.0	1.84	2.08	9.0	NA	NA	40.0	NA	ILMN_WES	Germline background for S04	NA	yes
+S06	P006	plasma cfDNA	cell-free DNA extracted from plasma	DNA	0.4	50.0	1.75	1.6	NA	NA	NA	0.167	NA	ONT_LIGATION_LONG	Phase variants across 50 kb	NA	yes
+S07	P007	lymphoblastoid cell line	cultured cells, frozen pellet; DNA not extracted	cells	NA	NA	NA	NA	NA	NA	NA	NA	6500000	ONT_ULTRALONG	Assemble a complex region (e.g. MHC)	NA	yes
+S08	P008	blood (EDTA)	EDTA whole blood	DNA	30.0	20.0	1.83	2.05	8.9	NA	NA	22.0	NA	PACBIO_HIFI_WGS	Size a tandem-repeat expansion	NA	yes
+S09	P009	fresh-frozen brain cortex	post-mortem cortex, snap-frozen	RNA	120.0	20.0	2.05	2.1	NA	8.7	NA	NA	NA	RNA_POLYA	Gene expression in cortex	NA	yes
+S10	P010	FFPE tumour	archival FFPE tumour block	RNA	15.0	15.0	1.95	1.9	NA	2.3	62.0	NA	NA	RNA_POLYA	Tumour gene expression	NA	yes
+S11	P011	buccal swab	cheek swab	DNA	6.0	50.0	1.82	2.02	7.0	NA	NA	18.0	NA	PACBIO_HIFI_WGS	Structural variants	NA	yes
+S12	P012	blood	EDTA whole blood	DNA	50.0	40.0	1.85	2.12	9.1	NA	NA	45.0	NA	ONT_LIGATION_LONG	Methylation and structural variants	NA	no

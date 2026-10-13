@@ -1,0 +1,42 @@
+case	sample_id	expected_step	expected_handling
+consent withdrawn	WES54841	1_consent	remove first, before any QC
+consent withdrawn	WES54793	1_consent	remove first, before any QC
+consent withdrawn	WES25052	1_consent	remove first, before any QC
+contaminated (FREEMIX > 0.04)	WES28515	2_contamination	exclude
+contaminated (FREEMIX > 0.04)	WES52423	2_contamination	exclude
+contaminated (FREEMIX > 0.04)	WES94009	2_contamination	exclude
+contaminated (FREEMIX > 0.04)	WES92427	2_contamination	exclude
+low coverage (< 94.5% CCDS at 10x)	WES47545	3_coverage	exclude
+low coverage (< 94.5% CCDS at 10x)	WES24796	3_coverage	exclude
+low coverage (< 94.5% CCDS at 10x)	WES94990	3_coverage	exclude
+borderline coverage 94.81% in B3	WES13035	kept	passes; do not move the threshold
+swapped pair, sample 1 (sex + array discordant)	WES90876	4_identity	exclude both
+swapped pair, sample 2 (sex + array discordant)	WES90877	4_identity	exclude both
+metadata error (sex discordant, array 0.999)	WES76523	kept	correct reported_sex to M, keep
+XXY-like (Y present + high X het)	WES83617	kept	flag for review; never call it a swap
+same-sex array discordance	WES31055	4_identity	exclude
+technical duplicate (kept copy; has a full sibling)	WES22141	kept	keep better pct_ccds_10x; it then wins the sibling pair
+technical duplicate (dropped copy)	WES74622	5_duplicates	drop lower pct_ccds_10x
+full sibling of the duplicated participant	WES60985	6_relatedness	counted once, after the duplicate is resolved
+technical duplicate (kept copy)	WES27401	kept	keep better pct_ccds_10x
+technical duplicate (dropped copy)	WES74705	5_duplicates	drop lower pct_ccds_10x
+twin or unrecorded duplicate (kept)	WES86470	kept	review; keep one
+twin or unrecorded duplicate (dropped)	WES33032	5_duplicates	review; keep one
+PC outlier with Pr(EUR) >= 0.99	WES69127	8_ancestry_pc_outlier	outside the EUR analysis set
+PC outlier with Pr(EUR) >= 0.99	WES58717	8_ancestry_pc_outlier	outside the EUR analysis set
+PC outlier with Pr(EUR) >= 0.99	WES81758	8_ancestry_pc_outlier	outside the EUR analysis set
+PC outlier with Pr(EUR) >= 0.99	WES56035	8_ancestry_pc_outlier	outside the EUR analysis set
+PC outlier with Pr(EUR) >= 0.99	WES58405	8_ancestry_pc_outlier	outside the EUR analysis set
+PC outlier with Pr(EUR) >= 0.99	WES68025	8_ancestry_pc_outlier	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES87840	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES70194	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES69974	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES89241	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES81247	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES28216	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES99566	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES66426	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES30620	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES73196	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES73904	7_ancestry_pr_eur	outside the EUR analysis set
+European cluster, Pr(EUR) < 0.99	WES90832	7_ancestry_pr_eur	outside the EUR analysis set

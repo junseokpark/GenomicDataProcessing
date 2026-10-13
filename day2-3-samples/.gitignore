@@ -1,0 +1,6 @@
+# everything the notebooks write stays local; keep the folder itself
+outputs/*
+!outputs/.gitkeep
+
+__pycache__/
+.ipynb_checkpoints/

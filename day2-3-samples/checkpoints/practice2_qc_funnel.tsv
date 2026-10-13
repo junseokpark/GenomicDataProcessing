@@ -1,0 +1,12 @@
+step	rule	n_removed	n_remaining
+0_sequenced	all delivered exomes	0	2000
+1_consent	consent_status == withdrawn	3	1997
+2_contamination	freemix > 0.04 (VerifyBAMID)	4	1993
+3_coverage	pct_ccds_10x < 94.5	3	1990
+4_identity	array_concordance < 0.95	3	1987
+5_duplicates	kinship > 0.354: keep the better sample	3	1984
+6_relatedness	kinship > 0.0884: greedy, most relatives first	38	1946
+pan_ancestry_set	QC-passed, unrelated, any ancestry	0	1946
+7_ancestry_pr_eur	pr_eur < 0.99 (peddy)	171	1775
+8_ancestry_pc_outlier	outside mean +/- 4 SD on PC1-PC4	6	1769
+eur_analysis_set	European-ancestry analysis set	0	1769

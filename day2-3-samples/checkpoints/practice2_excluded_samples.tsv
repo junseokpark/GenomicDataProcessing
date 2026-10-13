@@ -1,0 +1,232 @@
+sample_id	step	reason
+WES25052	1_consent	consent withdrawn: removed before any QC
+WES54793	1_consent	consent withdrawn: removed before any QC
+WES54841	1_consent	consent withdrawn: removed before any QC
+WES28515	2_contamination	freemix 0.052 > 0.04
+WES52423	2_contamination	freemix 0.067 > 0.04
+WES92427	2_contamination	freemix 0.118 > 0.04
+WES94009	2_contamination	freemix 0.089 > 0.04
+WES24796	3_coverage	pct_ccds_10x 93.94 < 94.5
+WES47545	3_coverage	pct_ccds_10x 92.81 < 94.5
+WES94990	3_coverage	pct_ccds_10x 94.12 < 94.5
+WES31055	4_identity	array_concordance 0.583 < 0.95 with concordant sex: identity not confirmed
+WES90876	4_identity	array_concordance 0.612 < 0.95 and reported F but genetic XY: likely swap
+WES90877	4_identity	array_concordance 0.605 < 0.95 and reported M but genetic XX: likely swap
+WES33032	5_duplicates	kinship 0.493 with WES86470 (different participant): MZ twin or unrecorded duplicate, keep one, review
+WES74622	5_duplicates	duplicate of WES22141 (same participant P891448), lower pct_ccds_10x
+WES74705	5_duplicates	duplicate of WES27401 (same participant P987958), lower pct_ccds_10x
+WES12389	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES16171	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES18495	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES18901	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES19498	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES19530	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES19683	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES21932	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES22005	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES22038	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES26148	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES29478	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES33565	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES38083	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES40295	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES42379	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES48711	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES49661	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES53226	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES57898	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES60985	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES62050	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES65105	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES66023	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES69116	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES70900	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES74641	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES77186	6_relatedness	kinship > 0.0884 with 2 remaining sample(s)
+WES77475	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES84552	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES87421	6_relatedness	kinship > 0.0884 with 2 remaining sample(s)
+WES87728	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES90193	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES90385	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES90938	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES94161	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES94547	6_relatedness	kinship > 0.0884 with 2 remaining sample(s)
+WES99466	6_relatedness	kinship > 0.0884 with 1 remaining sample(s)
+WES10643	7_ancestry_pr_eur	pr_eur 0.021 < 0.99
+WES11428	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES11995	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES12681	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES12841	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES12868	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES13335	7_ancestry_pr_eur	pr_eur 0.018 < 0.99
+WES13891	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES16213	7_ancestry_pr_eur	pr_eur 0.024 < 0.99
+WES16272	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES17152	7_ancestry_pr_eur	pr_eur 0.008 < 0.99
+WES18094	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES19327	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES20163	7_ancestry_pr_eur	pr_eur 0.003 < 0.99
+WES21784	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES22324	7_ancestry_pr_eur	pr_eur 0.002 < 0.99
+WES23008	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES23411	7_ancestry_pr_eur	pr_eur 0.012 < 0.99
+WES23973	7_ancestry_pr_eur	pr_eur 0.619 < 0.99
+WES24293	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES25135	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES25856	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES26687	7_ancestry_pr_eur	pr_eur 0.614 < 0.99
+WES27258	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES27313	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES28059	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES28216	7_ancestry_pr_eur	pr_eur 0.930 < 0.99
+WES29157	7_ancestry_pr_eur	pr_eur 0.022 < 0.99
+WES29413	7_ancestry_pr_eur	pr_eur 0.026 < 0.99
+WES29933	7_ancestry_pr_eur	pr_eur 0.002 < 0.99
+WES30282	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES30423	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES30620	7_ancestry_pr_eur	pr_eur 0.930 < 0.99
+WES30943	7_ancestry_pr_eur	pr_eur 0.288 < 0.99
+WES31287	7_ancestry_pr_eur	pr_eur 0.354 < 0.99
+WES31587	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES31910	7_ancestry_pr_eur	pr_eur 0.020 < 0.99
+WES33040	7_ancestry_pr_eur	pr_eur 0.018 < 0.99
+WES33182	7_ancestry_pr_eur	pr_eur 0.561 < 0.99
+WES33188	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES34326	7_ancestry_pr_eur	pr_eur 0.625 < 0.99
+WES34404	7_ancestry_pr_eur	pr_eur 0.006 < 0.99
+WES35494	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES36272	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES37316	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES37405	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES37888	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES37915	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES39502	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES40001	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES41403	7_ancestry_pr_eur	pr_eur 0.010 < 0.99
+WES41903	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES42280	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES43207	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES43435	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES44141	7_ancestry_pr_eur	pr_eur 0.628 < 0.99
+WES44286	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES44354	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES45116	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES45357	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES45373	7_ancestry_pr_eur	pr_eur 0.417 < 0.99
+WES45416	7_ancestry_pr_eur	pr_eur 0.347 < 0.99
+WES46800	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES47207	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES48021	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES48032	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES48370	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES49053	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES49151	7_ancestry_pr_eur	pr_eur 0.003 < 0.99
+WES49205	7_ancestry_pr_eur	pr_eur 0.489 < 0.99
+WES50336	7_ancestry_pr_eur	pr_eur 0.003 < 0.99
+WES50402	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES50844	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES51193	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES51493	7_ancestry_pr_eur	pr_eur 0.018 < 0.99
+WES52652	7_ancestry_pr_eur	pr_eur 0.703 < 0.99
+WES53987	7_ancestry_pr_eur	pr_eur 0.282 < 0.99
+WES54154	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES54443	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES54648	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES55050	7_ancestry_pr_eur	pr_eur 0.710 < 0.99
+WES55212	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES55236	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES55642	7_ancestry_pr_eur	pr_eur 0.515 < 0.99
+WES56780	7_ancestry_pr_eur	pr_eur 0.008 < 0.99
+WES57041	7_ancestry_pr_eur	pr_eur 0.021 < 0.99
+WES57063	7_ancestry_pr_eur	pr_eur 0.002 < 0.99
+WES57591	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES58505	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES58614	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES58658	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES60482	7_ancestry_pr_eur	pr_eur 0.028 < 0.99
+WES61944	7_ancestry_pr_eur	pr_eur 0.020 < 0.99
+WES63050	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES63446	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES63702	7_ancestry_pr_eur	pr_eur 0.473 < 0.99
+WES64019	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES65132	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES66426	7_ancestry_pr_eur	pr_eur 0.938 < 0.99
+WES66756	7_ancestry_pr_eur	pr_eur 0.504 < 0.99
+WES66915	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES67479	7_ancestry_pr_eur	pr_eur 0.015 < 0.99
+WES67707	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES67912	7_ancestry_pr_eur	pr_eur 0.677 < 0.99
+WES68188	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES68366	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES68557	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES68943	7_ancestry_pr_eur	pr_eur 0.377 < 0.99
+WES69541	7_ancestry_pr_eur	pr_eur 0.029 < 0.99
+WES69974	7_ancestry_pr_eur	pr_eur 0.943 < 0.99
+WES70194	7_ancestry_pr_eur	pr_eur 0.953 < 0.99
+WES70636	7_ancestry_pr_eur	pr_eur 0.016 < 0.99
+WES71553	7_ancestry_pr_eur	pr_eur 0.005 < 0.99
+WES71650	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES72979	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES73196	7_ancestry_pr_eur	pr_eur 0.962 < 0.99
+WES73296	7_ancestry_pr_eur	pr_eur 0.019 < 0.99
+WES73674	7_ancestry_pr_eur	pr_eur 0.013 < 0.99
+WES73904	7_ancestry_pr_eur	pr_eur 0.983 < 0.99
+WES74229	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES74385	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES74529	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES74793	7_ancestry_pr_eur	pr_eur 0.026 < 0.99
+WES75348	7_ancestry_pr_eur	pr_eur 0.013 < 0.99
+WES77253	7_ancestry_pr_eur	pr_eur 0.311 < 0.99
+WES78011	7_ancestry_pr_eur	pr_eur 0.395 < 0.99
+WES78107	7_ancestry_pr_eur	pr_eur 0.338 < 0.99
+WES78499	7_ancestry_pr_eur	pr_eur 0.015 < 0.99
+WES78946	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES79030	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES80275	7_ancestry_pr_eur	pr_eur 0.391 < 0.99
+WES80320	7_ancestry_pr_eur	pr_eur 0.025 < 0.99
+WES80824	7_ancestry_pr_eur	pr_eur 0.019 < 0.99
+WES81247	7_ancestry_pr_eur	pr_eur 0.932 < 0.99
+WES81531	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES83073	7_ancestry_pr_eur	pr_eur 0.015 < 0.99
+WES84097	7_ancestry_pr_eur	pr_eur 0.328 < 0.99
+WES84255	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES86450	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES86910	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES87840	7_ancestry_pr_eur	pr_eur 0.969 < 0.99
+WES88223	7_ancestry_pr_eur	pr_eur 0.017 < 0.99
+WES88573	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES88646	7_ancestry_pr_eur	pr_eur 0.022 < 0.99
+WES89241	7_ancestry_pr_eur	pr_eur 0.957 < 0.99
+WES89267	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES89939	7_ancestry_pr_eur	pr_eur 0.017 < 0.99
+WES90284	7_ancestry_pr_eur	pr_eur 0.014 < 0.99
+WES90299	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES90338	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES90832	7_ancestry_pr_eur	pr_eur 0.943 < 0.99
+WES93748	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES93824	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES93954	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES93977	7_ancestry_pr_eur	pr_eur 0.021 < 0.99
+WES94580	7_ancestry_pr_eur	pr_eur 0.297 < 0.99
+WES94865	7_ancestry_pr_eur	pr_eur 0.018 < 0.99
+WES94988	7_ancestry_pr_eur	pr_eur 0.015 < 0.99
+WES95587	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES96435	7_ancestry_pr_eur	pr_eur 0.011 < 0.99
+WES96777	7_ancestry_pr_eur	pr_eur 0.004 < 0.99
+WES97029	7_ancestry_pr_eur	pr_eur 0.013 < 0.99
+WES97699	7_ancestry_pr_eur	pr_eur 0.015 < 0.99
+WES98013	7_ancestry_pr_eur	pr_eur 0.024 < 0.99
+WES98152	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES98346	7_ancestry_pr_eur	pr_eur 0.320 < 0.99
+WES98562	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES98815	7_ancestry_pr_eur	pr_eur 0.000 < 0.99
+WES99132	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES99498	7_ancestry_pr_eur	pr_eur 0.001 < 0.99
+WES99566	7_ancestry_pr_eur	pr_eur 0.958 < 0.99
+WES56035	8_ancestry_pc_outlier	PC3 -7.6 SD from the mean (limit 4)
+WES58405	8_ancestry_pc_outlier	PC4 -8.2 SD from the mean (limit 4)
+WES58717	8_ancestry_pc_outlier	PC3 +6.8 SD from the mean (limit 4)
+WES68025	8_ancestry_pc_outlier	PC4 +7.8 SD from the mean (limit 4)
+WES69127	8_ancestry_pc_outlier	PC3 -7.1 SD from the mean (limit 4)
+WES81758	8_ancestry_pc_outlier	PC3 -6.3 SD from the mean (limit 4)

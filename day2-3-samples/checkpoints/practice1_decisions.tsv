@@ -1,0 +1,13 @@
+sample_id	requested_assay	total_ng	decision	reasons	suggested_alternative
+S01	PACBIO_HIFI_WGS	2250.0	PASS	-	-
+S02	ILMN_PCRFREE_WGS	480.0	REVIEW	REVIEW: a260_230 1.45 below 2.00 (clean up, re-measure)	Bead clean-up, re-measure A260/230, then run ILMN_PCRFREE_WGS as requested
+S03	PACBIO_HIFI_WGS	240.0	FAIL	FAIL: input 240 ng is 48% of the 500 ng minimum; FAIL: modal_fragment_kb 0.35 < 15 required (cannot be repaired); REVIEW: a260_230 1.95 below 2.00 (clean up, re-measure); REVIEW: tumour sample for a somatic question but no matched normal	ILMN_WES or a panel with an FFPE-compatible prep, plus a matched normal (e.g. blood) from P003
+S04	ILMN_WES	2400.0	PASS	-	-
+S05	ILMN_WES	1200.0	PASS	-	-
+S06	ONT_LIGATION_LONG	20.0	FAIL	FAIL: input 20 ng is 2% of the 1,000 ng minimum; FAIL: modal_fragment_kb 0.167 < 10 required (cannot be repaired); REVIEW: a260_280 1.75 below 1.80 (clean up, re-measure); REVIEW: a260_230 1.60 below 2.00 (clean up, re-measure)	Mutation detection: Illumina cfDNA targeted panel. Phasing: collect blood and extract long DNA
+S07	ONT_ULTRALONG	NA	PASS	-	-
+S08	PACBIO_HIFI_WGS	600.0	PASS	-	-
+S09	RNA_POLYA	2400.0	PASS	-	-
+S10	RNA_POLYA	225.0	FAIL	FAIL: rin 2.3 < 7 required (cannot be repaired)	RNA_CAPTURE_FFPE: DV200 62% (medium quality) needs 20-40 ng; see the re-check
+S11	PACBIO_HIFI_WGS	300.0	REVIEW	REVIEW: input 300 ng is 60% of the 500 ng minimum	Re-quantify (fluorometer) and concentrate; or recollect as blood; or switch to ILMN_PCRFREE_WGS (resolves fewer SVs)
+S12	ONT_LIGATION_LONG	2000.0	BLOCKED	BLOCKED: no consent for genomic research (do not process, do not assess quality)	Do not process; refer back to the study team (consent)

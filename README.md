@@ -28,6 +28,35 @@ See [`day1-coordination/README.md`](day1-coordination/README.md) for the full fi
 the slide-to-section mapping, and the list of deliberate failures students are expected to
 handle rather than fix.
 
+### [`day2-3-samples/`](day2-3-samples) — Day 2 (10/13): what is a genomics sample?
+
+Two 15-minute mini practices for the Day 2 lecture *Molecular tools for genomics*. One message
+runs through both: a genomics sample is **specimen + molecule + metadata**, and every file
+downstream inherits all three.
+
+* **Mini practice 1 · Is this sample fit for this platform?**
+  (`practice1_sample_to_platform.ipynb`) — twelve tubes (blood, saliva, buccal swab, FFPE and
+  fresh-frozen tumour, plasma cfDNA, a cell line, RNA) are checked against Illumina, PacBio HiFi
+  and Oxford Nanopore input requirements and marked PASS / REVIEW / FAIL / BLOCKED with a written
+  reason. Part B compares simulated reads from the three platforms over the real hg38 β-globin
+  window from Day 1: read length, N50, accuracy, and how many reads span an 8-kb target.
+* **Mini practice 2 · Cohort QC: who does not belong?** (`practice2_cohort_qc.ipynb`) — a
+  synthetic 2,000-exome cohort is taken through the quality-control steps of the UK Biobank exome
+  study (Wang et al., *Nature* 2021): consent, contamination, coverage, sex and array checks,
+  duplicates and relatives, ancestry and batch. Students find the planted cases and rebuild the
+  QC funnel.
+
+```bash
+cd day2-3-samples
+python -m pip install -r requirements.txt
+jupyter lab
+```
+
+Requires Python 3.9+ with `pandas`, `numpy` and `matplotlib`. No network access, no aligner and
+no reference download; each notebook runs top to bottom in a few seconds. See
+[`day2-3-samples/README.md`](day2-3-samples/README.md) for the expected answers, the planted
+cases, the slide-to-notebook mapping and instructor notes.
+
 ## Real data vs teaching data
 
 The `chr11` sequence in both mini-references is genuine UCSC sequence, the gene models are
@@ -35,10 +64,16 @@ NCBI RefSeq Select transcripts, and the hg19 ↔ hg38 checkpoint correspondence 
 in ClinVar. Everything else — samples, reads, genotypes, depths, the `toy1` contig and the
 chain file — is synthetic teaching material and is labelled as such throughout.
 
+Day 2 reuses the same real hg38 β-globin window and gene models. Its sample sheet, reads, cohort
+and QC metrics are synthetic; the platform input requirements come from vendor documentation and
+the cohort QC thresholds from Wang et al. (2021), each with its source recorded in the package.
+
 **No output of these materials is a clinical result.** A public variant site is used for its
 coordinates only, because those coordinates are documented on both assemblies.
 
 ## Reproducing the data package
+
+Day 1:
 
 ```bash
 cd day1-coordination/build
@@ -47,3 +82,15 @@ python make_notebook.py  # writes the notebook
 ```
 
 The only network calls are two UCSC sequence fetches, already cached in `build/lab_src/`.
+
+Day 2:
+
+```bash
+cd day2-3-samples
+python build/build_practice1.py && python build/build_practice2.py   # data and checkpoints
+python build/make_notebooks.py                                       # the two notebooks
+python build/verify_package.py                                       # runs both notebooks and checks every answer
+python build/check_slide_refs.py <Day 2 deck .pptx>                  # slide citations vs the deck
+```
+
+Day 2 needs no network at all; the real β-globin window is shipped in `data/practice1/`.

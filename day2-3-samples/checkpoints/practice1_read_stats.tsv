@@ -1,0 +1,4 @@
+platform	reads	total_bases	mean_length	max_length	read_n50	mean_error_rate	mean_accuracy_pct	approx_depth_x	reads_spanning_target
+illumina_2x150	4000	600000	150.0	150	150	0.000809	99.919	10.0	0
+pacbio_hifi	40	646752	16168.8	21467	16522	0.000714	99.929	10.78	6
+ont_ligation	50	736144	14722.9	56177	20212	0.009233	99.077	12.27	5

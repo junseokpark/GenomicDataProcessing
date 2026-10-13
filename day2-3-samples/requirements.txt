@@ -1,0 +1,13 @@
+# Mini practices 1 and 2 (Day 2, Genomic Data Processing): Python 3.9 or newer
+pandas>=1.3
+numpy>=1.21
+matplotlib>=3.4
+
+# optional: a notebook front-end
+# jupyterlab
+
+# maintainers only: rebuild and verify the notebooks (build/make_notebooks.py, build/verify_package.py)
+# nbformat
+# nbclient
+# ipykernel
+# python-pptx    (build/check_slide_refs.py, checks slide citations against the deck)
