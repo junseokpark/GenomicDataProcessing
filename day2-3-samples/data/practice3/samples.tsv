@@ -1,0 +1,7 @@
+library_id	person	molecule	specimen_tube	platform	chemistry	read_layout	library_prep	reads_in_locus	notes
+DNA-ILMN	P3-01	DNA	EDTA blood	Illumina NovaSeq X	2 x 150 bp paired-end	paired-end 2 x 150 bp; insert ~350 bp	PCR-amplified library (shows GC bias)	24000	~30x; synthetic teaching data, not calibrated to a real run
+DNA-HIFI	P3-01	DNA	EDTA blood	PacBio Revio	HiFi reads, 15-20 kb library	single long reads	PCR-free; 5mC from polymerase kinetics	169	~20x; synthetic teaching data, not calibrated to a real run
+DNA-ONT	P3-01	DNA	EDTA blood	Oxford Nanopore PromethION	R10.4.1 flow cell, Ligation Sequencing Kit V14	single long reads	PCR-free; 5mC from the current signal	183	~20x; synthetic teaching data, not calibrated to a real run
+RNA-ILMN	P3-01	RNA	PAXgene blood RNA	Illumina NovaSeq X	2 x 100 bp, stranded poly(A) mRNA	paired-end 2 x 100 bp; read 1 antisense	cDNA fragments ~250 bp	20000	~10,000 fragments; synthetic teaching data, not calibrated to a real run
+RNA-KINNEX	P3-01	RNA	PAXgene blood RNA	PacBio Revio	Kinnex full-length RNA (MAS-Seq concatenation of Iso-Seq cDNA; reads segmented back to single cDNAs)	single full-length cDNA reads	full-length cDNA, poly(A) trimmed	1500	~1,500 reads; synthetic teaching data, not calibrated to a real run
+RNA-ONT	P3-01	RNA	PAXgene blood RNA	Oxford Nanopore PromethION	Direct RNA, SQK-RNA004, RNA flow cell	single native RNA reads, read 3' to 5'	native RNA, no cDNA; written in DNA letters (U as T)	2000	~2,000 reads; synthetic teaching data, not calibrated to a real run

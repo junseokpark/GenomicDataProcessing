@@ -1,12 +1,14 @@
 # Practice package — Genomic Data Processing, Day 2 (10/13)
 
-Two mini practice sessions of about 15 minutes each, one notebook per session. Open the
+Three mini practice sessions, one notebook per session. Practices 1 and 2 take about 15 minutes
+each; Practice 3 is a 60-minute session in pairs that ends in two-minute lightning talks. Open the
 notebooks from **this folder** (`day2-3-samples/`): every path inside them is relative to it.
 
 | Notebook | Practice slide | The question students answer |
 |---|---|---|
 | `practice1_sample_to_platform.ipynb` | 25 · Mini practice 1 · Is this sample fit for this platform? | Which tubes can go on which platform, and what does each platform return from the same DNA? |
 | `practice2_cohort_qc.ipynb` | 32 · Mini practice 2 · Cohort QC: who does not belong? | Which of 2,000 exomes must leave the analysis, at which step, and why? |
+| `practice3_dna_rna_short_long.ipynb` | 33 · Mini practice 3 · One person, six datasets | One person's DNA and RNA, each read by Illumina, PacBio and Nanopore: what can each dataset see, and what does it miss? |
 
 ## How to run
 
@@ -17,18 +19,21 @@ jupyter lab                                    # or any notebook front-end
 ```
 
 Open `practice1_sample_to_platform.ipynb`, run it top to bottom (Shift+Enter), then
-`practice2_cohort_qc.ipynb`. Everything the notebooks write lands in `outputs/`.
+`practice2_cohort_qc.ipynb`, then `practice3_dna_rna_short_long.ipynb`. Everything the notebooks
+write lands in `outputs/`.
 
 ## Requirements
 
 | Needed | Why |
 |---|---|
-| Python 3.9+ with `pandas` ≥ 1.3, `numpy` ≥ 1.21, `matplotlib` ≥ 3.4 | both notebooks |
+| Python 3.9+ with `pandas` ≥ 1.3, `numpy` ≥ 1.21, `matplotlib` ≥ 3.4 | all three notebooks |
 | JupyterLab or Jupyter Notebook *(optional)* | to open the notebooks |
 | `nbformat`, `nbclient`, `ipykernel` *(maintainers only)* | `build/make_notebooks.py` and `build/verify_package.py` |
+| `python-pptx` *(maintainers only)* | `build/check_slide_refs.py` |
 
-No network access, no reference download, no aligner, no `pysam`, no index build. Every cell
-finishes in about a second, and each notebook runs top to bottom in a few seconds.
+No network access, no reference download, no aligner, no `pysam`, no index build: Practice 3
+reads its SAM files with pandas. Every cell finishes in a few seconds at most, and each notebook
+runs top to bottom in under 10 seconds.
 
 Tested headless with Python 3.12 / pandas 3.0.6 / numpy 2.5.4 / matplotlib 3.11.2, and with the
 oldest supported stack, Python 3.9 / pandas 1.3.5 / numpy 1.21 / matplotlib 3.4. Rebuilding the
@@ -49,7 +54,10 @@ package on either stack gives byte-identical data, checkpoints and notebooks.
 **Synthetic**: the 12 tubes (S01–S12) and their subjects (P001–P012), every read and every
 alignment, and the whole 2,000-sample cohort. No real person's data and no UK Biobank data are
 used, and no result has clinical meaning. The 8-kb target `HBB_HBD_window` is a teaching target
-("imagine a structural variant here"); nothing is claimed about the region.
+("imagine a structural variant here"); nothing is claimed about the region. **All of Practice 3
+is synthetic**: the person P3-01, the 120-kb locus `chrS` and its four genes, every read, every
+alignment and every methylation call. Its read models approximate public platform specifications
+but are **not calibrated to any real run**.
 
 **Teaching thresholds** are labelled as such in the files: the Illumina `min_fragment_kb`
 values, the PacBio rule "the DNA must be at least as long as the 15–20 kb library", poly(A)
@@ -81,6 +89,9 @@ day2-3-samples/
 ├── .gitignore                          ignores outputs/* except outputs/.gitkeep
 ├── practice1_sample_to_platform.ipynb  Mini practice 1
 ├── practice2_cohort_qc.ipynb           Mini practice 2
+├── practice3_dna_rna_short_long.ipynb  Mini practice 3
+├── presentation/
+│   └── practice3_lightning_talk_template.pptx   the lightning-talk template: a worked example, then the blank slide
 ├── data/
 │   ├── practice1/
 │   │   ├── sample_sheet.tsv            12 tubes: specimen + molecule + metadata
@@ -94,22 +105,41 @@ day2-3-samples/
 │   │       ├── pacbio_hifi.fastq.gz    40 HiFi reads
 │   │       ├── ont_ligation.fastq.gz   50 nanopore reads
 │   │       └── alignments.paf          4,090 alignments, written from the simulation truth
-│   └── practice2/
-│       ├── cohort_manifest.tsv         2,000 samples from 1,998 participants
-│       ├── sample_qc_metrics.tsv       depth, CCDS 10x, FREEMIX, sex metrics, array concordance, PCs, Pr(EUR)
-│       └── kinship_pairs.tsv           65 pairs with KING kinship > 0.0442
+│   ├── practice2/
+│   │   ├── cohort_manifest.tsv         2,000 samples from 1,998 participants
+│   │   ├── sample_qc_metrics.tsv       depth, CCDS 10x, FREEMIX, sex metrics, array concordance, PCs, Pr(EUR)
+│   │   └── kinship_pairs.tsv           65 pairs with KING kinship > 0.0442
+│   └── practice3/                      synthetic person P3-01, synthetic 120-kb locus chrS (2.9 MB)
+│       ├── samples.tsv                 the six libraries: person, tube, molecule, platform, chemistry, prep
+│       ├── chrS.fa (+ .fai)            the locus sequence
+│       ├── genes.gtf                   ALTX (two isoforms), ASE1, OFF1, LOW1: transcript and exon lines
+│       ├── regions.tsv                 CGI_ALTX, REP1, HP1, DUP_A, DUP_B, OFF1_PROMOTER, in plain words
+│       ├── sites.tsv                   SNV1 and SNV2
+│       ├── DNA-ILMN.sam.gz             12,000 Illumina read pairs, 2 x 150 bp (~30x)
+│       ├── DNA-HIFI.sam.gz             169 PacBio HiFi reads (~20x)
+│       ├── DNA-ONT.sam.gz              183 Nanopore reads (~20x)
+│       ├── RNA-ILMN.sam.gz             10,000 stranded poly(A) RNA-seq fragments, 2 x 100 bp
+│       ├── RNA-KINNEX.sam.gz           1,500 PacBio Kinnex full-length cDNA reads
+│       ├── RNA-ONT.sam.gz              2,000 Nanopore direct RNA reads
+│       └── methylation_DNA-{HIFI,ONT}.tsv   5mC per CpG: n_reads, n_methylated, fraction
 ├── checkpoints/                        verified outputs, for when a cell will not run
 │   ├── practice1_decisions.tsv
 │   ├── practice1_read_stats.tsv
 │   ├── practice2_qc_funnel.tsv
 │   ├── practice2_excluded_samples.tsv
-│   └── practice2_planted_cases.tsv     answer key: every planted case and the step it must reach
+│   ├── practice2_planted_cases.tsv     answer key: every planted case and the step it must reach
+│   ├── practice3_checks.tsv            every Practice 3 CHECK number (282)
+│   ├── practice3_scorecard.tsv         what each dataset can and cannot see
+│   └── practice3_truth.json            answer key: what was built into chrS, the read models, the facts
 ├── outputs/                            what the notebooks write (only .gitkeep is tracked)
 └── build/
     ├── build_practice1.py              sample sheet, requirements, reads, PAF, Practice 1 checkpoints
     ├── build_practice2.py              cohort, metrics, kinship, Practice 2 checkpoints + answer key
-    ├── make_notebooks.py               writes both notebooks with nbformat (no outputs stored)
-    └── verify_package.py               runs both notebooks headless from a clean copy and compares
+    ├── build_practice3.py              locus, six libraries, Practice 3 checkpoints + answer key
+    ├── make_notebooks.py               writes the three notebooks with nbformat (no outputs stored)
+    ├── practice3_cells.py              the cells of the Practice 3 notebook (used by make_notebooks.py)
+    ├── verify_package.py               runs the notebooks headless from a clean copy and compares
+    └── check_slide_refs.py             checks every slide citation against the Day 2 deck
 ```
 
 The checkpoints are produced by **independent re-implementations** inside the build scripts,
@@ -271,11 +301,121 @@ The 20 third-degree pairs (one of them African) stay, as the 0.0884 rule allows.
 depth and lower pct_ccds_10x than B1, B2 and B4, yet almost all of it passes: keep it, report it,
 adjust for it.
 
+## Mini practice 3 · One person, six datasets
+
+**Purpose.** One synthetic person, P3-01, gave one blood draw: DNA from an EDTA tube and RNA from
+a PAXgene tube. Each molecule was read three ways (Illumina, PacBio, Oxford Nanopore), giving six
+datasets of the same 120-kb locus. DNA tells you what the genome contains; RNA tells you what the
+blood cells are doing now. Long reads span repeats and duplications, link variants and read whole
+transcripts; short reads are accurate, numerous and cheap per read. Each pair studies one of 12
+figures and presents it as a claim backed by one number, in two minutes.
+
+### The six datasets
+
+| library | molecule | platform · chemistry (teaching label) | layout / prep | in the locus | read model (approximate, not calibrated) |
+|---|---|---|---|---|---|
+| `DNA-ILMN` | DNA | Illumina NovaSeq X · 2 x 150 bp | PCR-amplified library | 12,000 pairs, ~30x | insert N(350, 50); substitutions, 0.1% at base 1 rising to 0.8% at base 150; GC bias exp(-0.5((gc-0.45)/0.18)^2) |
+| `DNA-HIFI` | DNA | PacBio Revio · HiFi reads, 15-20 kb library | PCR-free; 5mC from polymerase kinetics | 169 reads, ~20x | length N(16, 3) kb, 8-30 kb; ~Q33, mostly 1-bp indels, some homopolymer slips |
+| `DNA-ONT` | DNA | Oxford Nanopore PromethION · R10.4.1, Ligation Sequencing Kit V14 | PCR-free; 5mC from the current signal | 183 reads, ~20x | log-normal length, N50 ~22 kb, 1-100 kb; ~Q20 (97-99.7%), 45% deletions, homopolymer length errors |
+| `RNA-ILMN` | RNA | Illumina NovaSeq X · 2 x 100 bp, stranded poly(A) mRNA | cDNA fragments ~250 bp; read 1 antisense | 10,000 fragments | 3% unspliced pre-mRNA; mild 3' bias (1.2x) |
+| `RNA-KINNEX` | RNA | PacBio Revio · Kinnex full-length RNA | full-length cDNA, poly(A) trimmed | 1,500 reads | 85% full length, 15% 5'-truncated; HiFi accuracy |
+| `RNA-ONT` | RNA | Oxford Nanopore PromethION · Direct RNA, SQK-RNA004 | native RNA read 3' to 5', written as DNA letters | 2,000 reads | starts at the poly(A) end, ~30% reach the 5' end; ~97% accurate, deletions most common |
+
+### What pairs do (60 minutes)
+
+| time | activity | deck |
+|---|---|---|
+| 0-5 | the six datasets, the one-slide recipe, instructor demo of a finished slide on F01 | 33 "Mini practice 3 · One person, six datasets", 34 "Lightning talks: one figure, two minutes" |
+| 5-30 | pairs run the notebook (Run All takes about 4 s), study their figure, do its **Try this**, fill one slide | notebook |
+| 30-55 | lightning talks: 2 minutes per pair plus about 15 s changeover (11-12 pairs) | student slides |
+| 55-60 | debrief: what each dataset can and cannot see, with the scorecard | 35 "Debrief: what each dataset can and cannot see" |
+
+Figures are handed out in this order: F03, F05, F07, F04, F08, F02, F09, F06, F10, F11, F12, F01
+(F01 is the instructor's worked example). With more than 12 pairs, two pairs share F05 or F07 and
+compare their claims.
+
+**The lightning-talk rule: one slide, two minutes.** The slide holds the figure, a **claim** in one
+sentence with **one number** from `CHECK`, and a **so what** with **one limit**: which dataset you
+would choose for this question, and one thing it cannot do. The one-slide template is
+`presentation/practice3_lightning_talk_template.pptx`: its first page is a worked example on F01, its second the page each pair fills.
+
+### The twelve figures
+
+Each section of the notebook has the question, two or three sentences of biology, one code cell
+that draws the figure, saves it and prints its `CHECK` numbers, a **Try this** (one parameter to
+change), three prompts for the talk, and the slides to look back at. The notebook asks; it never
+prints the answer.
+
+| figure | question | CHECK numbers | slides |
+|---|---|---|---|
+| F01 · Read length: six datasets | How long are the reads, and why are long RNA reads shorter than long DNA reads? | read count, median and N50 per dataset | 13 "Three ways to read a molecule", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads", 20 "Read length: mean versus N50" |
+| F02 · Errors: what kind of mistakes? | Which datasets make mostly insertion/deletion errors, and where do they show up? | mismatches, insertions, deletions per 1,000 aligned bases; % of reads with 9, 10, 11 A's at HP1 | 14 "Phred quality: how sure is each base?", 15 "Illumina: short, accurate, massively parallel", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads" |
+| F03 · DNA vs RNA: coverage across the locus | OFF1 has no RNA reads. Is the gene missing from this person's genome? | mean exon depth per gene; % of aligned bases in exons | 2 "What is a genomics sample?", 4 "Human specimens and what they give you", 9 "RNA sequencing" |
+| F04 · Allele-specific expression | Why do DNA and RNA give different allele fractions at SNV1? | reads with G and A at SNV1, fraction, 95% interval | 9 "RNA sequencing", 10 "RNA-seq applications" |
+| F05 · Isoforms: junctions vs full-length reads | From short reads alone, how many ALTX isoforms are possible? What do long reads add? | reads per junction; reads per exon chain | 10 "RNA-seq applications", 11 "One gene, many transcripts" |
+| F06 · RNA coverage along the transcript | Why does one RNA dataset have more reads near the 3' end? | 3'/5' coverage ratio; % of reads reaching the 5' end | 9 "RNA sequencing", 19 "Oxford Nanopore: the longest reads" |
+| F07 · Sizing a CAG repeat | Is one allele expanded, and which dataset can measure it? | spanning reads, modal size and spread per allele; Illumina all-CAG reads | 13 "Three ways to read a molecule", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads", 21 "Side by side: which platform for which question?" |
+| F08 · A duplicated block | Why do short reads disappear here when you filter on mapping quality? | MAPQ ≥ 20 depth inside DUP_A and in its flanks, and their ratio | 15 "Illumina: short, accurate, massively parallel", 21 "Side by side: which platform for which question?" |
+| F09 · Phasing: are two variants on the same copy? | Are SNV1 and SNV2 on the same copy of the chromosome? | reads covering both sites; the four combinations of bases | 16 "Paired-end reads and insert size", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads" |
+| F10 · GC content and coverage | Why does one dataset lose coverage in GC-rich DNA? | normalized depth in ≥ 60% GC and 40-50% GC windows, ratio, window-to-window scatter | 15 "Illumina: short, accurate, massively parallel", 17 "Duplicates and library complexity", 24 "Coverage is uneven: the Poisson view" |
+| F11 · Methylation from long-read DNA | Which promoter is methylated, and does that fit the RNA data? | CpGs and mean methylation per region | 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads", 21 "Side by side: which platform for which question?" |
+| F12 · Gene expression: do the RNA datasets agree? | Do the three RNA datasets agree on which genes are on, and how sure is each? | reads per gene, share of the locus's RNA, 95% interval | 9 "RNA sequencing", 10 "RNA-seq applications", 22 "Match the sample to the platform" |
+
+Comparison groups: DNA vs RNA = F03, F04; short vs long reads, DNA = F07, F08, F09; short vs long
+reads, RNA = F05, F06, F12; platforms = F01, F02, F10, F11.
+
+### Files the notebook writes
+
+* `outputs/practice3_F01_read_length.png`, `practice3_F02_errors.png`,
+  `practice3_F03_dna_vs_rna_coverage.png`, `practice3_F04_allele_specific_expression.png`,
+  `practice3_F05_isoforms.png`, `practice3_F06_transcript_coverage.png`,
+  `practice3_F07_cag_repeat.png`, `practice3_F08_duplicated_block.png`, `practice3_F09_phasing.png`,
+  `practice3_F10_gc_coverage.png`, `practice3_F11_methylation.png`, `practice3_F12_expression.png`:
+  8 x 4.5 in at 200 dpi, text 11-13 pt, ready for a slide. Colour = platform (Illumina `#1F5FEA`,
+  PacBio `#B25E09`, ONT `#17202A`); DNA solid lines and filled markers, RNA dashed and open.
+* `outputs/practice3_checks.tsv`: every CHECK number (282), compared at the end of the notebook
+  with `checkpoints/practice3_checks.tsv`.
+* `outputs/practice3_scorecard.tsv`: one yes / no / n/a per question per dataset.
+
+### How the data were made, and the honest limits
+
+* `build/build_practice3.py` simulates the two haplotypes, draws reads from them with the models
+  above, and writes each read's alignment by projecting it onto `chrS`; there is no aligner. The
+  180-unit allele therefore appears as an insertion inside REP1, an insertion at a read end becomes
+  a soft clip, and a short read lying entirely inside the expanded repeat is unmapped (FLAG 4,
+  placed at its mate). A short read inside one copy of the duplication that avoids the three
+  differing bases gets MAPQ 0 and is placed in either copy at random, as an aligner would.
+* `samtools` 1.24 reads all six files, sorts and indexes them, and `samtools calmd` recomputes
+  every `NM` tag without a difference; every intron in the RNA files is an annotated one.
+* **Base qualities.** Illumina reads carry a per-cycle quality that matches the error model.
+  Long reads carry one quality value per read (the Phred value of that read's simulated error
+  rate) instead of per-base values: none of the figures uses base qualities, and a uniform string
+  keeps the files small (2.9 MB in total) without pretending to model base-by-base confidence.
+  Real HiFi and nanopore files vary base by base.
+* Illumina reads carry substitutions only. The per-cycle model from the design (0.1% rising to
+  0.8%) averages 99.56% correct per base, a little below what a good NovaSeq X run achieves.
+* Long DNA reads start on an even, jittered grid and alternate between the two haplotypes. A real
+  run scatters reads at random; with only ~20 reads over any base that noise alone could hide a
+  lesson (a heterozygous site reading 75:25, say), so the teaching data spread reads evenly.
+  Nanopore depth still wanders (15-23x) because its read lengths vary so much; F10 reports the
+  window-to-window scatter so students can tell noise from bias.
+* Methylation tables summarise simulated per-molecule calls with 3% (HiFi) and 5% (ONT) call error.
+* All four genes are on the + strand. The build stops if any of the 16 teaching facts is no longer
+  visible in the data, and `verify_package.py` tests the same facts on the notebook's output.
+
+### For instructors
+
+The answer key for the twelve figures, the design truth of `chrS` and notes on where students get stuck are in a
+separate instructor guide, kept outside this public repository because in this practice students form their own
+claims. `checkpoints/practice3_truth.json` is the build record that `verify_package.py` uses; open it after the
+talks, not before.
+
 ## How the notebooks map onto the slides
 
-Slide numbers refer to the 40-slide Day 2 deck (*Molecular tools for genomics*, 10/13); titles are
-given too, so a citation still resolves if slides move. `build/check_slide_refs.py` checks every
-citation below and in both notebooks against the deck.
+Slide numbers refer to the 43-slide Day 2 deck (*Molecular tools for genomics*, 10/13), in which
+slides 33-35 hold Mini practice 3; titles are given too, so a citation still resolves if slides
+move. `build/check_slide_refs.py` checks every citation below and in the three notebooks against
+the deck.
 
 | Notebook part | Practice slide | Slides cited in the notebook |
 |---|---|---|
@@ -284,12 +424,18 @@ citation below and in both notebooks against the deck.
 | Practice 2, steps 1–3 | 32 · Mini practice 2 · Cohort QC: who does not belong? | 7 "Metadata: the sample's passport", 24 "Coverage is uneven: the Poisson view" |
 | Practice 2, steps 4–5 | 32 · Mini practice 2 · Cohort QC: who does not belong? | 30 "Cohort QC: is every sample who it claims to be?" |
 | Practice 2, step 6, funnel, equity note | 32 · Mini practice 2 · Cohort QC: who does not belong? | 31 "What a cohort can and cannot tell you" |
+| Practice 3, set-up and sample sheet | 33 · Mini practice 3 · One person, six datasets | 34 "Lightning talks: one figure, two minutes", 7 "Metadata: the sample's passport" |
+| Practice 3, DNA vs RNA (F03, F04) | 33 · Mini practice 3 · One person, six datasets | 2 "What is a genomics sample?", 4 "Human specimens and what they give you", 9 "RNA sequencing", 10 "RNA-seq applications" |
+| Practice 3, short vs long reads, DNA (F07, F08, F09) | 33 · Mini practice 3 · One person, six datasets | 13 "Three ways to read a molecule", 15 "Illumina: short, accurate, massively parallel", 16 "Paired-end reads and insert size", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads", 21 "Side by side: which platform for which question?" |
+| Practice 3, short vs long reads, RNA (F05, F06, F12) | 33 · Mini practice 3 · One person, six datasets | 9 "RNA sequencing", 10 "RNA-seq applications", 11 "One gene, many transcripts", 19 "Oxford Nanopore: the longest reads", 22 "Match the sample to the platform" |
+| Practice 3, platforms (F01, F02, F10, F11) | 33 · Mini practice 3 · One person, six datasets | 13 "Three ways to read a molecule", 14 "Phred quality: how sure is each base?", 15 "Illumina: short, accurate, massively parallel", 17 "Duplicates and library complexity", 18 "PacBio HiFi: long and accurate", 19 "Oxford Nanopore: the longest reads", 20 "Read length: mean versus N50", 21 "Side by side: which platform for which question?", 24 "Coverage is uneven: the Poisson view" |
+| Practice 3, scorecard and debrief | 33 · Mini practice 3 · One person, six datasets | 35 "Debrief: what each dataset can and cannot see" |
 
 The reads-and-coverage theory behind Part B sits next to the platform slides: slide 14 (Phred
 quality), slide 16 (insert size), slide 17 (duplicates), slide 20 (N50), slide 23 (depth) and
 slide 24 (coverage). Platform background: slide 15 (Illumina), slide 18 (PacBio HiFi) and slide 19
 (Oxford Nanopore). The one message of the day is slide 2 ("What is a genomics sample?"); the
-take-home is slide 35.
+take-home is slide 38.
 
 ## Instructor notes
 
@@ -316,23 +462,32 @@ take-home is slide 35.
 * **Good questions for the room.** Which REVIEW is a clean-up and which is a mass problem
   (S02 vs S11)? Why does S06's alternative depend on the study question? What can the sex check
   not see that the array check can? Who is missing from a European-only analysis?
-
+* **Practice 3, timing.** 5 minutes of set-up with the F01 demo, 25 minutes in pairs, 25 minutes
+  of talks (keep a visible two-minute timer), 5 minutes of debrief with the scorecard. The
+  notebook runs in about 4 seconds; the 25 minutes are for reading one figure well.
 ## Rebuild and verify
 
 ```bash
 python build/build_practice1.py && python build/build_practice2.py && \
-python build/make_notebooks.py && python build/verify_package.py
+python build/build_practice3.py && python build/make_notebooks.py && \
+python build/verify_package.py
+python build/check_slide_refs.py "<path>/Day 2 deck.pptx"        # needs python-pptx
 ```
 
 * Everything is deterministic (fixed seeds; gzip written with mtime 0), so a rebuild reproduces
   the same data, checkpoints and notebooks.
+* `build_practice3.py` takes about 7 seconds. It computes every CHECK number a second time with
+  its own code (from the SAM files it has just written), writes `checkpoints/practice3_*`, and
+  stops if any of the 16 teaching facts is no longer visible.
 * `build_practice1.py` reads the real window from `data/practice1/` and refuses to run if its
   checksum changed. To bootstrap from the Day 1 package instead:
   `python build/build_practice1.py --day1-seq <hg38_5218771_5278770.txt> --day1-genes <genes.hg38.bed>`.
 * `verify_package.py` copies the package to a temporary folder with an empty `outputs/`, runs
-  both notebooks headless with `nbclient` (kernel `python3`), and checks: no errors and nothing on
-  stderr, under 60 s in total, every output table equal to its checkpoint, the teaching facts
-  (tally, spanning reads, funnel arithmetic, every planted case at its documented step), all
-  figures written, no stored outputs, and no network calls. It exits non-zero on any failure.
+  the three notebooks headless with `nbclient` (kernel `python3`), and checks: no errors and
+  nothing on stderr; Practices 1 and 2 under 60 s together and Practice 3 under 30 s; every output
+  table equal to its checkpoint; the teaching facts (tally, spanning reads, funnel arithmetic,
+  every planted case at its documented step, and Practice 3's 16 facts tested on the notebook's
+  own CHECK numbers); all 16 figures written; no stored outputs; only the allowed imports; and no
+  network calls. It exits non-zero on any failure.
   On machines that forbid Jupyter kernel sockets it says so and runs the same cells through
   IPython's `InteractiveShell` in a fresh interpreter instead (`--executor` chooses explicitly).

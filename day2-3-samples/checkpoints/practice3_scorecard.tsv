@@ -1,0 +1,7 @@
+library	molecule	platform	read_n50	accuracy_pct	sizes_expanded_repeat	resolves_duplication	phases_snv1_snv2	methylation_from_reads	allele_specific_expression	full_length_isoforms	gene_expression
+DNA-ILMN	DNA	Illumina	150	99.56	no	no	no	no	n/a	n/a	n/a
+DNA-HIFI	DNA	PacBio	16656	99.92	yes	yes	yes	yes	n/a	n/a	n/a
+DNA-ONT	DNA	ONT	21510	98.81	yes	yes	yes	yes	n/a	n/a	n/a
+RNA-ILMN	RNA	Illumina	100	99.66	n/a	n/a	n/a	n/a	yes	no	yes
+RNA-KINNEX	RNA	PacBio	2249	99.92	n/a	n/a	n/a	n/a	yes	yes	yes
+RNA-ONT	RNA	ONT	2135	96.81	n/a	n/a	n/a	n/a	yes	yes	yes

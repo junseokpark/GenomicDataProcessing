@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Write practice1_sample_to_platform.ipynb and practice2_cohort_qc.ipynb with nbformat.
+"""Write practice1_sample_to_platform.ipynb, practice2_cohort_qc.ipynb and
+practice3_dna_rna_short_long.ipynb with nbformat. Practice 3's cells live in practice3_cells.py.
 
 The notebooks are written without outputs (students run them). Cell ids are fixed so that
 rebuilding produces byte-identical files.
@@ -7,10 +8,14 @@ rebuilding produces byte-identical files.
 Usage
   python build/make_notebooks.py
 """
+import sys
 from pathlib import Path
 
 import nbformat
 from nbformat.v4 import new_code_cell, new_markdown_cell, new_notebook
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))     # practice3_cells.py sits next to this file
+from practice3_cells import P3  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -1159,3 +1164,4 @@ def write(cells, path, prefix):
 if __name__ == "__main__":
     write(P1, ROOT / "practice1_sample_to_platform.ipynb", "p1")
     write(P2, ROOT / "practice2_cohort_qc.ipynb", "p2")
+    write(P3, ROOT / "practice3_dna_rna_short_long.ipynb", "p3")

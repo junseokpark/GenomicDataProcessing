@@ -1,0 +1,7 @@
+name	start	end	kind	description
+CGI_ALTX	18801	20000	CpG island	GC-rich, CpG-dense promoter of ALTX
+REP1	34001	34060	short tandem repeat	(CAG)n repeat; 20 units in the reference
+HP1	52001	52010	homopolymer	ten A bases in a row
+DUP_A	56001	62000	segmental duplication	6-kb block with a near-identical copy (DUP_B)
+DUP_B	84001	90000	segmental duplication	copy of DUP_A that differs at 3 bases
+OFF1_PROMOTER	65201	66000	promoter	GC-rich promoter of OFF1

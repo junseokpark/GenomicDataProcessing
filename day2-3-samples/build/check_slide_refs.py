@@ -5,7 +5,7 @@
 
 The deck is not part of this repository, so pass its path. Requires python-pptx.
 
-Scans README.md and both notebooks (markdown and code) for three citation forms:
+Scans README.md and the three notebooks (markdown and code) for three citation forms:
   * prose:            "slide 24", "slides 14-16", "practice slide 19"
   * number + title:   6 "Measure the molecule before you sequence"   (README mapping table)
                       "Cohort QC: is every sample who it claims to be?" (slide 24)   (notebooks)
@@ -23,14 +23,21 @@ from pathlib import Path
 from pptx import Presentation
 
 HERE = Path(__file__).resolve().parent.parent
-SOURCES = ["README.md", "practice1_sample_to_platform.ipynb", "practice2_cohort_qc.ipynb"]
+SOURCES = ["README.md", "practice1_sample_to_platform.ipynb", "practice2_cohort_qc.ipynb",
+           "practice3_dna_rna_short_long.ipynb"]
 
-# Expected title for every slide cited by number. Keep in step with the text: if you cite a new
-# slide, record what it should say.
+# Expected title for every slide cited by number, for the 43-slide deck (slides 33-35 hold Mini
+# practice 3; the summary, take-home and reference slides moved from 33-40 to 36-43). Keep in step
+# with the text: if you cite a new slide, record what it should say.
 EXPECT_SLIDE = {
     2: "What is a genomics sample?",
+    4: "Human specimens and what they give you",
     6: "Measure the molecule before you sequence",
     7: "Metadata: the sample's passport",
+    9: "RNA sequencing",
+    10: "RNA-seq applications",
+    11: "One gene, many transcripts",
+    13: "Three ways to read a molecule",
     14: "Phred quality: how sure is each base?",
     15: "Illumina: short, accurate, massively parallel",
     16: "Paired-end reads and insert size",
@@ -46,13 +53,16 @@ EXPECT_SLIDE = {
     30: "Cohort QC: is every sample who it claims to be?",
     31: "What a cohort can and cannot tell you",
     32: "Mini practice 2 · Cohort QC: who does not belong?",
-    35: "Take-home: what is a genomics sample?",
+    33: "Mini practice 3 · One person, six datasets",
+    34: "Lightning talks: one figure, two minutes",
+    35: "Debrief: what each dataset can and cannot see",
+    38: "Take-home: what is a genomics sample?",
 }
 
 PROSE = re.compile(r"\bslides?\s+(\d{1,2}(?:\s*[-–]\s*\d{1,2})?(?:\s*,\s*\d{1,2})*)", re.I)
 NUM_TITLE = re.compile(r"(?<![\d.])(\d{1,2}) \"([^\"]+)\"")                 # 6 "Title"
 TITLE_NUM = re.compile(r"\"([^\"]+)\" \(slide (\d{1,2})\)")                 # "Title" (slide 6)
-PRACTICE = re.compile(r"(?<![\d.])(\d{1,2}) · (Mini practice [12] · [^|\n*]+?)\s*(?:\||$)", re.M)
+PRACTICE = re.compile(r"(?<![\d.])(\d{1,2}) · (Mini practice [123] · [^|\n*]+?)\s*(?:\||$)", re.M)
 
 
 def norm(t):

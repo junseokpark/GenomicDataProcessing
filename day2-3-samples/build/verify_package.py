@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-"""Execute both notebooks headless from a clean copy and check them against checkpoints/.
+"""Execute the three notebooks headless from a clean copy and check them against checkpoints/.
 
 What is checked
-  1. static: notebooks ship without outputs; code cells import only gzip, pathlib, numpy,
-     pandas and matplotlib; no network calls anywhere in the notebooks or build scripts
-  2. both notebooks run top to bottom with nbclient in a fresh copy of the package, with no
-     errors and nothing written to stderr (no warnings), in under 60 s together
-  3. every output table equals its checkpoint (text equal, or numerically equal to 1e-9)
+  1. static: notebooks ship without outputs; code cells import only the standard-library
+     modules gzip, pathlib, io, re, math and collections plus numpy, pandas and matplotlib; no
+     network calls anywhere in the notebooks or build scripts
+  2. every notebook runs top to bottom with nbclient in a fresh copy of the package, with no
+     errors and nothing written to stderr (no warnings): Practices 1 and 2 in under 60 s
+     together, Practice 3 in under 30 s ("Run All" in the session plan)
+  3. every output table equals its checkpoint (text equal, or numerically equal to 1e-9);
+     Practice 3's CHECK table is compared by (figure, library, metric)
   4. the teaching facts hold: Part A tally 6/2/3/1, Illumina spans 0 reads of the target,
-     HiFi and ONT >= 3 each, the QC funnel adds up, every planted case lands where documented
+     HiFi and ONT >= 3 each, the QC funnel adds up, every planted case lands where documented;
+     Practice 3 prints all 12 CHECK tables and its outputs show each of the 16 facts that
+     build_practice3.py asserts (one per lesson of F01-F12)
   5. every figure was written
 
 Exit status 0 when everything passes, 1 otherwise.
@@ -33,14 +38,25 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 TRANSPORT = None
-NOTEBOOKS = ["practice1_sample_to_platform.ipynb", "practice2_cohort_qc.ipynb"]
+NOTEBOOKS = ["practice1_sample_to_platform.ipynb", "practice2_cohort_qc.ipynb",
+             "practice3_dna_rna_short_long.ipynb"]
+P3 = "practice3_dna_rna_short_long.ipynb"
 TABLES = ["practice1_decisions.tsv", "practice1_read_stats.tsv",
-          "practice2_qc_funnel.tsv", "practice2_excluded_samples.tsv"]
-FIGURES = ["read_length_hist.png", "target_spanning_reads.png", "pca.png", "batch_ccds.png"]
-ALLOWED_IMPORTS = {"gzip", "pathlib", "numpy", "pandas", "matplotlib"}
+          "practice2_qc_funnel.tsv", "practice2_excluded_samples.tsv",
+          "practice3_checks.tsv", "practice3_scorecard.tsv"]
+KEYED = {"practice3_checks.tsv": ["figure", "library", "metric"]}      # compare by key, not row order
+P3_FIGURES = ["F01_read_length", "F02_errors", "F03_dna_vs_rna_coverage", "F04_allele_specific_expression",
+              "F05_isoforms", "F06_transcript_coverage", "F07_cag_repeat", "F08_duplicated_block",
+              "F09_phasing", "F10_gc_coverage", "F11_methylation", "F12_expression"]
+FIGURES = (["read_length_hist.png", "target_spanning_reads.png", "pca.png", "batch_ccds.png"]
+           + [f"practice3_{f}.png" for f in P3_FIGURES])
+ALLOWED_IMPORTS = {"gzip", "pathlib", "io", "re", "math", "collections", "numpy", "pandas", "matplotlib"}
 NETWORK = re.compile(r"\b(requests|urllib|urlopen|http\.client|socket|ftplib|wget|curl|"
                      r"pip install|boto3|paramiko)\b")
-BUDGET_S = 60.0
+BUDGET_S = 60.0                 # Practices 1 and 2 together
+BUDGET_P3_S = 30.0              # Practice 3 alone: "Run All < 30 s" in the session plan
+# one-off messages a fresh install prints on first use; they are not warnings about our code
+BENIGN = re.compile(r"^\s*Matplotlib is building the font cache[^\n]*\s*$")
 EXPECTED_P1 = {"S01": "PASS", "S02": "REVIEW", "S03": "FAIL", "S04": "PASS", "S05": "PASS",
                "S06": "FAIL", "S07": "PASS", "S08": "PASS", "S09": "PASS", "S10": "FAIL",
                "S11": "REVIEW", "S12": "BLOCKED"}
@@ -180,14 +196,18 @@ def run_notebook(path, kernel, executor):
         error, outputs = run_with_shell(path)
     seconds = time.perf_counter() - t0
     stderr = [f"cell {i}: {text.strip()[:200]}" for i, kind, text in outputs
-              if kind == "stderr" and text.strip()]
+              if kind == "stderr" and text.strip() and not BENIGN.search(text)]
     mismatch = [f"cell {i}" for i, kind, text in outputs if "matches checkpoint: False" in text]
-    return seconds, error, stderr, mismatch
+    stdout = "".join(text for i, kind, text in outputs if kind == "stdout")
+    return seconds, error, stderr, mismatch, stdout
 
 
-def same_table(a, b):
+def same_table(a, b, key=None):
     x = pd.read_csv(a, sep="\t", dtype=str, keep_default_na=False)
     y = pd.read_csv(b, sep="\t", dtype=str, keep_default_na=False)
+    if key:
+        x = x.sort_values(key).reset_index(drop=True)
+        y = y.sort_values(key).reset_index(drop=True)
     if list(x.columns) != list(y.columns) or x.shape != y.shape:
         return False, f"shape/columns differ: {x.shape} {list(x.columns)} vs {y.shape} {list(y.columns)}"
     for col in x.columns:
@@ -232,6 +252,24 @@ def teaching_facts(out):
                 funnel=dict(zip(f.step, f.n_remaining.astype(int))))
 
 
+def practice3_facts(out, stdout):
+    """The 16 facts build_practice3.py asserts on the reference numbers, tested on the notebook's."""
+    sys.path.insert(0, str(ROOT / "build"))
+    from build_practice3 import teaching_facts
+    checks = pd.read_csv(out / "practice3_checks.tsv", sep="\t", dtype=str, keep_default_na=False)
+    facts = teaching_facts(checks)
+    for description, ok in facts:
+        check(bool(ok), f"Practice 3: {description}")
+    shown = sorted(set(re.findall(r"^CHECK (F\d\d)$", stdout, re.M)))
+    check(shown == [f"F{i:02d}" for i in range(1, 13)], f"Practice 3: prints CHECK tables for {len(shown)} of 12 figures")
+    m = re.search(r"(\d+) of (\d+) CHECK numbers match", stdout)
+    check(bool(m) and m.group(1) == m.group(2), "Practice 3: its own answer check reports "
+          + (f"{m.group(1)} of {m.group(2)} CHECK numbers matching" if m else "nothing"))
+    card = pd.read_csv(out / "practice3_scorecard.tsv", sep="\t", keep_default_na=False)
+    return dict(practice3_check_numbers=len(checks), practice3_facts=sum(bool(ok) for _, ok in facts),
+                practice3_scorecard=card.set_index("library").drop(columns=["molecule", "platform"]).to_dict("index"))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--keep", action="store_true", help="keep the executed copy")
@@ -254,26 +292,30 @@ def main():
     if ROOT in tmp.parents:                      # never copy the package into itself
         tmp = Path(tempfile.mkdtemp(prefix="day2-verify-", dir="/tmp")).resolve()
     pkg = clean_copy(tmp / "day2-3-samples")
-    timings = {}
+    timings, stdouts = {}, {}
     for name in NOTEBOOKS:
-        seconds, error, stderr, mismatch = run_notebook(pkg / name, args.kernel, executor)
+        seconds, error, stderr, mismatch, stdouts[name] = run_notebook(pkg / name, args.kernel, executor)
         timings[name] = round(seconds, 2)
         check(error is None, f"{name}: runs top to bottom in {seconds:.1f} s" + (f" ({error})" if error else ""))
         check(not stderr, f"{name}: nothing on stderr" + (f" {stderr[:2]}" if stderr else ""))
         check(not mismatch, f"{name}: no 'matches checkpoint: False'" + (f" {mismatch}" if mismatch else ""))
     total = sum(timings.values())
-    check(total < BUDGET_S, f"both notebooks together: {total:.1f} s (budget {BUDGET_S:.0f} s)")
+    p12 = total - timings[P3]
+    check(p12 < BUDGET_S, f"Practices 1 and 2 together: {p12:.1f} s (budget {BUDGET_S:.0f} s)")
+    check(timings[P3] < BUDGET_P3_S, f"Practice 3: {timings[P3]:.1f} s (budget {BUDGET_P3_S:.0f} s)")
 
     out = pkg / "outputs"
     for name in TABLES:
         if not (out / name).exists():
             check(False, f"outputs/{name} written")
             continue
-        ok, why = same_table(out / name, ROOT / "checkpoints" / name)
+        ok, why = same_table(out / name, ROOT / "checkpoints" / name, KEYED.get(name))
         check(ok, f"outputs/{name} equals checkpoints/{name}: {why}")
     for name in FIGURES:
         check((out / name).exists() and (out / name).stat().st_size > 10_000, f"outputs/{name} written")
-    facts = teaching_facts(out) if all((out / t).exists() for t in TABLES) else {}
+    facts = teaching_facts(out) if all((out / t).exists() for t in TABLES[:4]) else {}
+    if all((out / t).exists() for t in TABLES[4:]):
+        facts.update(practice3_facts(out, stdouts[P3]))
 
     summary = {"passed": not problems, "executor": executor, "notebook_seconds": timings, "total_seconds": round(total, 2),
                "problems": problems, **facts}

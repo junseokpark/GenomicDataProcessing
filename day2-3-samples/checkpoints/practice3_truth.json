@@ -1,0 +1,457 @@
+{
+ "about": "Answer key for Mini practice 3 (instructor use). Synthetic teaching data: one person, one 120-kb locus, six libraries. Read models approximate public platform specifications but are not calibrated to any real run.",
+ "coordinates": "1-based inclusive",
+ "seed": 3033,
+ "person": "P3-01",
+ "locus": {
+  "chrom": "chrS",
+  "length": 120000,
+  "gc_5kb_blocks_target": [
+   0.42,
+   0.62,
+   0.36,
+   0.47,
+   0.52,
+   0.4,
+   0.33,
+   0.48,
+   0.45,
+   0.57,
+   0.44,
+   0.46,
+   0.43,
+   0.5,
+   0.64,
+   0.38,
+   0.31,
+   0.46,
+   0.61,
+   0.42,
+   0.65,
+   0.35,
+   0.49,
+   0.6
+  ],
+  "gc_5kb_blocks_built": [
+   0.415,
+   0.62,
+   0.357,
+   0.531,
+   0.506,
+   0.426,
+   0.358,
+   0.484,
+   0.462,
+   0.548,
+   0.44,
+   0.459,
+   0.433,
+   0.531,
+   0.638,
+   0.413,
+   0.34,
+   0.45,
+   0.599,
+   0.439,
+   0.638,
+   0.35,
+   0.488,
+   0.595
+  ],
+  "gc_regions_built": {
+   "CGI_ALTX": 0.718,
+   "OFF1_PROMOTER": 0.652
+  },
+  "exon_gc_target": 0.5,
+  "cpg_depletion_keep_fraction": {
+   "background": 0.25,
+   "exons": 0.45,
+   "OFF1_PROMOTER": 0.8,
+   "CGI_ALTX": "not depleted"
+  }
+ },
+ "genes": {
+  "ALTX": {
+   "start": 20001,
+   "end": 30800,
+   "strand": "+",
+   "relative_abundance_in_blood": 4,
+   "transcripts": {
+    "ALTX-201": {
+     "exons": [
+      [
+       20001,
+       20200
+      ],
+      [
+       22001,
+       22120
+      ],
+      [
+       25001,
+       25900
+      ],
+      [
+       27001,
+       27150
+      ],
+      [
+       30001,
+       30800
+      ]
+     ],
+     "length_nt": 2170,
+     "share_of_gene": 0.6
+    },
+    "ALTX-202": {
+     "exons": [
+      [
+       20001,
+       20200
+      ],
+      [
+       23001,
+       23120
+      ],
+      [
+       25001,
+       25900
+      ],
+      [
+       28001,
+       28150
+      ],
+      [
+       30001,
+       30800
+      ]
+     ],
+     "length_nt": 2170,
+     "share_of_gene": 0.4
+    }
+   }
+  },
+  "ASE1": {
+   "start": 38001,
+   "end": 48500,
+   "strand": "+",
+   "relative_abundance_in_blood": 10,
+   "transcripts": {
+    "ASE1-201": {
+     "exons": [
+      [
+       38001,
+       38300
+      ],
+      [
+       40001,
+       40200
+      ],
+      [
+       44001,
+       44250
+      ],
+      [
+       47001,
+       48500
+      ]
+     ],
+     "length_nt": 2250,
+     "share_of_gene": 1.0
+    }
+   }
+  },
+  "OFF1": {
+   "start": 66001,
+   "end": 75900,
+   "strand": "+",
+   "relative_abundance_in_blood": 0,
+   "transcripts": {
+    "OFF1-201": {
+     "exons": [
+      [
+       66001,
+       66250
+      ],
+      [
+       69001,
+       69200
+      ],
+      [
+       72001,
+       72180
+      ],
+      [
+       75001,
+       75900
+      ]
+     ],
+     "length_nt": 1530,
+     "share_of_gene": 1.0
+    }
+   }
+  },
+  "LOW1": {
+   "start": 94001,
+   "end": 99200,
+   "strand": "+",
+   "relative_abundance_in_blood": 1,
+   "transcripts": {
+    "LOW1-201": {
+     "exons": [
+      [
+       94001,
+       94300
+      ],
+      [
+       96001,
+       96400
+      ],
+      [
+       98001,
+       99200
+      ]
+     ],
+     "length_nt": 1900,
+     "share_of_gene": 1.0
+    }
+   }
+  }
+ },
+ "ALTX_exons": {
+  "E1": [
+   20001,
+   20200
+  ],
+  "E2a": [
+   22001,
+   22120
+  ],
+  "E2b": [
+   23001,
+   23120
+  ],
+  "E3": [
+   25001,
+   25900
+  ],
+  "E4a": [
+   27001,
+   27150
+  ],
+  "E4b": [
+   28001,
+   28150
+  ],
+  "E5": [
+   30001,
+   30800
+  ]
+ },
+ "ALTX_mixed_chains": "E2a+E4b and E2b+E4a do not exist (0%)",
+ "variants": {
+  "SNV1": {
+   "name": "SNV1",
+   "pos": 44101,
+   "ref": "G",
+   "alt": "A",
+   "hap": 1,
+   "note": "exon 3 of ASE1; heterozygous, on hap1"
+  },
+  "SNV2": {
+   "name": "SNV2",
+   "pos": 41101,
+   "ref": "C",
+   "alt": "T",
+   "hap": 2,
+   "note": "intron 2 of ASE1; heterozygous, on hap2"
+  },
+  "phase": "trans: SNV1 alt on hap1, SNV2 alt on hap2 (3,000 bp apart)"
+ },
+ "allele_specific_expression": {
+  "gene": "ASE1",
+  "hap1_share_of_RNA": 0.85,
+  "expected_RNA_alt_fraction_at_SNV1": 0.85,
+  "expected_DNA_alt_fraction_at_SNV1": 0.5
+ },
+ "REP1": {
+  "start": 34001,
+  "end": 34060,
+  "motif": "CAG",
+  "reference_units": 20,
+  "hap1_units": 25,
+  "hap2_units": 180,
+  "hap2_extra_bases": 480
+ },
+ "HP1": {
+  "start": 52001,
+  "end": 52010,
+  "base": "A",
+  "length": 10,
+  "genotype": "10/10",
+  "flanks": "GTCTC ... GCTGT"
+ },
+ "duplication": {
+  "DUP_A": [
+   56001,
+   62000
+  ],
+  "DUP_B": [
+   84001,
+   90000
+  ],
+  "differences": [
+   {
+    "offset": 1500,
+    "pos_DUP_A": 57501,
+    "base_DUP_A": "A",
+    "pos_DUP_B": 85501,
+    "base_DUP_B": "G"
+   },
+   {
+    "offset": 3000,
+    "pos_DUP_A": 59001,
+    "base_DUP_A": "G",
+    "pos_DUP_B": 87001,
+    "base_DUP_B": "A"
+   },
+   {
+    "offset": 4500,
+    "pos_DUP_A": 60501,
+    "base_DUP_A": "A",
+    "pos_DUP_B": 88501,
+    "base_DUP_B": "G"
+   }
+  ],
+  "illumina_rule": "a read inside one copy that avoids the 3 differing bases gets MAPQ 0 and is placed in either copy at random"
+ },
+ "methylation": {
+  "CGI_ALTX": 0.05,
+  "OFF1_PROMOTER": 0.9,
+  "ALTX_body": 0.8,
+  "other_CpGs": 0.7,
+  "per_CpG_call_error": {
+   "DNA-HIFI": 0.03,
+   "DNA-ONT": 0.05
+  }
+ },
+ "libraries": {
+  "DNA-ILMN": {
+   "pairs": 12000,
+   "read_length": 150,
+   "insert": "N(350, 50) clipped to 200-600",
+   "error": "substitutions only; 0.1% at base 1 rising to 0.8% at base 150",
+   "qual": "per cycle, Phred of the error model",
+   "gc_bias": "fragment kept with probability exp(-0.5*((gc-0.45)/0.18)^2)",
+   "mean_depth": 29.95
+  },
+  "DNA-HIFI": {
+   "reads": 169,
+   "length": "N(16 kb, 3 kb) truncated to 8-30 kb",
+   "error": "per-read rate log-normal around 5e-4 (Q33); 20% substitutions, 40% insertions, 40% deletions; extra homopolymer length errors",
+   "qual": "one value per read (Phred of its error rate)",
+   "mean_depth": 20.13
+  },
+  "DNA-ONT": {
+   "reads": 183,
+   "length": "log-normal, sigma 0.9, N50 about 22 kb, 1-100 kb",
+   "error": "per-read rate log-normal around 1% (Q20), 0.3-3%; 35% substitutions, 20% insertions, 45% deletions; homopolymer length errors (runs >= 5)",
+   "qual": "one value per read (Phred of its error rate)",
+   "mean_depth": 19.53
+  },
+  "RNA-ILMN": {
+   "fragments": 10000,
+   "read_length": 100,
+   "fragment": "N(250, 50)",
+   "pre_mRNA_fraction": 0.03,
+   "three_prime_bias": "linear, 1.2x at the 3' end",
+   "strand": "dUTP: read 1 antisense",
+   "error": "as DNA-ILMN (first 100 cycles)"
+  },
+  "RNA-KINNEX": {
+   "reads": 1500,
+   "full_length_fraction": 0.85,
+   "truncated_start": "uniform 5-80% of the transcript",
+   "error": "as DNA-HIFI"
+  },
+  "RNA-ONT": {
+   "reads": 2000,
+   "length": "min(transcript, 100 + Exponential(mean 1,750)) from the 3' end",
+   "error": "per-read rate log-normal around 3% (Q15), 1.5-6%; 30% substitutions, 20% insertions, 50% deletions; homopolymer length errors"
+  }
+ },
+ "sampling": "Long DNA reads start on a jittered grid and alternate between haplotypes, so that ~20x over one locus is not dominated by sampling noise. Real runs scatter reads at random.",
+ "simplifications": [
+  "Alignments are projections of the simulated haplotypes, not the output of an aligner.",
+  "Illumina reads carry substitutions only; real Illumina data have rare indels.",
+  "Long-read QUAL holds one value per read; real HiFi and nanopore files vary base by base.",
+  "Methylation tables are per-CpG summaries computed from simulated per-molecule calls.",
+  "All four genes are on the + strand; there is no antisense transcription."
+ ],
+ "teaching_facts_checked_by_build": [
+  {
+   "fact": "F01 short reads have fixed lengths (150 / 100 bp)",
+   "passed": true
+  },
+  {
+   "fact": "F01 long DNA reads: N50 14-30 kb; ONT N50 well above its median",
+   "passed": true
+  },
+  {
+   "fact": "F01 long RNA reads are no longer than the transcripts (N50 <= 2,250 nt)",
+   "passed": true
+  },
+  {
+   "fact": "F02 Illumina and HiFi >= 99.5% / 99.85% accurate; ONT DNA 98.5-99.5%; ONT RNA least accurate",
+   "passed": true
+  },
+  {
+   "fact": "F02 ONT errors are mostly deletions; Illumina makes no indels",
+   "passed": true
+  },
+  {
+   "fact": "F02 at HP1, ONT reads 9 or 11 A far more often than HiFi or Illumina",
+   "passed": true
+  },
+  {
+   "fact": "F03 OFF1 has normal DNA depth and zero RNA depth; RNA bases sit in exons",
+   "passed": true
+  },
+  {
+   "fact": "F04 SNV1: every DNA interval contains 0.5; every RNA interval excludes 0.5 and contains 0.85",
+   "passed": true
+  },
+  {
+   "fact": "F05 junctions ~60/40 at both alternative exons; no complete chain in short reads; no mixed chain",
+   "passed": true
+  },
+  {
+   "fact": "F06 direct RNA is 3'-biased (ratio >= 2, 20-40% reach the 5' end); Kinnex and Illumina near flat",
+   "passed": true
+  },
+  {
+   "fact": "F07 HiFi and ONT size both alleles (25 and ~180 units), ONT wider; Illumina sees only 25 plus all-CAG reads",
+   "passed": true
+  },
+  {
+   "fact": "F08 at MAPQ >= 20 Illumina loses DUP_A (ratio < 0.3); long reads keep it (>= 0.8)",
+   "passed": true
+  },
+  {
+   "fact": "F09 no Illumina read covers both SNVs; long reads show only alt-ref and ref-alt (trans)",
+   "passed": true
+  },
+  {
+   "fact": "F10 Illumina loses depth in GC >= 60% windows (ratio < 0.8, drop > 3 x scatter); long reads within 0.85-1.15",
+   "passed": true
+  },
+  {
+   "fact": "F11 ALTX promoter low (< 0.15) and OFF1 promoter high (> 0.75) in both long-read tables",
+   "passed": true
+  },
+  {
+   "fact": "F12 all RNA datasets rank ASE1 > ALTX > LOW1 > OFF1 = 0, shares within 0.05 of 10:4:1",
+   "passed": true
+  }
+ ]
+}
