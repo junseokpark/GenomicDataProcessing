@@ -28,7 +28,7 @@ code = lambda s: P1.append(("code", s))
 
 md(r'''# Mini practice 1 · Is this sample fit for this platform?
 
-**Genomic Data Processing · Day 2 (10/13) · about 15 minutes · practice slide 19**
+**Genomic Data Processing · Day 2 (10/13) · about 15 minutes · practice slide 25**
 
 Twelve tubes arrive at a sequencing core with a sample sheet. Before anything goes on a
 machine, someone decides, tube by tube: **PASS**, **REVIEW**, **FAIL** or **BLOCKED**, and
@@ -78,7 +78,7 @@ md(r'''---
 ## Part A · From sample sheet to platform decision
 
 *Concept slides: "Measure the molecule before you sequence" (slide 6), "Metadata: the sample's
-passport" (slide 7), "Match the sample to the platform" (slide 18).*
+passport" (slide 7), "Match the sample to the platform" (slide 22).*
 
 ### A1 · Read the sample sheet
 Each row is one tube, and it carries three kinds of information:
@@ -325,7 +325,7 @@ md(r'''### Checkpoint A6
 md(r'''---
 ## Part B · What each platform returns
 
-*Concept slide: "Side by side: which platform for which question?" (slide 17).*
+*Concept slide: "Side by side: which platform for which question?" (slide 21).*
 
 We simulated **S08**, the blood DNA from Part A (modal fragment 22 kb), sequenced three ways
 over the real 60-kb β-globin window: **Illumina 2×150**, **PacBio HiFi** and **ONT ligation**.
@@ -371,6 +371,8 @@ md(r'''The target holds the whole of *HBB* exon 1 and *HBD* exons 2–3, the edg
 and the *HBB* promoter.
 
 ### B2 · One FASTQ record is four lines
+*Theory slide: "Phred quality: how sure is each base?" (slide 14).*
+
 ```
 @read_name        line 1: '@' then the read name
 ACGTTGCA...       line 2: the bases
@@ -406,6 +408,8 @@ print("quality:", quality[:40], "...")
 print("Q      :", [ord(c) - 33 for c in quality[:12]], "...")''')
 
 md(r'''### B3 · Read N50: your turn
+*Theory slide: "Read length: mean versus N50" (slide 20).*
+
 The **read N50** is the length L such that reads of length L or longer hold at least half of
 all the bases. It describes the read a typical *base* sits in, which is what matters for
 spanning, rather than the typical read.
@@ -450,6 +454,8 @@ print(reads.groupby("platform", sort=False).size().to_dict())
 reads.groupby("platform", sort=False)["length"].describe()[["count", "mean", "min", "max"]]''')
 
 md(r'''### B4 · Average the error probabilities, not the Q values
+*Theory slide: "Phred quality: how sure is each base?" (slide 14).*
+
 Q is a logarithm, so averaging Q values hides bad bases. Four bases at Q40, Q40, Q40 and Q10:
 
 * mean Q = 32.5, which sounds like about 1 error in 1,800 bases;
@@ -517,6 +523,9 @@ spanning = paf.groupby("platform", sort=False)["spans_target"].sum()
 spanning''')
 
 md(r'''### B6 · One summary row per platform
+*Theory slides: "Depth: how much sequencing do I need?" (slide 23) and "Coverage is uneven: the Poisson
+view" (slide 24).*
+
 Depth here is approximate: total bases ÷ window length (60,000 bp).
 **What changes:** `outputs/practice1_read_stats.tsv` is written.
 **How to check:** it equals the checkpoint; Illumina spans 0 reads, HiFi and ONT at least 3 each.
@@ -625,7 +634,7 @@ code = lambda s: P2.append(("code", s))
 
 md(r'''# Mini practice 2 · Cohort QC: who does not belong?
 
-**Genomic Data Processing · Day 2 (10/13) · about 15 minutes · practice slide 26**
+**Genomic Data Processing · Day 2 (10/13) · about 15 minutes · practice slide 32**
 
 You receive 2,000 exomes from a large cohort. Before anyone runs an association test, every
 sample has to earn its place. Were we allowed to use it? Is it clean? Is it the person it claims
@@ -755,6 +764,8 @@ md(r'''It changes nothing. Notice that we did not print their metrics, and we wi
 
 ---
 ## 3 · Contamination and coverage
+*Theory slide: "Coverage is uneven: the Poisson view" (slide 24).*
+
 Two data-quality rules from the paper: VerifyBAMID **FREEMIX > 4%** (the tube holds a mixture of
 two people) and **< 94.5% of CCDS bases at ≥ 10×** (too much of the coding sequence is too thin
 to genotype). Contamination goes first for a reason: a mixture inflates heterozygosity, which
@@ -783,7 +794,7 @@ Two of the three low-coverage samples come from batch **B3**. Keep that in mind 
 
 ---
 ## 4 · Is every sample who it claims to be?
-*Concept slide: "Cohort QC: is every sample who it claims to be?" (slide 24).*
+*Concept slide: "Cohort QC: is every sample who it claims to be?" (slide 30).*
 
 Two independent checks:
 * **Sex check:** genetic sex from the data (is Y present? are there two X copies?) against the
@@ -946,7 +957,7 @@ duplicate was resolved before relatedness.
 
 ---
 ## 6 · Ancestry and batch: structure you keep track of
-*Concept slide: "What a cohort can and cannot tell you" (slide 25).*
+*Concept slide: "What a cohort can and cannot tell you" (slide 31).*
 
 Neither genetic ancestry nor sequencing batch is an error. Both are structure that can create
 false associations if ignored, and the paper handled them differently:

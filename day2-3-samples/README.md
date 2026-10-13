@@ -5,8 +5,8 @@ notebooks from **this folder** (`day2-3-samples/`): every path inside them is re
 
 | Notebook | Practice slide | The question students answer |
 |---|---|---|
-| `practice1_sample_to_platform.ipynb` | 19 · Mini practice 1 · Is this sample fit for this platform? | Which tubes can go on which platform, and what does each platform return from the same DNA? |
-| `practice2_cohort_qc.ipynb` | 26 · Mini practice 2 · Cohort QC: who does not belong? | Which of 2,000 exomes must leave the analysis, at which step, and why? |
+| `practice1_sample_to_platform.ipynb` | 25 · Mini practice 1 · Is this sample fit for this platform? | Which tubes can go on which platform, and what does each platform return from the same DNA? |
+| `practice2_cohort_qc.ipynb` | 32 · Mini practice 2 · Cohort QC: who does not belong? | Which of 2,000 exomes must leave the analysis, at which step, and why? |
 
 ## How to run
 
@@ -273,21 +273,23 @@ adjust for it.
 
 ## How the notebooks map onto the slides
 
-Slide numbers refer to the 33-slide Day 2 deck (*Molecular tools for genomics*, 10/13); titles are
+Slide numbers refer to the 40-slide Day 2 deck (*Molecular tools for genomics*, 10/13); titles are
 given too, so a citation still resolves if slides move. `build/check_slide_refs.py` checks every
 citation below and in both notebooks against the deck.
 
-| Notebook part | Practice slide | Concept slides cited in the notebook |
+| Notebook part | Practice slide | Slides cited in the notebook |
 |---|---|---|
-| Practice 1, Part A (A1–A6) | 19 · Mini practice 1 · Is this sample fit for this platform? | 6 "Measure the molecule before you sequence", 7 "Metadata: the sample's passport", 18 "Match the sample to the platform" |
-| Practice 1, Part B (B1–B8) | 19 · Mini practice 1 · Is this sample fit for this platform? | 17 "Side by side: which platform for which question?" |
-| Practice 2, steps 1–3 | 26 · Mini practice 2 · Cohort QC: who does not belong? | 7 "Metadata: the sample's passport" |
-| Practice 2, steps 4–5 | 26 · Mini practice 2 · Cohort QC: who does not belong? | 24 "Cohort QC: is every sample who it claims to be?" |
-| Practice 2, step 6, funnel, equity note | 26 · Mini practice 2 · Cohort QC: who does not belong? | 25 "What a cohort can and cannot tell you" |
+| Practice 1, Part A (A1–A6) | 25 · Mini practice 1 · Is this sample fit for this platform? | 6 "Measure the molecule before you sequence", 7 "Metadata: the sample's passport", 22 "Match the sample to the platform" |
+| Practice 1, Part B (B1–B8) | 25 · Mini practice 1 · Is this sample fit for this platform? | 21 "Side by side: which platform for which question?", 14 "Phred quality: how sure is each base?", 20 "Read length: mean versus N50", 23 "Depth: how much sequencing do I need?", 24 "Coverage is uneven: the Poisson view" |
+| Practice 2, steps 1–3 | 32 · Mini practice 2 · Cohort QC: who does not belong? | 7 "Metadata: the sample's passport", 24 "Coverage is uneven: the Poisson view" |
+| Practice 2, steps 4–5 | 32 · Mini practice 2 · Cohort QC: who does not belong? | 30 "Cohort QC: is every sample who it claims to be?" |
+| Practice 2, step 6, funnel, equity note | 32 · Mini practice 2 · Cohort QC: who does not belong? | 31 "What a cohort can and cannot tell you" |
 
-Background for the platforms in Part B: slide 14 (Illumina), slide 15 (PacBio HiFi) and slide 16
+The reads-and-coverage theory behind Part B sits next to the platform slides: slide 14 (Phred
+quality), slide 16 (insert size), slide 17 (duplicates), slide 20 (N50), slide 23 (depth) and
+slide 24 (coverage). Platform background: slide 15 (Illumina), slide 18 (PacBio HiFi) and slide 19
 (Oxford Nanopore). The one message of the day is slide 2 ("What is a genomics sample?"); the
-take-home is slide 29.
+take-home is slide 35.
 
 ## Instructor notes
 
