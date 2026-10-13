@@ -5,6 +5,10 @@ is as long as Practices 1 and 2 together. The CHECK numbers printed by these cel
 checkpoints/practice3_checks.tsv, which build_practice3.py computes with independent code.
 """
 
+import csv
+from pathlib import Path
+
+PKG = Path(__file__).resolve().parents[1]
 P3 = []
 md = lambda s: P3.append(("md", s))
 code = lambda s: P3.append(("code", s))
@@ -63,10 +67,45 @@ FIG_SLIDES = {
     "F11": (18, 19, 21), "F12": (9, 10, 22),
 }
 
-TALK = '''**For your lightning talk**
-1. What do the axes and colours show?
-2. Your claim in one sentence, with one number from `CHECK`.
-3. So what: which dataset would you choose, and one thing it cannot do?'''
+TALK = '''**For your lightning talk** (the pair slide of the template; see **Make your slide** at the end)
+* **CLAIM**: one sentence a classmate can check against this figure.
+* **1 · Axes and colours**: what do the axes and colours show?
+* **2 · Evidence: one number**: point at the figure and quote one number from `CHECK`.
+* **3 · So what**: which dataset would you choose for this question, and one thing it cannot do?
+* **Q / A**: a question you expect from the floor, and your one-sentence answer.'''
+
+
+def f01_example_numbers():
+    """Numbers for the instructor's F01 example slide, read from the build's own records so the
+    text cannot drift from the data: read N50s from checkpoints/practice3_checks.tsv and the
+    longest transcript from data/practice3/genes.gtf."""
+    with open(PKG / "checkpoints" / "practice3_checks.tsv", newline="") as fh:
+        n50 = {r["library"]: int(r["value"]) for r in csv.DictReader(fh, delimiter="\t")
+               if r["figure"] == "F01" and r["metric"] == "read_n50"}
+    tx = {}
+    for line in (PKG / "data" / "practice3" / "genes.gtf").read_text().splitlines():
+        f = line.split("\t")
+        if f[2] == "exon":
+            tid = f[8].split('transcript_id "')[1].split('"')[0]
+            tx[tid] = tx.get(tid, 0) + int(f[4]) - int(f[3]) + 1
+    return {"ont_kb": f"{n50['DNA-ONT'] / 1000:.1f}", "kinnex_kb": f"{n50['RNA-KINNEX'] / 1000:.1f}",
+            "longest_nt": f"{max(tx.values()):,}"}
+
+
+F01 = f01_example_numbers()
+F01_EXAMPLE = {      # each card on the template slide holds two lines, so keep these short
+    "claim": "Long DNA reads follow the length of the DNA molecule, but long RNA reads stop at the length of "
+             "the transcript.",
+    "axes": "Read length on a log scale, one row per dataset. Colour = platform; open circles = RNA; "
+            "bar = N50, dotted = median.",
+    "evidence": f"Nanopore DNA reads have an N50 of {F01['ont_kb']} kb; Kinnex RNA reads stop at "
+                f"{F01['kinnex_kb']} kb, the longest transcript here ({F01['longest_nt']} nt).",
+    "so_what": "To cross a 6-kb duplicated block in DNA, choose HiFi or Nanopore DNA. Limit: fewer reads, "
+               "higher cost per base than Illumina.",
+    "q": "Why are the long RNA reads not 20 kb long, like the long DNA reads?",
+    "a": "Each RNA read is one copy of one transcript, so it cannot be longer than the transcript: at most "
+         f"{F01['longest_nt']} nt here.",
+}
 
 
 def section(fid, question, biology, cell, try_this):
@@ -102,7 +141,8 @@ others. Your job is to find out which, and to explain one example in two minutes
 2. Go to the figure your pair was given. Read its question, look at the figure and its `CHECK`
    numbers, and agree on an answer.
 3. Do its **Try this**: change one parameter, re-run that one cell, and see what moves.
-4. Fill in one slide (see **Make your slide** at the end), then give a two-minute lightning talk.
+4. Fill in the pair slide of the template (see **Make your slide** at the end), then give a
+   two-minute lightning talk.
 
 ### How pairs get a figure
 Your instructor hands out figures in this order: F03, F05, F07, F04, F08, F02, F09, F06, F10,
@@ -130,7 +170,7 @@ known: your instructor can tell you afterwards exactly what was put into the loc
 * Run cells from top to bottom (Shift+Enter). Cells marked *run, no need to edit* hold helper
   code; you can read them, but you do not have to.
 * **Predict, then run.** Before you run your figure cell, say what you expect to see.
-* Every figure cell prints `CHECK` numbers. Use one of them in your claim.''')
+* Every figure cell prints `CHECK` numbers. Quote one of them as your evidence.''')
 
 code(r'''from pathlib import Path
 from collections import Counter
@@ -518,11 +558,11 @@ for i, lib in enumerate(SHOW):
     mism = (use["nm"] - use["n_I"] - use["n_D"]).sum()      # NM counts all three kinds
     per_kb = {"mismatch": 1000 * mism / aligned, "insertion": 1000 * ins / aligned,
               "deletion": 1000 * dels / aligned}
-    accuracy = 100 * (1 - (mism + ins + dels) / aligned)
+    accuracy = round(float(100 * (1 - (mism + ins + dels) / aligned)), 2)   # rounded once: label = CHECK = scorecard
     check("F02", lib, "reads_used", len(use))
     for kind, _ in KINDS:
         check("F02", lib, f"{kind}_per_kb", round(float(per_kb[kind]), 3))
-    check("F02", lib, "accuracy_pct", round(float(accuracy), 3))
+    check("F02", lib, "accuracy_pct", accuracy)
     st, row = look(lib), len(SHOW) - 1 - i
     for k, (kind, marker) in enumerate(KINDS):
         ax.plot(per_kb[kind], row + (1 - k) * 0.22, marker=marker, ms=9, ls="none",
@@ -1225,20 +1265,26 @@ if not same.all():
 
 md(f'''## Make your slide
 
-Three steps, about ten minutes:
+Your instructor provides `presentation/practice3_lightning_talk_template.pptx`. It has two slides:
+the **example slide**, the instructor's worked example on F01 (below), and the **pair slide**,
+which your pair fills in for your figure. Each talk has two minutes ({cite(34)}).
 
-1. Your figure is saved in `outputs/`; the file name was printed under it, for example
-   `outputs/practice3_F03_dna_vs_rna_coverage.png`.
-2. Open `presentation/practice3_lightning_talk_template.pptx` (your instructor provides it) and fill
-   in its one slide:
-   * **the figure**;
-   * **claim**: one sentence with one number from `CHECK`;
-   * **so what**: which dataset you would choose for this question, and one thing it cannot do.
-3. Rule for the talk ({cite(34)}): **one slide, two minutes; a claim with one number; a so-what
-   with one limit.**
+| On the pair slide | What to write |
+|---|---|
+| Title | your figure ID and title, for example *F03 · DNA vs RNA: coverage across the locus* |
+| CLAIM | one sentence a classmate can check against the figure |
+| The figure | `outputs/practice3_F0X_<name>.png`; the file name is printed under your figure |
+| 1 · Axes and colours | what the axes, rows and colours show |
+| 2 · Evidence: one number | point at the figure and quote one number from `CHECK` |
+| 3 · So what: choice and one limit | which dataset you would choose for this question, and one thing it cannot do |
+| Q / A bar | a question you expect from the floor, and your one-sentence answer |
 
-Example, from the instructor's F01 demo: *"Long DNA reads are about 100 times longer than short
-reads (read N50 from CHECK). So what: for a repeat or a duplication I would choose HiFi; limit:
-fewer reads, so less depth for the same cost."*
+### The example slide: F01 · {TITLES['F01']}
+
+* **CLAIM.** {F01_EXAMPLE['claim']}
+* **1 · Axes and colours.** {F01_EXAMPLE['axes']}
+* **2 · Evidence: one number.** {F01_EXAMPLE['evidence']}
+* **3 · So what: choice and one limit.** {F01_EXAMPLE['so_what']}
+* **Q / A.** *{F01_EXAMPLE['q']}* {F01_EXAMPLE['a']}
 
 After the talks, the debrief ({cite(35)}) puts the 12 claims side by side. Keep the scorecard open.''')

@@ -91,7 +91,7 @@ day2-3-samples/
 ├── practice2_cohort_qc.ipynb           Mini practice 2
 ├── practice3_dna_rna_short_long.ipynb  Mini practice 3
 ├── presentation/
-│   └── practice3_lightning_talk_template.pptx   the lightning-talk template: a worked example, then the blank slide
+│   └── practice3_lightning_talk_template.pptx   talk template: example slide (F01) + pair slide (added during integration)
 ├── data/
 │   ├── practice1/
 │   │   ├── sample_sheet.tsv            12 tubes: specimen + molecule + metadata
@@ -109,7 +109,7 @@ day2-3-samples/
 │   │   ├── cohort_manifest.tsv         2,000 samples from 1,998 participants
 │   │   ├── sample_qc_metrics.tsv       depth, CCDS 10x, FREEMIX, sex metrics, array concordance, PCs, Pr(EUR)
 │   │   └── kinship_pairs.tsv           65 pairs with KING kinship > 0.0442
-│   └── practice3/                      synthetic person P3-01, synthetic 120-kb locus chrS (2.9 MB)
+│   └── practice3/                      synthetic person P3-01, synthetic 120-kb locus chrS (2.8 MB)
 │       ├── samples.tsv                 the six libraries: person, tube, molecule, platform, chemistry, prep
 │       ├── chrS.fa (+ .fai)            the locus sequence
 │       ├── genes.gtf                   ALTX (two isoforms), ASE1, OFF1, LOW1: transcript and exon lines
@@ -130,12 +130,12 @@ day2-3-samples/
 │   ├── practice2_planted_cases.tsv     answer key: every planted case and the step it must reach
 │   ├── practice3_checks.tsv            every Practice 3 CHECK number (282)
 │   ├── practice3_scorecard.tsv         what each dataset can and cannot see
-│   └── practice3_truth.json            answer key: what was built into chrS, the read models, the facts
+│   └── practice3_truth.json            build record: what was built into chrS, the read models, the 16 facts (open after the talks)
 ├── outputs/                            what the notebooks write (only .gitkeep is tracked)
 └── build/
     ├── build_practice1.py              sample sheet, requirements, reads, PAF, Practice 1 checkpoints
     ├── build_practice2.py              cohort, metrics, kinship, Practice 2 checkpoints + answer key
-    ├── build_practice3.py              locus, six libraries, Practice 3 checkpoints + answer key
+    ├── build_practice3.py              locus, six libraries, Practice 3 checkpoints + build record
     ├── make_notebooks.py               writes the three notebooks with nbformat (no outputs stored)
     ├── practice3_cells.py              the cells of the Practice 3 notebook (used by make_notebooks.py)
     ├── verify_package.py               runs the notebooks headless from a clean copy and compares
@@ -314,7 +314,7 @@ figures and presents it as a claim backed by one number, in two minutes.
 
 | library | molecule | platform · chemistry (teaching label) | layout / prep | in the locus | read model (approximate, not calibrated) |
 |---|---|---|---|---|---|
-| `DNA-ILMN` | DNA | Illumina NovaSeq X · 2 x 150 bp | PCR-amplified library | 12,000 pairs, ~30x | insert N(350, 50); substitutions, 0.1% at base 1 rising to 0.8% at base 150; GC bias exp(-0.5((gc-0.45)/0.18)^2) |
+| `DNA-ILMN` | DNA | Illumina NovaSeq X · 2 x 150 bp | PCR-amplified library | 12,000 pairs, ~30x | insert N(350, 50); substitutions only, 0.03% at base 1 rising to 0.25% at base 150 (99.93% correct on average); GC bias exp(-0.5((gc-0.45)/0.18)^2) |
 | `DNA-HIFI` | DNA | PacBio Revio · HiFi reads, 15-20 kb library | PCR-free; 5mC from polymerase kinetics | 169 reads, ~20x | length N(16, 3) kb, 8-30 kb; ~Q33, mostly 1-bp indels, some homopolymer slips |
 | `DNA-ONT` | DNA | Oxford Nanopore PromethION · R10.4.1, Ligation Sequencing Kit V14 | PCR-free; 5mC from the current signal | 183 reads, ~20x | log-normal length, N50 ~22 kb, 1-100 kb; ~Q20 (97-99.7%), 45% deletions, homopolymer length errors |
 | `RNA-ILMN` | RNA | Illumina NovaSeq X · 2 x 100 bp, stranded poly(A) mRNA | cDNA fragments ~250 bp; read 1 antisense | 10,000 fragments | 3% unspliced pre-mRNA; mild 3' bias (1.2x) |
@@ -325,8 +325,8 @@ figures and presents it as a claim backed by one number, in two minutes.
 
 | time | activity | deck |
 |---|---|---|
-| 0-5 | the six datasets, the one-slide recipe, instructor demo of a finished slide on F01 | 33 "Mini practice 3 · One person, six datasets", 34 "Lightning talks: one figure, two minutes" |
-| 5-30 | pairs run the notebook (Run All takes about 4 s), study their figure, do its **Try this**, fill one slide | notebook |
+| 0-5 | the six datasets, the two-slide talk template, the instructor's example slide on F01 | 33 "Mini practice 3 · One person, six datasets", 34 "Lightning talks: one figure, two minutes" |
+| 5-30 | pairs run the notebook (Run All takes about 4 s), study their figure, do its **Try this**, fill the pair slide | notebook |
 | 30-55 | lightning talks: 2 minutes per pair plus about 15 s changeover (11-12 pairs) | student slides |
 | 55-60 | debrief: what each dataset can and cannot see, with the scorecard | 35 "Debrief: what each dataset can and cannot see" |
 
@@ -334,17 +334,21 @@ Figures are handed out in this order: F03, F05, F07, F04, F08, F02, F09, F06, F1
 (F01 is the instructor's worked example). With more than 12 pairs, two pairs share F05 or F07 and
 compare their claims.
 
-**The lightning-talk rule: one slide, two minutes.** The slide holds the figure, a **claim** in one
-sentence with **one number** from `CHECK`, and a **so what** with **one limit**: which dataset you
-would choose for this question, and one thing it cannot do. The one-slide template is
-`presentation/practice3_lightning_talk_template.pptx`: its first page is a worked example on F01, its second the page each pair fills.
+**The lightning-talk rule: one slide, two minutes.** The template,
+`presentation/practice3_lightning_talk_template.pptx` (added during integration), has two slides.
+The **example slide** is the instructor's worked example on F01. The **pair slide** is the one each
+pair fills: the title (figure ID and title); **CLAIM**, one sentence a classmate can check against
+the figure; the figure; **1 · Axes and colours**; **2 · Evidence: one number** (point at the
+figure and quote one number from `CHECK`); **3 · So what: choice and one limit**; and a **Q / A**
+bar with a question you expect from the floor and a one-sentence answer. The notebook's last
+section, *Make your slide*, shows the F01 example filled in.
 
 ### The twelve figures
 
 Each section of the notebook has the question, two or three sentences of biology, one code cell
 that draws the figure, saves it and prints its `CHECK` numbers, a **Try this** (one parameter to
-change), three prompts for the talk, and the slides to look back at. The notebook asks; it never
-prints the answer.
+change), prompts that follow the pair slide of the template, and the slides to look back at. The
+notebook asks; it never prints the answer.
 
 | figure | question | CHECK numbers | slides |
 |---|---|---|---|
@@ -377,38 +381,39 @@ reads, RNA = F05, F06, F12; platforms = F01, F02, F10, F11.
   with `checkpoints/practice3_checks.tsv`.
 * `outputs/practice3_scorecard.tsv`: one yes / no / n/a per question per dataset.
 
+**Answers.** Instructors find the answer key and the design truth in the separate instructor guide;
+`checkpoints/practice3_truth.json` is the build record, to be opened after the talks.
+
 ### How the data were made, and the honest limits
 
 * `build/build_practice3.py` simulates the two haplotypes, draws reads from them with the models
-  above, and writes each read's alignment by projecting it onto `chrS`; there is no aligner. The
-  180-unit allele therefore appears as an insertion inside REP1, an insertion at a read end becomes
-  a soft clip, and a short read lying entirely inside the expanded repeat is unmapped (FLAG 4,
-  placed at its mate). A short read inside one copy of the duplication that avoids the three
-  differing bases gets MAPQ 0 and is placed in either copy at random, as an aligner would.
+  above, and writes each read's alignment by projecting it onto `chrS`; there is no aligner. A
+  haplotype that is longer or shorter than the reference therefore shows up as insertions or
+  deletions, an insertion at a read end becomes a soft clip, and a short read lying entirely inside
+  sequence that the reference lacks is unmapped (FLAG 4, placed at its mate). MAPQ follows the usual
+  convention: 60 for a unique placement, 0 for a read that fits two places equally well, which is
+  then placed at one of them at random, as an aligner would.
 * `samtools` 1.24 reads all six files, sorts and indexes them, and `samtools calmd` recomputes
   every `NM` tag without a difference; every intron in the RNA files is an annotated one.
-* **Base qualities.** Illumina reads carry a per-cycle quality that matches the error model.
+* **Base qualities.** Illumina reads carry a per-cycle quality that matches the error model (Q35
+  at the first base, Q26 at the last).
   Long reads carry one quality value per read (the Phred value of that read's simulated error
   rate) instead of per-base values: none of the figures uses base qualities, and a uniform string
-  keeps the files small (2.9 MB in total) without pretending to model base-by-base confidence.
+  keeps the files small (2.8 MB in total) without pretending to model base-by-base confidence.
   Real HiFi and nanopore files vary base by base.
-* Illumina reads carry substitutions only. The per-cycle model from the design (0.1% rising to
-  0.8%) averages 99.56% correct per base, a little below what a good NovaSeq X run achieves.
+* Illumina reads carry substitutions only; real Illumina data also have rare indels. The
+  per-cycle rate rises slowly from 0.03% at the first base and then steeply to 0.25% at the last
+  (p = 0.0003 + 0.0006x + 0.0016x^12, with x the position along the read from 0 to 1): 99.93%
+  correct per base on average, with about 87% of bases at Q30 or better, in line with the deck's
+  NovaSeq X numbers. DNA-ILMN (150 cycles) and RNA-ILMN (100 cycles) use the same curve.
 * Long DNA reads start on an even, jittered grid and alternate between the two haplotypes. A real
   run scatters reads at random; with only ~20 reads over any base that noise alone could hide a
   lesson (a heterozygous site reading 75:25, say), so the teaching data spread reads evenly.
-  Nanopore depth still wanders (15-23x) because its read lengths vary so much; F10 reports the
-  window-to-window scatter so students can tell noise from bias.
+  Nanopore depth still wanders (15-23x) because its read lengths vary so much; F10 reports each
+  dataset's window-to-window scatter.
 * Methylation tables summarise simulated per-molecule calls with 3% (HiFi) and 5% (ONT) call error.
 * All four genes are on the + strand. The build stops if any of the 16 teaching facts is no longer
   visible in the data, and `verify_package.py` tests the same facts on the notebook's output.
-
-### For instructors
-
-The answer key for the twelve figures, the design truth of `chrS` and notes on where students get stuck are in a
-separate instructor guide, kept outside this public repository because in this practice students form their own
-claims. `checkpoints/practice3_truth.json` is the build record that `verify_package.py` uses; open it after the
-talks, not before.
 
 ## How the notebooks map onto the slides
 
@@ -465,6 +470,7 @@ take-home is slide 38.
 * **Practice 3, timing.** 5 minutes of set-up with the F01 demo, 25 minutes in pairs, 25 minutes
   of talks (keep a visible two-minute timer), 5 minutes of debrief with the scorecard. The
   notebook runs in about 4 seconds; the 25 minutes are for reading one figure well.
+
 ## Rebuild and verify
 
 ```bash

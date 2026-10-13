@@ -257,12 +257,18 @@ def cigar_ref_len(cigar):
     return total
 
 
+ILLUMINA_MODEL = "p(x) = 0.0003 + 0.0006 x + 0.0016 x^12, x = cycle / (read length - 1)"
+
+
 def illumina_error_profile(n_cycles):
-    """Per-cycle error 0.1% at base 1 rising to 0.8% at base 150; QUAL = Phred of that."""
-    cyc = np.arange(n_cycles)
-    p = 0.001 + 0.007 * cyc / 149
+    """Per-cycle substitution rate: 0.03% at the first base, a slow rise, then the steep rise at
+    the end of the read that phasing causes, reaching 0.25% at the last base. Mean 0.073% (99.93%
+    correct per base) with about 87% of bases at Q30 or better, as on the deck (slides 14 and 21).
+    QUAL is the Phred value of this model, cycle by cycle."""
+    x = np.arange(n_cycles) / (n_cycles - 1)
+    p = 0.0003 + 0.0006 * x + 0.0016 * x ** 12
     q = np.round(-10 * np.log10(p)).astype(int)
-    return p, "".join(chr(33 + x) for x in q)
+    return p, "".join(chr(33 + v) for v in q)
 
 
 def dup_twin(pos1, end1):
@@ -787,7 +793,7 @@ def reference_checks():
         put("F02", lib, "mismatch_per_kb", round(1000 * mm / al, 3))
         put("F02", lib, "insertion_per_kb", round(1000 * ins / al, 3))
         put("F02", lib, "deletion_per_kb", round(1000 * dele / al, 3))
-        put("F02", lib, "accuracy_pct", round(100 * (1 - (mm + ins + dele) / al), 3))
+        put("F02", lib, "accuracy_pct", round(100 * (1 - (mm + ins + dele) / al), 2))   # once, as shown in F02
     for lib in DNA_LIBS:
         hl = []
         for r in data[lib]:
@@ -1019,8 +1025,8 @@ def teaching_facts(checks):
          and g("F01", "DNA-ONT", "read_n50") > 1.5 * g("F01", "DNA-ONT", "median_length")),
         ("F01 long RNA reads are no longer than the transcripts (N50 <= 2,250 nt)",
          g("F01", "RNA-KINNEX", "read_n50") <= 2_250 and g("F01", "RNA-ONT", "read_n50") <= 2_250),
-        ("F02 Illumina and HiFi >= 99.5% / 99.85% accurate; ONT DNA 98.5-99.5%; ONT RNA least accurate",
-         g("F02", "DNA-ILMN", "accuracy_pct") >= 99.5 and g("F02", "DNA-HIFI", "accuracy_pct") >= 99.85
+        ("F02 Illumina and HiFi both >= 99.85% accurate; ONT DNA 98.5-99.5%; ONT RNA least accurate",
+         g("F02", "DNA-ILMN", "accuracy_pct") >= 99.85 and g("F02", "DNA-HIFI", "accuracy_pct") >= 99.85
          and 98.5 <= g("F02", "DNA-ONT", "accuracy_pct") <= 99.5
          and g("F02", "RNA-ONT", "accuracy_pct") < min(g("F02", l, "accuracy_pct") for l in LIBRARIES[:5])),
         ("F02 ONT errors are mostly deletions; Illumina makes no indels",
@@ -1125,8 +1131,9 @@ def write_truth(ref, data, checks, facts):
                         "per_CpG_call_error": {"DNA-HIFI": 0.03, "DNA-ONT": 0.05}},
         "libraries": {
             "DNA-ILMN": {"pairs": 12_000, "read_length": 150, "insert": "N(350, 50) clipped to 200-600",
-                         "error": "substitutions only; 0.1% at base 1 rising to 0.8% at base 150",
-                         "qual": "per cycle, Phred of the error model",
+                         "error": "substitutions only; 0.03% at base 1 rising to 0.25% at base 150, "
+                                  + ILLUMINA_MODEL + "; mean 0.073% (99.93% correct), ~87% of bases >= Q30",
+                         "qual": "per cycle, Phred of the error model (Q26-Q35)",
                          "gc_bias": "fragment kept with probability exp(-0.5*((gc-0.45)/0.18)^2)",
                          "mean_depth": depth_mean["DNA-ILMN"]},
             "DNA-HIFI": {"reads": int(checks.query("figure=='F01' and library=='DNA-HIFI' and metric=='n_reads'").value.iloc[0]),
@@ -1141,7 +1148,8 @@ def write_truth(ref, data, checks, facts):
                         "qual": "one value per read (Phred of its error rate)", "mean_depth": depth_mean["DNA-ONT"]},
             "RNA-ILMN": {"fragments": 10_000, "read_length": 100, "fragment": "N(250, 50)",
                          "pre_mRNA_fraction": 0.03, "three_prime_bias": "linear, 1.2x at the 3' end",
-                         "strand": "dUTP: read 1 antisense", "error": "as DNA-ILMN (first 100 cycles)"},
+                         "strand": "dUTP: read 1 antisense",
+                         "error": "as DNA-ILMN, the same curve over 100 cycles (0.03% rising to 0.25%)"},
             "RNA-KINNEX": {"reads": 1_500, "full_length_fraction": 0.85,
                            "truncated_start": "uniform 5-80% of the transcript", "error": "as DNA-HIFI"},
             "RNA-ONT": {"reads": 2_000, "length": "min(transcript, 100 + Exponential(mean 1,750)) from the 3' end",

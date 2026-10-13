@@ -340,8 +340,8 @@
    "pairs": 12000,
    "read_length": 150,
    "insert": "N(350, 50) clipped to 200-600",
-   "error": "substitutions only; 0.1% at base 1 rising to 0.8% at base 150",
-   "qual": "per cycle, Phred of the error model",
+   "error": "substitutions only; 0.03% at base 1 rising to 0.25% at base 150, p(x) = 0.0003 + 0.0006 x + 0.0016 x^12, x = cycle / (read length - 1); mean 0.073% (99.93% correct), ~87% of bases >= Q30",
+   "qual": "per cycle, Phred of the error model (Q26-Q35)",
    "gc_bias": "fragment kept with probability exp(-0.5*((gc-0.45)/0.18)^2)",
    "mean_depth": 29.95
   },
@@ -366,7 +366,7 @@
    "pre_mRNA_fraction": 0.03,
    "three_prime_bias": "linear, 1.2x at the 3' end",
    "strand": "dUTP: read 1 antisense",
-   "error": "as DNA-ILMN (first 100 cycles)"
+   "error": "as DNA-ILMN, the same curve over 100 cycles (0.03% rising to 0.25%)"
   },
   "RNA-KINNEX": {
    "reads": 1500,
@@ -402,7 +402,7 @@
    "passed": true
   },
   {
-   "fact": "F02 Illumina and HiFi >= 99.5% / 99.85% accurate; ONT DNA 98.5-99.5%; ONT RNA least accurate",
+   "fact": "F02 Illumina and HiFi both >= 99.85% accurate; ONT DNA 98.5-99.5%; ONT RNA least accurate",
    "passed": true
   },
   {

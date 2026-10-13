@@ -265,6 +265,17 @@ def practice3_facts(out, stdout):
     m = re.search(r"(\d+) of (\d+) CHECK numbers match", stdout)
     check(bool(m) and m.group(1) == m.group(2), "Practice 3: its own answer check reports "
           + (f"{m.group(1)} of {m.group(2)} CHECK numbers matching" if m else "nothing"))
+    # the instructor's F01 example slide (Make your slide) must quote the shipped numbers
+    nb = nbformat.read(ROOT / P3, as_version=4)
+    text = "\n".join(c.source for c in nb.cells if c.cell_type == "markdown")
+    n50 = {r.library: int(r.value) for r in checks.itertuples() if r.figure == "F01" and r.metric == "read_n50"}
+    gtf = pd.read_csv(ROOT / "data" / "practice3" / "genes.gtf", sep="\t", header=None)
+    exons = gtf[gtf[2] == "exon"]
+    longest = int((exons[4] - exons[3] + 1).groupby(exons[8].str.extract(r'transcript_id "([^"]+)"')[0]).sum().max())
+    want = [f"N50 of {n50['DNA-ONT'] / 1000:.1f} kb", f"stop at {n50['RNA-KINNEX'] / 1000:.1f} kb",
+            f"longest transcript here ({longest:,} nt)", f"at most {longest:,} nt here"]
+    missing = [w for w in want if w not in text]
+    check(not missing, "Practice 3: the F01 example slide quotes the shipped numbers" + (f" (missing {missing})" if missing else ""))
     card = pd.read_csv(out / "practice3_scorecard.tsv", sep="\t", keep_default_na=False)
     return dict(practice3_check_numbers=len(checks), practice3_facts=sum(bool(ok) for _, ok in facts),
                 practice3_scorecard=card.set_index("library").drop(columns=["molecule", "platform"]).to_dict("index"))
