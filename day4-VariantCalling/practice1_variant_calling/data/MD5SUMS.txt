@@ -1,0 +1,16 @@
+cffa8f34f68ecba6b9de968e2258d858  data/annotation/HBB_MANE_NM_000518.5_hg38.tsv
+7e5cace70dfade806e35b59b8071eea9  data/annotation/genes_window_hg38.bed
+1a7cf6eceb7f5335882b60706ce5cc24  data/fastq/S01_R1.fastq.gz
+9049fa30c1aed95ce576cef6c0027823  data/fastq/S01_R2.fastq.gz
+f4bc77f3c544492412c44ebbc7331e3d  data/fastq/S02_R1.fastq.gz
+112e55444d4036e45daabe0d106084e8  data/fastq/S02_R2.fastq.gz
+97f4fa8c91d850684e9b2a568e769d14  data/fastq/S03_R1.fastq.gz
+0861035a1e7c4c9bac35876c2508a090  data/fastq/S03_R2.fastq.gz
+fdd4bbeb71eb3e8d6b17c5829bbde840  data/ref/chr11_GRCh38_betaglobin.fa.gz
+01f6385d0b5429e8a00d7b8097c85c54  data/ref/chr11_GRCh38_betaglobin.fa.gz.fai
+e1e65271ef70903129221a9eb62abda7  data/ref/chr11_GRCh38_betaglobin.fa.gz.gzi
+e0c88959c45b0450821655dded30b7b5  data/trio.ped
+67cc6294b672e2689d8d88c31fe9a98a  data/truth/planted_events.tsv
+2f3e582e3b70f8df6a27edc861029d1a  data/truth/truth_raw_unnormalised.vcf.gz
+75fe2cabd992c554a2e2407fda357035  data/truth/truth_trio.vcf.gz
+6ea32829687d165ca50ad5c43bdf2e67  data/truth/truth_trio.vcf.gz.tbi

@@ -1,0 +1,42 @@
+{
+ "controls": {
+  "C1": {
+   "fragments_counted": 93049
+  },
+  "C2": {
+   "sample": "C2",
+   "fragments": 92420,
+   "duplicate_copies": 2772,
+   "read_pairs": 95192,
+   "fragments_counted": 83003
+  },
+  "C3": {
+   "sample": "C3",
+   "fragments": 119024,
+   "duplicate_copies": 3501,
+   "read_pairs": 122525,
+   "fragments_counted": 106948
+  },
+  "C4": {
+   "sample": "C4",
+   "fragments": 91080,
+   "duplicate_copies": 2800,
+   "read_pairs": 93880,
+   "fragments_counted": 81825
+  },
+  "C5": {
+   "sample": "C5",
+   "fragments": 108676,
+   "duplicate_copies": 3227,
+   "read_pairs": 111903,
+   "fragments_counted": 97527
+  }
+ },
+ "bin_size": 5000,
+ "min_mapq": 20,
+ "tool_versions": {
+  "minimap2": "2.31-r1302",
+  "samtools": "samtools 1.24"
+ },
+ "note": "SYNTHETIC controls. C2 carries a heterozygous UGT2B17 deletion (population variation)."
+}

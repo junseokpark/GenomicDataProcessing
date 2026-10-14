@@ -1,0 +1,4 @@
+#family	individual	father	mother	sex(1=male,2=female)	phenotype(1=unaffected,2=affected)
+FAM01	S01	S02	S03	2	2
+FAM01	S02	0	0	1	1
+FAM01	S03	0	0	2	1

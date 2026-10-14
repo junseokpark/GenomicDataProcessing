@@ -57,6 +57,33 @@ no reference download; each notebook runs top to bottom in a few seconds. See
 [`day2-3-samples/README.md`](day2-3-samples/README.md) for the expected answers, the planted
 cases, the slide-to-notebook mapping and instructor notes.
 
+### [`day4-VariantCalling/`](day4-VariantCalling) — Day 4 (10/15): understanding genetic variants
+
+Two 75-minute practices for the Day 4 lecture *Understanding genetic variants*. Both start from raw
+reads of synthetic people at real genomic loci, and every step ends with a check of what changed.
+
+* **Practice 1 · From reads to variants** (`practice1_variant_calling/`) — a child with sickle cell
+  disease and two healthy parents, on the real GRCh38 β-globin window used on Days 1 and 2. The steps
+  are read QC, alignment, duplicate marking, coverage, genotype likelihoods worked by hand, joint
+  calling, normalisation, filtering, benchmarking against the planted truth and trio checks. Students
+  end with the HGVS name NM_000518.5(HBB):c.20A>T p.(Glu7Val).
+* **Practice 2 · CNVs from reads to interpretation** (`practice2_cnv_tesseract/`) — three referred
+  patients. CNVs are called from read depth on hg19, lifted to hg38 and checked, then tested in matched
+  (synthetic) RNA. Students prepare the TESSERACT-CNV input and discuss each CNV with public ClinGen,
+  ClinVar, gnomAD and conservation tracks.
+
+```bash
+cd day4-VariantCalling
+conda env create -f environment.yml && conda activate d4-practice
+cd practice1_variant_calling && jupyter lab
+```
+
+Requires conda (Miniforge) on macOS or Linux, or WSL2 on Windows. samtools, bcftools, minimap2,
+fastp, CrossMap and pysam come from bioconda. Each notebook runs within a few minutes, and no network
+access is needed except for two optional steps. See
+[`day4-VariantCalling/README.md`](day4-VariantCalling/README.md) for the slide-to-notebook mapping,
+the TESSERACT-CNV adapter and where the answers are.
+
 ## Real data vs teaching data
 
 The `chr11` sequence in both mini-references is genuine UCSC sequence, the gene models are
@@ -67,6 +94,12 @@ chain file — is synthetic teaching material and is labelled as such throughout
 Day 2 reuses the same real hg38 β-globin window and gene models. Its sample sheet, reads, cohort
 and QC metrics are synthetic; the platform input requirements come from vendor documentation and
 the cohort QC thresholds from Wang et al. (2021), each with its source recorded in the package.
+
+Day 4 uses real GRCh38 and hg19 sequence, gene models, the UCSC liftover chain and public annotation
+tracks (ClinGen, ClinVar, gnomAD, DGV, ENCODE), each with its provenance recorded in the package. The
+CNVs sit at public ClinVar and LOVD loci so that they can be checked against real records. The people,
+phenotypes, reads, genotypes and RNA counts are synthetic, and the evidence tables are teaching
+exercises, not classifications.
 
 **No output of these materials is a clinical result.** A public variant site is used for its
 coordinates only, because those coordinates are documented on both assemblies.
@@ -94,3 +127,12 @@ python build/check_slide_refs.py <Day 2 deck .pptx>                  # slide cit
 ```
 
 Day 2 needs no network at all; the real β-globin window is shipped in `data/practice1/`.
+
+Day 4:
+
+```bash
+cd day4-VariantCalling/practice1_variant_calling
+python scripts/generate_data.py      # rebuilds data/ from the saved UCSC downloads (seed 20261015)
+cd ../practice2_cnv_tesseract
+bash scripts/make_all.sh             # re-downloads the public inputs and rebuilds the synthetic data
+```

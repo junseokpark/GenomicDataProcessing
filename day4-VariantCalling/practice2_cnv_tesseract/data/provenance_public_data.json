@@ -1,0 +1,496 @@
+{
+ "description": "Provenance of every public file downloaded for Practice 2",
+ "items": {
+  "hg19_reference_windows": {
+   "file": "data/ref/hg19_cnv_windows.fa.gz",
+   "how": "UCSC REST API getData/sequence (hg19), uppercased, embedded in full-length N-masked chromosomes",
+   "chrom_lengths_hg19": {
+    "chr4": 191154276,
+    "chr17": 81195210,
+    "chr22": 51304566
+   },
+   "downloads": [
+    {
+     "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr22;start=18000000;end=23000000",
+     "retrieved_utc": "2026-10-14T15:35:39+00:00",
+     "downloadTime": "2026:10:14T15:35:37Z",
+     "dataTime": null,
+     "length": 5000000,
+     "window_1based": "chr22:18000001-23000000",
+     "N_bases": 100021
+    },
+    {
+     "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr17;start=14600000;end=15700000",
+     "retrieved_utc": "2026-10-14T15:35:40+00:00",
+     "downloadTime": "2026:10:14T15:35:39Z",
+     "dataTime": null,
+     "length": 1100000,
+     "window_1based": "chr17:14600001-15700000",
+     "N_bases": 0
+    },
+    {
+     "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr4;start=69000000;end=69800000",
+     "retrieved_utc": "2026-10-14T15:35:41+00:00",
+     "downloadTime": "2026:10:14T15:35:41Z",
+     "dataTime": null,
+     "length": 800000,
+     "window_1based": "chr4:69000001-69800000",
+     "N_bases": 0
+    }
+   ]
+  },
+  "chain_hg19ToHg38": {
+   "file": "data/ref/hg19ToHg38.over.chain.gz",
+   "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz",
+   "retrieved_utc": "2026-10-14T15:35:44+00:00",
+   "last_modified": "Wed, 01 Jan 2014 07:08:46 GMT",
+   "bytes": 227698
+  },
+  "genes_hg19": {
+   "file": "data/annotation/genes_hg19_refseqselect_windows.tsv",
+   "track": "hg19 ncbiRefSeqSelect (NCBI RefSeq Select and MANE subset); NM_ (protein-coding) transcripts only; one row per gene",
+   "downloads": [
+    {
+     "genome": "hg19",
+     "track": "ncbiRefSeqSelect",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:54+00:00",
+     "downloadTime": "2026:10:14T15:35:53Z",
+     "dataTime": "2024-09-18T08:29:04",
+     "bigDataUrl": null,
+     "itemsReturned": 77,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "ncbiRefSeqSelect",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:54+00:00",
+     "downloadTime": "2026:10:14T15:35:54Z",
+     "dataTime": "2024-09-18T08:29:04",
+     "bigDataUrl": null,
+     "itemsReturned": 8,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "ncbiRefSeqSelect",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:55+00:00",
+     "downloadTime": "2026:10:14T15:35:55Z",
+     "dataTime": "2024-09-18T08:29:04",
+     "bigDataUrl": null,
+     "itemsReturned": 7,
+     "maxItemsLimit": false
+    }
+   ],
+   "n_genes": 92
+  },
+  "genomicSuperDups_hg19": {
+   "file": "data/tracks_hg19/genomicSuperDups_hg19_windows.tsv.gz",
+   "track": "hg19 genomicSuperDups",
+   "downloads": [
+    {
+     "genome": "hg19",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:56+00:00",
+     "downloadTime": "2026:10:14T15:35:55Z",
+     "dataTime": "2011-09-26T08:15:55",
+     "bigDataUrl": null,
+     "itemsReturned": 525,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:56+00:00",
+     "downloadTime": "2026:10:14T15:35:56Z",
+     "dataTime": "2011-09-26T08:15:55",
+     "bigDataUrl": null,
+     "itemsReturned": 16,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:57+00:00",
+     "downloadTime": "2026:10:14T15:35:57Z",
+     "dataTime": "2011-09-26T08:15:55",
+     "bigDataUrl": null,
+     "itemsReturned": 28,
+     "maxItemsLimit": false
+    }
+   ],
+   "n_items": 569
+  },
+  "clinvarCnv_hg19": {
+   "file": "data/tracks_hg19/clinvarCnv_hg19_windows.tsv.gz",
+   "track": "hg19 clinvarCnv",
+   "downloads": [
+    {
+     "genome": "hg19",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:58+00:00",
+     "downloadTime": "2026:10:14T15:35:57Z",
+     "dataTime": "2015-01-26T08:03:15",
+     "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 912,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:59+00:00",
+     "downloadTime": "2026:10:14T15:35:58Z",
+     "dataTime": "2015-01-26T08:03:15",
+     "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 175,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg19",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:35:59+00:00",
+     "downloadTime": "2026:10:14T15:35:59Z",
+     "dataTime": "2015-01-26T08:03:15",
+     "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 56,
+     "maxItemsLimit": false
+    }
+   ],
+   "n_items": 1143
+  },
+  "genes_hg38_mane": {
+   "file": "data/annotation/genes_hg38_mane_select.tsv.gz",
+   "track": "hg38 mane (MANE Select, protein_coding only; MANE Plus Clinical rows dropped)",
+   "version_files": {
+    "MANE (hg38 mane track)": {
+     "url": "https://hgdownload.soe.ucsc.edu/gbdb/hg38/mane/README_versions.txt",
+     "text": "MANE Version\t1.5\nNCBI RefSeq Annotation Release\tGCF_000001405.40-RS_2025_08\nEnsembl Release\t116"
+    },
+    "ClinGen dosage map (hg38)": {
+     "url": "https://hgdownload.soe.ucsc.edu/gbdb/hg38/bbi/clinGen/clinGenDosageVersion.txt",
+     "text": "ClinGen Dosage Sensitivity Map, 28 Apr,2026"
+    }
+   },
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr1;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:36:37+00:00",
+     "downloadTime": "2026:10:14T15:36:00Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 2010,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr2;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:37:14+00:00",
+     "downloadTime": "2026:10:14T15:36:37Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1226,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr3;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:38:19+00:00",
+     "downloadTime": "2026:10:14T15:37:15Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1044,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr4;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:12+00:00",
+     "downloadTime": "2026:10:14T15:38:20Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 745,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr5;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:13+00:00",
+     "downloadTime": "2026:10:14T15:39:12Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 865,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr6;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:14+00:00",
+     "downloadTime": "2026:10:14T15:39:13Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1010,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr7;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:15+00:00",
+     "downloadTime": "2026:10:14T15:39:14Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 891,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr8;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:16+00:00",
+     "downloadTime": "2026:10:14T15:39:15Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 685,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr9;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:17+00:00",
+     "downloadTime": "2026:10:14T15:39:16Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 758,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr10;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:18+00:00",
+     "downloadTime": "2026:10:14T15:39:17Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 715,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr11;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:19+00:00",
+     "downloadTime": "2026:10:14T15:39:18Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1278,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr12;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:20+00:00",
+     "downloadTime": "2026:10:14T15:39:19Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1012,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr13;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:20+00:00",
+     "downloadTime": "2026:10:14T15:39:20Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 318,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr14;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:21+00:00",
+     "downloadTime": "2026:10:14T15:39:21Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 591,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr15;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:22+00:00",
+     "downloadTime": "2026:10:14T15:39:22Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 572,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr16;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:23+00:00",
+     "downloadTime": "2026:10:14T15:39:22Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 816,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr17;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:24+00:00",
+     "downloadTime": "2026:10:14T15:39:24Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1139,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr18;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:25+00:00",
+     "downloadTime": "2026:10:14T15:39:25Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 262,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr19;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:26+00:00",
+     "downloadTime": "2026:10:14T15:39:26Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 1387,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr20;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:27+00:00",
+     "downloadTime": "2026:10:14T15:39:26Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 526,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr21;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:28+00:00",
+     "downloadTime": "2026:10:14T15:39:27Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 215,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:28+00:00",
+     "downloadTime": "2026:10:14T15:39:28Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 425,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chrX;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:29+00:00",
+     "downloadTime": "2026:10:14T15:39:29Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 840,
+     "maxItemsLimit": false
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chrY;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:39:30+00:00",
+     "downloadTime": "2026:10:14T15:39:30Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 43,
+     "maxItemsLimit": false
+    }
+   ],
+   "n_genes": 19229
+  },
+  "tracks_hg38": {
+   "dir": "data/tracks_hg38",
+   "provenance": "data/tracks_hg38/provenance_tracks_hg38.json",
+   "regions": [
+    {
+     "region_id": "22q11_proximal",
+     "chrom": "chr22",
+     "start0": 17784681,
+     "end": 21665821,
+     "core_start0": 18339129,
+     "core_end": 21111373,
+     "flank_bp": 554448
+    },
+    {
+     "region_id": "PMP22",
+     "chrom": "chr17",
+     "start0": 15179776,
+     "end": 15315357,
+     "core_start0": 15229776,
+     "core_end": 15265357,
+     "flank_bp": 50000
+    },
+    {
+     "region_id": "UGT2B17",
+     "chrom": "chr4",
+     "start0": 68459450,
+     "end": 68667530,
+     "core_start0": 68509450,
+     "core_end": 68617530,
+     "flank_bp": 50000
+    },
+    {
+     "region_id": "22q11_distal",
+     "chrom": "chr22",
+     "start0": 20385019,
+     "end": 22417451,
+     "core_start0": 20675366,
+     "core_end": 22127104,
+     "flank_bp": 290347
+    }
+   ],
+   "skipped": {
+    "decipher": "DECIPHER CNVs: protectedData=True in /list/tracks (restricted; cannot be downloaded via the API)"
+   }
+  }
+ }
+}

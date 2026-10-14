@@ -1,0 +1,6 @@
+# HBB MANE Select NM_000518.5 / ENST00000335295.4 on GRCh38 (UCSC hg38 track 'mane', MANE v1.5, NCBI GCF_000001405.40-RS_2025_08, Ensembl 116; track dataTime 2025-12-08T05:11:03; retrieved 2026-10-14T15:33:38Z)
+# coordinates are 1-based inclusive; exons are listed in transcript order (5' -> 3'); the gene is on the minus strand
+transcript	ensembl	gene	chrom	strand	exon	exon_start	exon_end	cds_start	cds_end	cds_length
+NM_000518.5	ENST00000335295.4	HBB	chr11	-	1	5226930	5227071	5226930	5227021	92
+NM_000518.5	ENST00000335295.4	HBB	chr11	-	2	5226577	5226799	5226577	5226799	223
+NM_000518.5	ENST00000335295.4	HBB	chr11	-	3	5225464	5225726	5225598	5225726	129

@@ -1,0 +1,5 @@
+SUIT-Regular.ttf and SUIT-Bold.ttf: "Copyright (c) 2022 Sun." (designer: Sun; http://sun.fo/suit).
+From the font's own metadata: "This Font Software is licensed under the SIL Open Font License, Version 1.1."
+License text: OFL.txt in this folder (copied from the SUIT repository, github.com/sun-typeface/SUIT; also at https://openfontlicense.org)
+The font is included only so that the notebook figures match the lecture slides. If these files are removed,
+matplotlib falls back to DejaVu Sans.

@@ -1,0 +1,38 @@
+event_id	category	type	chrom	pos	ref	alt	S01	S02	S03	context	purpose	expected_behaviour
+SNV01	true_variant	SNV	chr11	5202015	C	G	0/1	1/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV02	true_variant	SNV	chr11	5203264	A	G	0/1	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV03	true_variant	SNV	chr11	5204306	G	T	1/1	1/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV04	true_variant	SNV	chr11	5205638	T	G	0/1	0/0	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+DEL4_unique	true_variant	DEL	chr11	5206900	TGACC	T	0/1	0/0	0/1	unique sequence; only one possible representation	simple indel, maternal, transmitted	called in S01 and S03
+SNV05	true_variant	SNV	chr11	5208473	T	A	0/1	1/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV06	true_variant	SNV	chr11	5210256	T	G	0/0	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV07	true_variant	SNV	chr11	5222776	T	C	0/0	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV08	true_variant	SNV	chr11	5224999	A	T	0/1	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+HBB_c.20A>T	true_variant	SNV	chr11	5227002	T	A	1/1	0/1	0/1	HBB exon 1; NM_000518.5:c.20A>T p.(Glu7Val), HbS (minus-strand gene)	recessive disease variant: child 1/1, both parents 0/1	called in all three; recessive filter finds it
+HBB_c.9T>C	true_variant	SNV	chr11	5227013	A	G	0/1	0/1	0/0	HBB exon 1; NM_000518.5:c.9T>C p.(His3=), synonymous; in cis with c.20A>T on P1	second coding variant for the naming exercise	called in S01 and S02
+SNV09	true_variant	SNV	chr11	5229168	A	C	0/1	1/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+INS2_dinucleotide	true_variant	INS	chr11	5230685	T	TCA	0/0	0/0	0/1	(CA)x7 repeat at chr11:5230686-5230699	insertion in a repeat; untransmitted maternal allele	called in S03 only (child 0/0)
+SNV10	true_variant	SNV	chr11	5232282	G	T	0/1	0/0	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV11	true_variant	SNV	chr11	5233445	A	C	0/1	0/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+DEL1_homopolymer	true_variant	DEL	chr11	5239407	CT	C	0/1	0/1	0/0	Tx8 homopolymer at chr11:5239408-5239415	indel in a repeat: shows left-alignment by bcftools norm	called in S01 and S02; truth_raw stores it right-shifted
+SNV12	true_variant	SNV	chr11	5241475	T	G	0/1	0/0	1/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV13	true_variant	SNV	chr11	5243980	A	C	0/0	0/0	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+MULTI_ALT1	true_variant	SNV	chr11	5245200	G	A	0/1	0/1	0/0	multi-allelic site, allele 1 (paternal)	multi-allelic record: split by bcftools norm -m -any	S01 1/2, S02 0/1, S03 0/2
+MULTI_ALT2	true_variant	SNV	chr11	5245200	G	C	0/1	0/0	0/1	multi-allelic site, allele 2 (maternal)	multi-allelic record: split by bcftools norm -m -any	S01 1/2, S02 0/1, S03 0/2
+SNV14	true_variant	SNV	chr11	5246988	A	G	0/1	0/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV15	true_variant	SNV	chr11	5268072	A	G	0/1	0/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+DENOVO	true_variant	SNV	chr11	5272758	G	A	0/1	0/0	0/0	non-coding; present only in the child	de novo candidate: the one Mendelian inconsistency	S01 0/1, parents 0/0
+SNV16	true_variant	SNV	chr11	5273815	A	G	0/1	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV17	true_variant	SNV	chr11	5275164	A	T	0/1	0/0	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV18	true_variant	SNV	chr11	5276734	C	G	0/1	0/0	1/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV19	true_variant	SNV	chr11	5278331	C	T	0/1	0/1	0/0	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV20	true_variant	SNV	chr11	5279575	G	A	0/1	0/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV21	true_variant	SNV	chr11	5282397	C	G	0/1	0/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV22	true_variant	SNV	chr11	5286279	T	C	0/0	0/0	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV23	true_variant	SNV	chr11	5289417	G	C	0/1	0/1	1/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+LOWCOV_HET	true_variant	SNV	chr11	5291568	A	T	0/0	0/0	0/1	inside the low-coverage interval chr11:5291001-5292000 (~8x)	true variant that a depth filter removes	called (S03 0/1) but removed by FMT/DP>=10 and INFO/DP>=30 filters
+SNV24	true_variant	SNV	chr11	5295174	A	G	0/1	0/0	1/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+SNV25	true_variant	SNV	chr11	5296652	T	C	1/1	1/1	0/1	non-coding background SNV	ordinary inherited variation	called; Mendelian-consistent
+ARTIFACT_JACKPOT	artifact	PCR_duplicate_jackpot	chr11	5214982	G	C	0/0	0/0	0/0 (artifact in reads)	S03: one fragment with a PCR error, 15 copies with identical ends, error at R1 cycle 61 with base quality 37	shows why duplicate marking matters	false 0/1 call in S03 without markdup; disappears after samtools markdup
+ARTIFACT_LOWBQ	artifact	systematic_low_quality_error	chr11	5257081	G	T	0/0	0/0 (artifact in reads)	0/0	S02: 20 of 34 read pairs show the same wrong base, always with base quality 12	shows what the minimum base-quality filter protects against	skipped by the course pipeline (bcftools mpileup -Q 13, set explicitly); becomes a weak false 0/1 call with -Q 0 and also with bcftools' own default (-Q 1)
+LOWCOV_INTERVAL	coverage_feature	reduced_sampling	chr11	5291001	.	.	.	.	.	chr11:5291001-5292000; 27% of fragments kept (~8x)	depth plot feature; hosts LOWCOV_HET	visible dip in the depth plot

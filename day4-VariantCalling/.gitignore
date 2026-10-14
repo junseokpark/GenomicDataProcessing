@@ -1,0 +1,17 @@
+# Files the notebooks write stay local; the reference results and lecture figures stay tracked.
+
+# Practice 1: BAM, VCF, QC reports, logs and coverage are rebuilt by the notebook
+practice1_variant_calling/results/*
+!practice1_variant_calling/results/p1_results.json
+!practice1_variant_calling/results/figures/
+
+# Practice 2: alignments, intermediate tables and in-notebook figures are rebuilt by the notebook
+practice2_cnv_tesseract/data/bam/
+practice2_cnv_tesseract/data/results/
+practice2_cnv_tesseract/results/notebook_figures/
+
+# notebook runs and editor files
+my_run.ipynb
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,4511 @@
+{
+ "description": "Practice 2 (CNVs from reads to interpretation) - results of the executed notebook. SYNTHETIC samples.",
+ "generated_utc": "2026-10-14T16:43:48+00:00",
+ "tool_versions": {
+  "minimap2": "2.31-r1302",
+  "samtools": "1.24",
+  "htslib (bgzip)": "1.24",
+  "CrossMap": "0.7.3",
+  "python": "3.12.15",
+  "pysam": "0.24.1",
+  "numpy": "2.5.4",
+  "pandas": "3.0.6",
+  "matplotlib": "3.11.2"
+ },
+ "seed": 20261015,
+ "dna_qc": [
+  {
+   "sample": "P1",
+   "read pairs": 93857,
+   "% mapped": 99.97,
+   "% properly paired": 99.93,
+   "% duplicates": 2.78,
+   "mean depth (x)": 2.64
+  },
+  {
+   "sample": "P2",
+   "read pairs": 99683,
+   "% mapped": 99.96,
+   "% properly paired": 99.92,
+   "% duplicates": 2.78,
+   "mean depth (x)": 2.81
+  },
+  {
+   "sample": "P3",
+   "read pairs": 104911,
+   "% mapped": 99.96,
+   "% properly paired": 99.91,
+   "% duplicates": 2.74,
+   "mean depth (x)": 2.96
+  },
+  {
+   "sample": "C1",
+   "read pairs": 106631,
+   "% mapped": 99.96,
+   "% properly paired": 99.92,
+   "% duplicates": 2.79,
+   "mean depth (x)": 3.0
+  }
+ ],
+ "mapq_segdup_C1": [
+  {
+   "where": "inside segmental duplications",
+   "reads": 56234,
+   "% MAPQ < 20": 37.5,
+   "median MAPQ": 50.0
+  },
+  {
+   "where": "unique sequence",
+   "reads": 156946,
+   "% MAPQ < 20": 0.2,
+   "median MAPQ": 60.0
+  }
+ ],
+ "fragments_counted": {
+  "P1": 81747,
+  "P2": 87019,
+  "P3": 92799,
+  "C1": 93049
+ },
+ "lcr_mapq_demo_C1_all_vs_mapq20": {
+  "LCR22A chr22:18700001-18800000": [
+   3187,
+   1025
+  ],
+  "unique chr22:19700001-19800000": [
+   2385,
+   2383
+  ]
+ },
+ "pmp22_bin_example": {
+  "P2": {
+   "fragments": 79,
+   "reads_samtools": 163
+  },
+  "C1": {
+   "fragments": 63,
+   "reads_samtools": 131
+  }
+ },
+ "bins": {
+  "bin_size_bp": 5000,
+  "total": 1380,
+  "masked_total": 193,
+  "masked_gap": 21,
+  "lowdepth_masked_in_segdup_fraction": 0.97,
+  "masked_low_panel_depth": 166,
+  "masked_variable_controls": 6,
+  "sigma0_cn2": 0.1946,
+  "centring_offsets": {
+   "P1": 0.269,
+   "P2": 0.0069,
+   "P3": 0.1656,
+   "C1": -0.0113
+  },
+  "gc_effect_C1_raw_depth": 0.39,
+  "gc_effect_C1_ratio_to_panel": 0.05
+ },
+ "worked_examples": [
+  {
+   "sample": "P2",
+   "bin (hg19, 1-based)": "chr17:15,150,001-15,155,000",
+   "what": "PMP22 duplication (CN 3)",
+   "raw": 122,
+   "per million": 1402.0,
+   "panel": 841.5,
+   "ratio": 1.67,
+   "log2": 0.74,
+   "log2 centred": 0.73,
+   "expected": 0.58
+  },
+  {
+   "sample": "P1",
+   "bin (hg19, 1-based)": "chr22:19,755,001-19,760,000",
+   "what": "TBX1, 22q11.2 deletion (CN 1)",
+   "raw": 43,
+   "per million": 526.0,
+   "panel": 758.8,
+   "ratio": 0.69,
+   "log2": -0.53,
+   "log2 centred": -0.8,
+   "expected": -1.0
+  },
+  {
+   "sample": "P3",
+   "bin (hg19, 1-based)": "chr4:69,415,001-69,420,000",
+   "what": "UGT2B17, both copies deleted (CN 0)",
+   "raw": 0,
+   "per million": 0.0,
+   "panel": 696.6,
+   "ratio": 0.0,
+   "log2": -9.45,
+   "log2 centred": -3.0,
+   "expected": "\u2212\u221e (\u22123)"
+  },
+  {
+   "sample": "C1",
+   "bin (hg19, 1-based)": "chr17:15,150,001-15,155,000",
+   "what": "the same PMP22 bin in control C1 (CN 2)",
+   "raw": 69,
+   "per million": 741.5,
+   "panel": 841.5,
+   "ratio": 0.88,
+   "log2": -0.18,
+   "log2 centred": -0.17,
+   "expected": 0.0
+  }
+ ],
+ "hmm": {
+  "states": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "expected_log2": [
+   -3.0,
+   -1.0,
+   0.0,
+   0.585,
+   1.0
+  ],
+  "sigma": [
+   0.6,
+   0.2752,
+   0.1946,
+   0.1589,
+   0.1376
+  ],
+  "p_switch": 0.01,
+  "min_bins": 3
+ },
+ "calls_hg19": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "sample": "P1",
+   "chrom": "chr22",
+   "start": 18915000,
+   "end": 21465000,
+   "size_kb": 2550.0,
+   "type": "DEL",
+   "cn": 1,
+   "n_bins": 433,
+   "log2": -0.988
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "sample": "P2",
+   "chrom": "chr17",
+   "start": 15130000,
+   "end": 15170000,
+   "size_kb": 40.0,
+   "type": "DUP",
+   "cn": 3,
+   "n_bins": 8,
+   "log2": 0.549
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "sample": "P2",
+   "chrom": "chr4",
+   "start": 69375000,
+   "end": 69485000,
+   "size_kb": 110.0,
+   "type": "DEL",
+   "cn": 1,
+   "n_bins": 19,
+   "log2": -1.076
+  },
+  {
+   "cnv_id": "P3_22q11_DEL",
+   "sample": "P3",
+   "chrom": "chr22",
+   "start": 21030000,
+   "end": 22480000,
+   "size_kb": 1450.0,
+   "type": "DEL",
+   "cn": 1,
+   "n_bins": 211,
+   "log2": -0.993
+  },
+  {
+   "cnv_id": "P3_UGT2B17_DEL",
+   "sample": "P3",
+   "chrom": "chr4",
+   "start": 69375000,
+   "end": 69485000,
+   "size_kb": 110.0,
+   "type": "DEL",
+   "cn": 0,
+   "n_bins": 19,
+   "log2": -2.933
+  }
+ ],
+ "truth_comparison": [
+  {
+   "planted": "P1_22q11_LCR22A-D_DEL",
+   "expected CN": 1,
+   "recovered": true,
+   "called CN": 1,
+   "bins": 433,
+   "mean log2": -0.988,
+   "recip. overlap": 0.999,
+   "start error (kb)": -1.8,
+   "end error (kb)": -0.7
+  },
+  {
+   "planted": "P2_PMP22_DUP",
+   "expected CN": 3,
+   "recovered": true,
+   "called CN": 3,
+   "bins": 8,
+   "mean log2": 0.549,
+   "recip. overlap": 0.89,
+   "start error (kb)": -3.1,
+   "end error (kb)": 1.3
+  },
+  {
+   "planted": "P2_UGT2B17_DEL",
+   "expected CN": 1,
+   "recovered": true,
+   "called CN": 1,
+   "bins": 19,
+   "mean log2": -1.076,
+   "recip. overlap": 0.983,
+   "start error (kb)": -0.2,
+   "end error (kb)": 1.8
+  },
+  {
+   "planted": "P3_22q11_distal_DEL",
+   "expected CN": 1,
+   "recovered": true,
+   "called CN": 1,
+   "bins": 211,
+   "mean log2": -0.993,
+   "recip. overlap": 0.999,
+   "start error (kb)": 0.3,
+   "end error (kb)": -1.5
+  },
+  {
+   "planted": "P3_UGT2B17_DEL_HOM",
+   "expected CN": 0,
+   "recovered": true,
+   "called CN": 0,
+   "bins": 19,
+   "mean log2": -2.933,
+   "recip. overlap": 0.983,
+   "start error (kb)": -0.2,
+   "end error (kb)": 1.8
+  }
+ ],
+ "false_calls_patients": 0,
+ "calls_in_control_C1": 0,
+ "liftover_calls": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "hg19": "chr22:18,915,001-21,465,000",
+   "hg19 size (kb)": 2550.0,
+   "(a) pieces": 117,
+   "(a) pieces off main chrom": "chr22_KI270731v1_random:120986-121187",
+   "(a) lifted bp (kb)": 2449.8,
+   "(b) breakpoint lift": "chr22:18,927,488-21,110,711",
+   "(b) size (kb)": 2183.2,
+   "(c) outer span": "chr22:18,339,130-21,343,827",
+   "(c) size (kb)": 3004.7,
+   "genes hg19": 48,
+   "genes hg38 (b)": 43,
+   "genes hg38 (c)": 48,
+   "only hg19": [
+    "FAM246B",
+    "FAM246C",
+    "GGTLC3",
+    "RIMBP3",
+    "TMEM191B"
+   ],
+   "only hg38 (b)": [],
+   "extra in (c)": [
+    "DGCR6",
+    "FAM246B",
+    "GGTLC3",
+    "RIMBP3",
+    "TMEM191B"
+   ],
+   "bp_lift_start0": 18927487,
+   "bp_lift_end": 21110711,
+   "outer_start0": 18339129,
+   "outer_end": 21343827,
+   "genes_hg19": [
+    "AIFM3",
+    "ARVCF",
+    "C22orf39",
+    "CCDC188",
+    "CDC45",
+    "CLDN5",
+    "CLTCL1",
+    "COMT",
+    "CRKL",
+    "DGCR2",
+    "DGCR6L",
+    "DGCR8",
+    "ESS2",
+    "FAM246B",
+    "FAM246C",
+    "GGTLC3",
+    "GNB1L",
+    "GP1BB",
+    "GSC2",
+    "HIRA",
+    "KLHL22",
+    "LRRC74B",
+    "LZTR1",
+    "MED15",
+    "MRPL40",
+    "P2RX6",
+    "PI4KA",
+    "PRODH",
+    "RANBP1",
+    "RIMBP3",
+    "RTL10",
+    "RTN4R",
+    "SCARF2",
+    "SEPTIN5",
+    "SERPIND1",
+    "SLC25A1",
+    "SLC7A4",
+    "SNAP29",
+    "TANGO2",
+    "TBX1",
+    "THAP7",
+    "TMEM191B",
+    "TRMT2A",
+    "TSSK2",
+    "TXNRD2",
+    "UFD1",
+    "ZDHHC8",
+    "ZNF74"
+   ],
+   "genes_hg38": [
+    "AIFM3",
+    "ARVCF",
+    "C22orf39",
+    "CCDC188",
+    "CDC45",
+    "CLDN5",
+    "CLTCL1",
+    "COMT",
+    "CRKL",
+    "DGCR2",
+    "DGCR6L",
+    "DGCR8",
+    "ESS2",
+    "GNB1L",
+    "GP1BB",
+    "GSC2",
+    "HIRA",
+    "KLHL22",
+    "LRRC74B",
+    "LZTR1",
+    "MED15",
+    "MRPL40",
+    "P2RX6",
+    "PI4KA",
+    "PRODH",
+    "RANBP1",
+    "RTL10",
+    "RTN4R",
+    "SCARF2",
+    "SEPTIN5",
+    "SERPIND1",
+    "SLC25A1",
+    "SLC7A4",
+    "SNAP29",
+    "TANGO2",
+    "TBX1",
+    "THAP7",
+    "TRMT2A",
+    "TSSK2",
+    "TXNRD2",
+    "UFD1",
+    "ZDHHC8",
+    "ZNF74"
+   ]
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "hg19": "chr17:15,130,001-15,170,000",
+   "hg19 size (kb)": 40.0,
+   "(a) pieces": 1,
+   "(a) pieces off main chrom": "-",
+   "(a) lifted bp (kb)": 40.0,
+   "(b) breakpoint lift": "chr17:15,226,684-15,266,683",
+   "(b) size (kb)": 40.0,
+   "(c) outer span": "chr17:15,226,684-15,266,683",
+   "(c) size (kb)": 40.0,
+   "genes hg19": 1,
+   "genes hg38 (b)": 1,
+   "genes hg38 (c)": 1,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "bp_lift_start0": 15226683,
+   "bp_lift_end": 15266683,
+   "outer_start0": 15226683,
+   "outer_end": 15266683,
+   "genes_hg19": [
+    "PMP22"
+   ],
+   "genes_hg38": [
+    "PMP22"
+   ]
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "hg19": "chr4:69,375,001-69,485,000",
+   "hg19 size (kb)": 110.0,
+   "(a) pieces": 1,
+   "(a) pieces off main chrom": "-",
+   "(a) lifted bp (kb)": 110.0,
+   "(b) breakpoint lift": "chr4:68,509,283-68,619,282",
+   "(b) size (kb)": 110.0,
+   "(c) outer span": "chr4:68,509,283-68,619,282",
+   "(c) size (kb)": 110.0,
+   "genes hg19": 1,
+   "genes hg38 (b)": 1,
+   "genes hg38 (c)": 1,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "bp_lift_start0": 68509282,
+   "bp_lift_end": 68619282,
+   "outer_start0": 68509282,
+   "outer_end": 68619282,
+   "genes_hg19": [
+    "UGT2B17"
+   ],
+   "genes_hg38": [
+    "UGT2B17"
+   ]
+  },
+  {
+   "cnv_id": "P3_22q11_DEL",
+   "hg19": "chr22:21,030,001-22,480,000",
+   "hg19 size (kb)": 1450.0,
+   "(a) pieces": 97,
+   "(a) pieces off main chrom": "chr1:226114942-226114970",
+   "(a) lifted bp (kb)": 1449.6,
+   "(b) breakpoint lift": "chr22:20,675,713-22,125,606",
+   "(b) size (kb)": 1449.9,
+   "(c) outer span": "chr22:20,668,232-22,125,606",
+   "(c) size (kb)": 1457.4,
+   "genes hg19": 24,
+   "genes hg38 (b)": 24,
+   "genes hg38 (c)": 24,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "bp_lift_start0": 20675712,
+   "bp_lift_end": 22125606,
+   "outer_start0": 20668231,
+   "outer_end": 22125606,
+   "genes_hg19": [
+    "AIFM3",
+    "CCDC116",
+    "CRKL",
+    "FAM246A",
+    "HIC2",
+    "LRRC74B",
+    "LZTR1",
+    "MAPK1",
+    "P2RX6",
+    "PI4KA",
+    "PPIL2",
+    "PPM1F",
+    "RIMBP3B",
+    "RIMBP3C",
+    "SDF2L1",
+    "SERPIND1",
+    "SLC7A4",
+    "SNAP29",
+    "THAP7",
+    "TMEM191C",
+    "TOP3B",
+    "UBE2L3",
+    "YDJC",
+    "YPEL1"
+   ],
+   "genes_hg38": [
+    "AIFM3",
+    "CCDC116",
+    "CRKL",
+    "FAM246A",
+    "HIC2",
+    "LRRC74B",
+    "LZTR1",
+    "MAPK1",
+    "P2RX6",
+    "PI4KA",
+    "PPIL2",
+    "PPM1F",
+    "RIMBP3B",
+    "RIMBP3C",
+    "SDF2L1",
+    "SERPIND1",
+    "SLC7A4",
+    "SNAP29",
+    "THAP7",
+    "TMEM191C",
+    "TOP3B",
+    "UBE2L3",
+    "YDJC",
+    "YPEL1"
+   ]
+  },
+  {
+   "cnv_id": "P3_UGT2B17_DEL",
+   "hg19": "chr4:69,375,001-69,485,000",
+   "hg19 size (kb)": 110.0,
+   "(a) pieces": 1,
+   "(a) pieces off main chrom": "-",
+   "(a) lifted bp (kb)": 110.0,
+   "(b) breakpoint lift": "chr4:68,509,283-68,619,282",
+   "(b) size (kb)": 110.0,
+   "(c) outer span": "chr4:68,509,283-68,619,282",
+   "(c) size (kb)": 110.0,
+   "genes hg19": 1,
+   "genes hg38 (b)": 1,
+   "genes hg38 (c)": 1,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "bp_lift_start0": 68509282,
+   "bp_lift_end": 68619282,
+   "outer_start0": 68509282,
+   "outer_end": 68619282,
+   "genes_hg19": [
+    "UGT2B17"
+   ],
+   "genes_hg38": [
+    "UGT2B17"
+   ]
+  }
+ ],
+ "liftover_unmap_file": "",
+ "liftover_public_records": [
+  {
+   "cnv_id": "P1_22q11_LCR22A-D_DEL",
+   "hg19": "chr22:18,916,842-21,465,662",
+   "hg19 size (kb)": 2548.8,
+   "(a) pieces": 117,
+   "(a) pieces off main chrom": "chr22_KI270731v1_random:120986-121187",
+   "(a) lifted bp (kb)": 2448.6,
+   "(b) breakpoint lift": "chr22:18,929,329-21,111,373",
+   "(b) size (kb)": 2182.0,
+   "(c) outer span": "chr22:18,339,130-21,343,827",
+   "(c) size (kb)": 3004.7,
+   "genes hg19": 48,
+   "genes hg38 (b)": 43,
+   "genes hg38 (c)": 48,
+   "only hg19": [
+    "FAM246B",
+    "FAM246C",
+    "GGTLC3",
+    "RIMBP3",
+    "TMEM191B"
+   ],
+   "only hg38 (b)": [],
+   "extra in (c)": [
+    "DGCR6",
+    "FAM246B",
+    "GGTLC3",
+    "RIMBP3",
+    "TMEM191B"
+   ],
+   "public GRCh38": "ClinVar VCV000155158: 18,339,130-21,111,373",
+   "bp_lift_start0": 18929328,
+   "bp_lift_end": 21111373,
+   "outer_start0": 18339129,
+   "outer_end": 21343827
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "hg19": "chr17:15,133,094-15,168,674",
+   "hg19 size (kb)": 35.6,
+   "(a) pieces": 1,
+   "(a) pieces off main chrom": "-",
+   "(a) lifted bp (kb)": 35.6,
+   "(b) breakpoint lift": "chr17:15,229,777-15,265,357",
+   "(b) size (kb)": 35.6,
+   "(c) outer span": "chr17:15,229,777-15,265,357",
+   "(c) size (kb)": 35.6,
+   "genes hg19": 1,
+   "genes hg38 (b)": 1,
+   "genes hg38 (c)": 1,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "public GRCh38": "LOVD PMP22_000101: 15,229,777-15,265,357",
+   "bp_lift_start0": 15229776,
+   "bp_lift_end": 15265357,
+   "outer_start0": 15229776,
+   "outer_end": 15265357
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "hg19": "chr4:69,375,169-69,483,248",
+   "hg19 size (kb)": 108.1,
+   "(a) pieces": 1,
+   "(a) pieces off main chrom": "-",
+   "(a) lifted bp (kb)": 108.1,
+   "(b) breakpoint lift": "chr4:68,509,451-68,617,530",
+   "(b) size (kb)": 108.1,
+   "(c) outer span": "chr4:68,509,451-68,617,530",
+   "(c) size (kb)": 108.1,
+   "genes hg19": 1,
+   "genes hg38 (b)": 1,
+   "genes hg38 (c)": 1,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "public GRCh38": "ClinVar VCV000147015: 68,509,451-68,617,530",
+   "bp_lift_start0": 68509450,
+   "bp_lift_end": 68617530,
+   "outer_start0": 68509450,
+   "outer_end": 68617530
+  },
+  {
+   "cnv_id": "P3_22q11_distal_DEL",
+   "hg19": "chr22:21,029,655-22,481,498",
+   "hg19 size (kb)": 1451.8,
+   "(a) pieces": 97,
+   "(a) pieces off main chrom": "chr1:226114942-226114970",
+   "(a) lifted bp (kb)": 1451.5,
+   "(b) breakpoint lift": "chr22:20,675,367-22,127,104",
+   "(b) size (kb)": 1451.7,
+   "(c) outer span": "chr22:20,668,232-22,127,104",
+   "(c) size (kb)": 1458.9,
+   "genes hg19": 24,
+   "genes hg38 (b)": 24,
+   "genes hg38 (c)": 24,
+   "only hg19": [],
+   "only hg38 (b)": [],
+   "extra in (c)": [],
+   "public GRCh38": "-",
+   "bp_lift_start0": 20675366,
+   "bp_lift_end": 22127104,
+   "outer_start0": 20668231,
+   "outer_end": 22127104
+  }
+ ],
+ "public_grch38": {
+  "P1_22q11_LCR22A-D_DEL": {
+   "source": "ClinVar VCV000155158",
+   "start_1based": 18339130,
+   "end": 21111373
+  },
+  "P2_PMP22_DUP": {
+   "source": "LOVD PMP22_000101",
+   "start_1based": 15229777,
+   "end": 15265357
+  },
+  "P2_UGT2B17_DEL": {
+   "source": "ClinVar VCV000147015",
+   "start_1based": 68509451,
+   "end": 68617530
+  }
+ },
+ "gene_differences_between_builds": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "FAM246B",
+   "hg19 position": "chr22:20,483,851",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,633,984",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "FAM246C",
+   "hg19 position": "chr22:19,017,037",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "no MANE transcript",
+   "hg38 in segdup": NaN,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "GGTLC3",
+   "hg19 position": "chr22:20,366,211",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,516,344",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "RIMBP3",
+   "hg19 position": "chr22:20,455,682",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,605,815",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "TMEM191B",
+   "hg19 position": "chr22:20,377,669",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,527,802",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "DGCR6",
+   "hg19 position": "chr22:18,893,833",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,906,320",
+   "hg38 in segdup": 1.0,
+   "why it differs": "only in the outer span"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "FAM246B",
+   "hg19 position": "chr22:20,483,851",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,633,984",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "GGTLC3",
+   "hg19 position": "chr22:20,366,211",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,516,344",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "RIMBP3",
+   "hg19 position": "chr22:20,455,682",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,605,815",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  },
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "gene": "TMEM191B",
+   "hg19 position": "chr22:20,377,669",
+   "hg19 in segdup": 1.0,
+   "hg38 position": "chr22:18,527,802",
+   "hg38 in segdup": 1.0,
+   "why it differs": "in the hg19 call but outside the hg38 breakpoint lift"
+  }
+ ],
+ "liftover_rule": "breakpoint lift + gene-content check",
+ "calls_hg38": [
+  {
+   "chrom": "chr22",
+   "start0": 18927487,
+   "end": 21110711,
+   "cnv_type": "DEL",
+   "cnv_id": "P1_22q11_DEL",
+   "sample": "P1",
+   "size_bp": 2183224
+  },
+  {
+   "chrom": "chr17",
+   "start0": 15226683,
+   "end": 15266683,
+   "cnv_type": "DUP",
+   "cnv_id": "P2_PMP22_DUP",
+   "sample": "P2",
+   "size_bp": 40000
+  },
+  {
+   "chrom": "chr4",
+   "start0": 68509282,
+   "end": 68619282,
+   "cnv_type": "DEL",
+   "cnv_id": "P2_UGT2B17_DEL",
+   "sample": "P2",
+   "size_bp": 110000
+  },
+  {
+   "chrom": "chr22",
+   "start0": 20675712,
+   "end": 22125606,
+   "cnv_type": "DEL",
+   "cnv_id": "P3_22q11_DEL",
+   "sample": "P3",
+   "size_bp": 1449894
+  },
+  {
+   "chrom": "chr4",
+   "start0": 68509282,
+   "end": 68619282,
+   "cnv_type": "DEL",
+   "cnv_id": "P3_UGT2B17_DEL",
+   "sample": "P3",
+   "size_bp": 110000
+  }
+ ],
+ "rna_summary": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "genes": 43,
+   "expressed": 32,
+   "median log2FC (expressed)": -0.85,
+   "fits copy number": 26
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "genes": 1,
+   "expressed": 1,
+   "median log2FC (expressed)": 0.55,
+   "fits copy number": 1
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "genes": 1,
+   "expressed": 1,
+   "median log2FC (expressed)": -0.37,
+   "fits copy number": 0
+  },
+  {
+   "cnv_id": "P3_22q11_DEL",
+   "genes": 24,
+   "expressed": 19,
+   "median log2FC (expressed)": -0.8,
+   "fits copy number": 14
+  },
+  {
+   "cnv_id": "P3_UGT2B17_DEL",
+   "genes": 1,
+   "expressed": 1,
+   "median log2FC (expressed)": -3.75,
+   "fits copy number": 1
+  }
+ ],
+ "rna_key_genes": [
+  {
+   "gene": "HIRA",
+   "expressed": true,
+   "control CPM": 25.2,
+   "patient CPM": 19.0,
+   "log2FC": -0.39,
+   "z": -5.0,
+   "expected log2FC": -1.0,
+   "reading": "weaker/other (buffered? noise?)",
+   "cnv_id": "P1_22q11_DEL"
+  },
+  {
+   "gene": "TBX1",
+   "expressed": true,
+   "control CPM": 20.0,
+   "patient CPM": 10.7,
+   "log2FC": -0.87,
+   "z": -6.7,
+   "expected log2FC": -1.0,
+   "reading": "fits the copy number",
+   "cnv_id": "P1_22q11_DEL"
+  },
+  {
+   "gene": "COMT",
+   "expressed": true,
+   "control CPM": 141.2,
+   "patient CPM": 73.4,
+   "log2FC": -0.93,
+   "z": -6.4,
+   "expected log2FC": -1.0,
+   "reading": "fits the copy number",
+   "cnv_id": "P1_22q11_DEL"
+  },
+  {
+   "gene": "CRKL",
+   "expressed": true,
+   "control CPM": 62.6,
+   "patient CPM": 34.6,
+   "log2FC": -0.84,
+   "z": -7.8,
+   "expected log2FC": -1.0,
+   "reading": "fits the copy number",
+   "cnv_id": "P1_22q11_DEL"
+  },
+  {
+   "gene": "PMP22",
+   "expressed": true,
+   "control CPM": 396.7,
+   "patient CPM": 579.9,
+   "log2FC": 0.55,
+   "z": 4.2,
+   "expected log2FC": 0.58,
+   "reading": "fits the copy number",
+   "cnv_id": "P2_PMP22_DUP"
+  },
+  {
+   "gene": "UGT2B17",
+   "expressed": true,
+   "control CPM": 6.5,
+   "patient CPM": 4.7,
+   "log2FC": -0.37,
+   "z": -0.9,
+   "expected log2FC": -1.0,
+   "reading": "weaker/other (buffered? noise?)",
+   "cnv_id": "P2_UGT2B17_DEL"
+  },
+  {
+   "gene": "CRKL",
+   "expressed": true,
+   "control CPM": 62.6,
+   "patient CPM": 35.6,
+   "log2FC": -0.8,
+   "z": -7.4,
+   "expected log2FC": -1.0,
+   "reading": "fits the copy number",
+   "cnv_id": "P3_22q11_DEL"
+  },
+  {
+   "gene": "UGT2B17",
+   "expressed": true,
+   "control CPM": 6.5,
+   "patient CPM": 0.0,
+   "log2FC": -3.75,
+   "z": -8.7,
+   "expected log2FC": "\u2212\u221e (no RNA)",
+   "reading": "no RNA, as expected",
+   "cnv_id": "P3_UGT2B17_DEL"
+  }
+ ],
+ "rna_genes_per_cnv": {
+  "P1_22q11_DEL": [
+   {
+    "gene": "PRODH",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.04,
+    "z": -0.7,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "DGCR2",
+    "expressed": true,
+    "control CPM": 9.8,
+    "patient CPM": 4.8,
+    "log2FC": -0.94,
+    "z": -5.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "ESS2",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.1,
+    "log2FC": 0.21,
+    "z": Infinity,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "TSSK2",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.09,
+    "z": -0.6,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "GSC2",
+    "expressed": true,
+    "control CPM": 15.2,
+    "patient CPM": 8.3,
+    "log2FC": -0.82,
+    "z": -3.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SLC25A1",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.0,
+    "log2FC": -0.17,
+    "z": -1.3,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "CLTCL1",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.0,
+    "log2FC": -0.08,
+    "z": -0.5,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "HIRA",
+    "expressed": true,
+    "control CPM": 25.2,
+    "patient CPM": 19.0,
+    "log2FC": -0.39,
+    "z": -5.0,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "MRPL40",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.0,
+    "log2FC": -0.24,
+    "z": -1.0,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "C22orf39",
+    "expressed": true,
+    "control CPM": 47.9,
+    "patient CPM": 24.3,
+    "log2FC": -0.96,
+    "z": -8.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "UFD1",
+    "expressed": true,
+    "control CPM": 74.0,
+    "patient CPM": 34.8,
+    "log2FC": -1.07,
+    "z": -7.2,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "CDC45",
+    "expressed": true,
+    "control CPM": 267.8,
+    "patient CPM": 179.7,
+    "log2FC": -0.57,
+    "z": -4.0,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "CLDN5",
+    "expressed": true,
+    "control CPM": 41.1,
+    "patient CPM": 23.6,
+    "log2FC": -0.77,
+    "z": -3.1,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SEPTIN5",
+    "expressed": true,
+    "control CPM": 25.0,
+    "patient CPM": 13.9,
+    "log2FC": -0.82,
+    "z": -6.6,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "GP1BB",
+    "expressed": true,
+    "control CPM": 24.4,
+    "patient CPM": 8.5,
+    "log2FC": -1.46,
+    "z": -7.3,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "TBX1",
+    "expressed": true,
+    "control CPM": 20.0,
+    "patient CPM": 10.7,
+    "log2FC": -0.87,
+    "z": -6.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "GNB1L",
+    "expressed": true,
+    "control CPM": 30.3,
+    "patient CPM": 21.4,
+    "log2FC": -0.48,
+    "z": -1.9,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "RTL10",
+    "expressed": true,
+    "control CPM": 3.7,
+    "patient CPM": 1.3,
+    "log2FC": -1.25,
+    "z": -4.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "TXNRD2",
+    "expressed": true,
+    "control CPM": 18.8,
+    "patient CPM": 9.9,
+    "log2FC": -0.88,
+    "z": -7.6,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "COMT",
+    "expressed": true,
+    "control CPM": 141.2,
+    "patient CPM": 73.4,
+    "log2FC": -0.93,
+    "z": -6.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "ARVCF",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.1,
+    "log2FC": -0.02,
+    "z": -0.2,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "TANGO2",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.0,
+    "log2FC": -0.28,
+    "z": -2.9,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "DGCR8",
+    "expressed": true,
+    "control CPM": 15.7,
+    "patient CPM": 4.5,
+    "log2FC": -1.68,
+    "z": -7.0,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "TRMT2A",
+    "expressed": true,
+    "control CPM": 74.4,
+    "patient CPM": 35.6,
+    "log2FC": -1.04,
+    "z": -4.5,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "RANBP1",
+    "expressed": true,
+    "control CPM": 55.6,
+    "patient CPM": 29.0,
+    "log2FC": -0.92,
+    "z": -4.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "ZDHHC8",
+    "expressed": true,
+    "control CPM": 63.5,
+    "patient CPM": 47.8,
+    "log2FC": -0.39,
+    "z": -2.0,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "CCDC188",
+    "expressed": true,
+    "control CPM": 65.1,
+    "patient CPM": 37.6,
+    "log2FC": -0.76,
+    "z": -2.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "RTN4R",
+    "expressed": true,
+    "control CPM": 21.1,
+    "patient CPM": 15.5,
+    "log2FC": -0.42,
+    "z": -1.9,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "DGCR6L",
+    "expressed": false,
+    "control CPM": 0.1,
+    "patient CPM": 0.2,
+    "log2FC": 0.07,
+    "z": 0.5,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "ZNF74",
+    "expressed": true,
+    "control CPM": 54.4,
+    "patient CPM": 40.3,
+    "log2FC": -0.43,
+    "z": -4.2,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "SCARF2",
+    "expressed": false,
+    "control CPM": 0.5,
+    "patient CPM": 0.1,
+    "log2FC": -0.64,
+    "z": -2.7,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "KLHL22",
+    "expressed": true,
+    "control CPM": 4.1,
+    "patient CPM": 2.3,
+    "log2FC": -0.7,
+    "z": -4.5,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "MED15",
+    "expressed": true,
+    "control CPM": 68.8,
+    "patient CPM": 34.1,
+    "log2FC": -1.0,
+    "z": -6.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "PI4KA",
+    "expressed": true,
+    "control CPM": 4.5,
+    "patient CPM": 2.0,
+    "log2FC": -0.94,
+    "z": -3.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SERPIND1",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.04,
+    "z": -0.7,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "SNAP29",
+    "expressed": true,
+    "control CPM": 30.6,
+    "patient CPM": 20.1,
+    "log2FC": -0.59,
+    "z": -4.6,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "CRKL",
+    "expressed": true,
+    "control CPM": 62.6,
+    "patient CPM": 34.6,
+    "log2FC": -0.84,
+    "z": -7.8,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "AIFM3",
+    "expressed": true,
+    "control CPM": 11.4,
+    "patient CPM": 5.4,
+    "log2FC": -0.99,
+    "z": -4.8,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "LZTR1",
+    "expressed": true,
+    "control CPM": 338.1,
+    "patient CPM": 187.8,
+    "log2FC": -0.84,
+    "z": -5.0,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "THAP7",
+    "expressed": true,
+    "control CPM": 115.8,
+    "patient CPM": 66.1,
+    "log2FC": -0.79,
+    "z": -3.0,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "P2RX6",
+    "expressed": true,
+    "control CPM": 50.7,
+    "patient CPM": 22.8,
+    "log2FC": -1.13,
+    "z": -8.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SLC7A4",
+    "expressed": true,
+    "control CPM": 7.4,
+    "patient CPM": 3.9,
+    "log2FC": -0.83,
+    "z": -4.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "LRRC74B",
+    "expressed": true,
+    "control CPM": 22.0,
+    "patient CPM": 11.9,
+    "log2FC": -0.86,
+    "z": -7.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   }
+  ],
+  "P2_PMP22_DUP": [
+   {
+    "gene": "PMP22",
+    "expressed": true,
+    "control CPM": 396.7,
+    "patient CPM": 579.9,
+    "log2FC": 0.55,
+    "z": 4.2,
+    "expected log2FC": 0.58,
+    "reading": "fits the copy number"
+   }
+  ],
+  "P2_UGT2B17_DEL": [
+   {
+    "gene": "UGT2B17",
+    "expressed": true,
+    "control CPM": 6.5,
+    "patient CPM": 4.7,
+    "log2FC": -0.37,
+    "z": -0.9,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   }
+  ],
+  "P3_22q11_DEL": [
+   {
+    "gene": "PI4KA",
+    "expressed": true,
+    "control CPM": 4.5,
+    "patient CPM": 1.9,
+    "log2FC": -1.02,
+    "z": -4.3,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SERPIND1",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.04,
+    "z": -0.7,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "SNAP29",
+    "expressed": true,
+    "control CPM": 30.6,
+    "patient CPM": 24.0,
+    "log2FC": -0.34,
+    "z": -2.7,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "CRKL",
+    "expressed": true,
+    "control CPM": 62.6,
+    "patient CPM": 35.6,
+    "log2FC": -0.8,
+    "z": -7.4,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "AIFM3",
+    "expressed": true,
+    "control CPM": 11.4,
+    "patient CPM": 5.3,
+    "log2FC": -1.02,
+    "z": -5.0,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "LZTR1",
+    "expressed": true,
+    "control CPM": 338.1,
+    "patient CPM": 185.1,
+    "log2FC": -0.86,
+    "z": -5.1,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "THAP7",
+    "expressed": true,
+    "control CPM": 115.8,
+    "patient CPM": 90.1,
+    "log2FC": -0.34,
+    "z": -1.3,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "P2RX6",
+    "expressed": true,
+    "control CPM": 50.7,
+    "patient CPM": 28.1,
+    "log2FC": -0.83,
+    "z": -6.2,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SLC7A4",
+    "expressed": true,
+    "control CPM": 7.4,
+    "patient CPM": 2.5,
+    "log2FC": -1.38,
+    "z": -7.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "LRRC74B",
+    "expressed": true,
+    "control CPM": 22.0,
+    "patient CPM": 14.0,
+    "log2FC": -0.63,
+    "z": -5.8,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "FAM246A",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.04,
+    "z": -0.7,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "RIMBP3B",
+    "expressed": true,
+    "control CPM": 36.7,
+    "patient CPM": 17.0,
+    "log2FC": -1.08,
+    "z": -5.0,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "HIC2",
+    "expressed": true,
+    "control CPM": 20.3,
+    "patient CPM": 9.1,
+    "log2FC": -1.11,
+    "z": -5.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "TMEM191C",
+    "expressed": true,
+    "control CPM": 93.8,
+    "patient CPM": 71.7,
+    "log2FC": -0.38,
+    "z": -2.6,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "RIMBP3C",
+    "expressed": true,
+    "control CPM": 1.8,
+    "patient CPM": 0.8,
+    "log2FC": -0.83,
+    "z": -11.9,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "UBE2L3",
+    "expressed": true,
+    "control CPM": 44.1,
+    "patient CPM": 26.1,
+    "log2FC": -0.72,
+    "z": -2.5,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "YDJC",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.01,
+    "z": -0.1,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "CCDC116",
+    "expressed": true,
+    "control CPM": 7.4,
+    "patient CPM": 4.4,
+    "log2FC": -0.67,
+    "z": -2.6,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "SDF2L1",
+    "expressed": true,
+    "control CPM": 225.1,
+    "patient CPM": 180.8,
+    "log2FC": -0.29,
+    "z": -0.9,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   },
+   {
+    "gene": "PPIL2",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": -0.12,
+    "z": -1.3,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "YPEL1",
+    "expressed": true,
+    "control CPM": 2.4,
+    "patient CPM": 1.0,
+    "log2FC": -0.91,
+    "z": -3.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "MAPK1",
+    "expressed": true,
+    "control CPM": 118.2,
+    "patient CPM": 75.5,
+    "log2FC": -0.63,
+    "z": -3.7,
+    "expected log2FC": -1.0,
+    "reading": "fits the copy number"
+   },
+   {
+    "gene": "PPM1F",
+    "expressed": false,
+    "control CPM": 0.0,
+    "patient CPM": 0.0,
+    "log2FC": 0.0,
+    "z": NaN,
+    "expected log2FC": -1.0,
+    "reading": "not expressed: uninformative"
+   },
+   {
+    "gene": "TOP3B",
+    "expressed": true,
+    "control CPM": 1.8,
+    "patient CPM": 1.3,
+    "log2FC": -0.34,
+    "z": -1.6,
+    "expected log2FC": -1.0,
+    "reading": "weaker/other (buffered? noise?)"
+   }
+  ],
+  "P3_UGT2B17_DEL": [
+   {
+    "gene": "UGT2B17",
+    "expressed": true,
+    "control CPM": 6.5,
+    "patient CPM": 0.0,
+    "log2FC": -3.75,
+    "z": -8.7,
+    "expected log2FC": "\u2212\u221e (no RNA)",
+    "reading": "no RNA, as expected"
+   }
+  ]
+ },
+ "rna_ugt2b17_by_sample": [
+  {
+   "sample": "P1",
+   "DNA copy number": 2,
+   "UGT2B17 reads": 179,
+   "CPM": 7.06
+  },
+  {
+   "sample": "P2",
+   "DNA copy number": 1,
+   "UGT2B17 reads": 135,
+   "CPM": 4.71
+  },
+  {
+   "sample": "P3",
+   "DNA copy number": 0,
+   "UGT2B17 reads": 0,
+   "CPM": 0.0
+  },
+  {
+   "sample": "C1",
+   "DNA copy number": 2,
+   "UGT2B17 reads": 184,
+   "CPM": 6.99
+  },
+  {
+   "sample": "C2",
+   "DNA copy number": 1,
+   "UGT2B17 reads": 76,
+   "CPM": 3.52
+  },
+  {
+   "sample": "C3",
+   "DNA copy number": 2,
+   "UGT2B17 reads": 144,
+   "CPM": 6.93
+  },
+  {
+   "sample": "C4",
+   "DNA copy number": 2,
+   "UGT2B17 reads": 252,
+   "CPM": 8.19
+  },
+  {
+   "sample": "C5",
+   "DNA copy number": 2,
+   "UGT2B17 reads": 125,
+   "CPM": 6.64
+  }
+ ],
+ "wrong_build_demo": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "correct (lifted)": 43,
+   "wrong build": 46,
+   "shared": 43,
+   "missed": [],
+   "wrongly added": [
+    "FAM246A",
+    "HIC2",
+    "RIMBP3B"
+   ]
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "correct (lifted)": 1,
+   "wrong build": 0,
+   "shared": 0,
+   "missed": [
+    "PMP22"
+   ],
+   "wrongly added": []
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "correct (lifted)": 1,
+   "wrong build": 1,
+   "shared": 0,
+   "missed": [
+    "UGT2B17"
+   ],
+   "wrongly added": [
+    "UGT2B4"
+   ]
+  },
+  {
+   "cnv_id": "P3_22q11_DEL",
+   "correct (lifted)": 24,
+   "wrong build": 17,
+   "shared": 16,
+   "missed": [
+    "AIFM3",
+    "CRKL",
+    "LZTR1",
+    "P2RX6",
+    "PI4KA",
+    "SERPIND1",
+    "SNAP29",
+    "THAP7"
+   ],
+   "wrongly added": [
+    "VPREB1"
+   ]
+  },
+  {
+   "cnv_id": "P3_UGT2B17_DEL",
+   "correct (lifted)": 1,
+   "wrong build": 1,
+   "shared": 0,
+   "missed": [
+    "UGT2B17"
+   ],
+   "wrongly added": [
+    "UGT2B4"
+   ]
+  }
+ ],
+ "tesseract": {
+  "input_rows": [
+   {
+    "chrom": "chr22",
+    "start0": 18927487,
+    "end": 21110711,
+    "cnv_type": "DEL",
+    "cnv_id": "P1_22q11_DEL",
+    "sample": "P1",
+    "size_bp": 2183224
+   },
+   {
+    "chrom": "chr17",
+    "start0": 15226683,
+    "end": 15266683,
+    "cnv_type": "DUP",
+    "cnv_id": "P2_PMP22_DUP",
+    "sample": "P2",
+    "size_bp": 40000
+   },
+   {
+    "chrom": "chr4",
+    "start0": 68509282,
+    "end": 68619282,
+    "cnv_type": "DEL",
+    "cnv_id": "P2_UGT2B17_DEL",
+    "sample": "P2",
+    "size_bp": 110000
+   },
+   {
+    "chrom": "chr22",
+    "start0": 20675712,
+    "end": 22125606,
+    "cnv_type": "DEL",
+    "cnv_id": "P3_22q11_DEL",
+    "sample": "P3",
+    "size_bp": 1449894
+   },
+   {
+    "chrom": "chr4",
+    "start0": 68509282,
+    "end": 68619282,
+    "cnv_type": "DEL",
+    "cnv_id": "P3_UGT2B17_DEL",
+    "sample": "P3",
+    "size_bp": 110000
+   }
+  ],
+  "size_check": [
+   {
+    "cnv_id": "P1_22q11_DEL",
+    "cnv_type": "DEL",
+    "size_bp": 2183224,
+    "in design range (50 bp-1 Mbp)": false,
+    "windows (500 bp)": 4367,
+    "segments (60 kb)": 37,
+    "inference": "segmented (score = max over segments)"
+   },
+   {
+    "cnv_id": "P2_PMP22_DUP",
+    "cnv_type": "DUP",
+    "size_bp": 40000,
+    "in design range (50 bp-1 Mbp)": true,
+    "windows (500 bp)": 80,
+    "segments (60 kb)": 1,
+    "inference": "standard"
+   },
+   {
+    "cnv_id": "P2_UGT2B17_DEL",
+    "cnv_type": "DEL",
+    "size_bp": 110000,
+    "in design range (50 bp-1 Mbp)": true,
+    "windows (500 bp)": 220,
+    "segments (60 kb)": 2,
+    "inference": "standard"
+   },
+   {
+    "cnv_id": "P3_22q11_DEL",
+    "cnv_type": "DEL",
+    "size_bp": 1449894,
+    "in design range (50 bp-1 Mbp)": false,
+    "windows (500 bp)": 2900,
+    "segments (60 kb)": 25,
+    "inference": "segmented (score = max over segments)"
+   },
+   {
+    "cnv_id": "P3_UGT2B17_DEL",
+    "cnv_type": "DEL",
+    "size_bp": 110000,
+    "in design range (50 bp-1 Mbp)": true,
+    "windows (500 bp)": 220,
+    "segments (60 kb)": 2,
+    "inference": "standard"
+   }
+  ],
+  "segments_per_cnv": {
+   "P1_22q11_DEL": 37,
+   "P2_PMP22_DUP": 1,
+   "P2_UGT2B17_DEL": 2,
+   "P3_22q11_DEL": 25,
+   "P3_UGT2B17_DEL": 2
+  },
+  "window_bp": 500,
+  "segment_windows": 120,
+  "run": false,
+  "scores": null,
+  "segment_scores": null
+ },
+ "track_summary": [
+  {
+   "cnv_id": "P1_22q11_DEL",
+   "hg38": "chr22:18,927,488-21,110,711",
+   "ClinGen HI": [
+    {
+     "item": "PRODH",
+     "score": 30,
+     "kind": "gene",
+     "covered": 0.381,
+     "overlap": "partial (38%)",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.998,
+     "overlap": "near-complete (>= 95%)",
+     "named gene": "TBX1",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SLC25A1",
+     "score": 30,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "HIRA",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "GP1BB",
+     "score": 30,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "TBX1",
+     "score": 1,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL))",
+     "score": 2,
+     "kind": "region",
+     "covered": 0.999,
+     "overlap": "complete",
+     "named gene": "CRKL",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SCARF2",
+     "score": 30,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SERPIND1",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SNAP29",
+     "score": 30,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "CRKL",
+     "score": 1,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "ClinGen TS": [
+    {
+     "item": "PRODH",
+     "score": 0,
+     "kind": "gene",
+     "covered": 0.381,
+     "overlap": "partial (38%)",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.998,
+     "overlap": "near-complete (>= 95%)",
+     "named gene": "TBX1",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SLC25A1",
+     "score": "Not yet evaluated",
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "HIRA",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "GP1BB",
+     "score": "Not yet evaluated",
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "TBX1",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL))",
+     "score": 1,
+     "kind": "region",
+     "covered": 0.999,
+     "overlap": "complete",
+     "named gene": "CRKL",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SCARF2",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SERPIND1",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SNAP29",
+     "score": "Not yet evaluated",
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "CRKL",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "gene-disease (Definitive/Strong)": [
+    "CDC45",
+    "GP1BB",
+    "LZTR1",
+    "PRODH",
+    "SERPIND1"
+   ],
+   "pLI >= 0.9 genes": [
+    "CLDN5",
+    "DGCR8",
+    "HIRA",
+    "MED15",
+    "RTN4R",
+    "SCARF2",
+    "SEPT5",
+    "UFD1L"
+   ],
+   "ClinVar P/LP same-type CNVs (RO>=50%)": 111,
+   "ClinVar VUS/conflicting (RO>=50%)": 5,
+   "ClinVar benign same-type CNVs (RO>=50%)": 0,
+   "ClinVar examples": [
+    "VCV004796185 (Pathogenic, RO 1.00)",
+    "VCV004820057 (Pathogenic, RO 0.99)",
+    "VCV002574134 (Pathogenic, RO 0.99)",
+    "VCV001684640 (Pathogenic, RO 0.99)"
+   ],
+   "ClinVar P/LP SNVs/indels inside": 1115,
+   "gnomAD SV max AF (same type, RO>=50%)": 7.2e-05,
+   "DGV Gold max frequency (same type, RO>=50%)": 0.0,
+   "segdup fraction": 0.129
+  },
+  {
+   "cnv_id": "P2_PMP22_DUP",
+   "hg38": "chr17:15,226,684-15,266,683",
+   "ClinGen HI": [
+    {
+     "item": "ISCA-37436 (17p12 recurrent (HNPP/CMT1A) region (includes PMP22))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.03,
+     "overlap": "partial (3%)",
+     "named gene": "PMP22",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "PMP22",
+     "score": 3,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "ClinGen TS": [
+    {
+     "item": "ISCA-37436 (17p12 recurrent (HNPP/CMT1A) region (includes PMP22))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.03,
+     "overlap": "partial (3%)",
+     "named gene": "PMP22",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "PMP22",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "gene-disease (Definitive/Strong)": [
+    "PMP22"
+   ],
+   "pLI >= 0.9 genes": [
+    "PMP22"
+   ],
+   "ClinVar P/LP same-type CNVs (RO>=50%)": 5,
+   "ClinVar VUS/conflicting (RO>=50%)": 0,
+   "ClinVar benign same-type CNVs (RO>=50%)": 0,
+   "ClinVar examples": [
+    "VCV004082242 (Pathogenic, RO 0.89)",
+    "VCV000660675 (Pathogenic, RO 0.80)",
+    "VCV000237630 (Pathogenic, RO 0.77)",
+    "VCV000652966 (Pathogenic, RO 0.75)"
+   ],
+   "ClinVar P/LP SNVs/indels inside": 91,
+   "gnomAD SV max AF (same type, RO>=50%)": 0.0,
+   "DGV Gold max frequency (same type, RO>=50%)": 0.0,
+   "segdup fraction": 0.0
+  },
+  {
+   "cnv_id": "P2_UGT2B17_DEL",
+   "hg38": "chr4:68,509,283-68,619,282",
+   "ClinGen HI": [],
+   "ClinGen TS": [],
+   "gene-disease (Definitive/Strong)": [],
+   "pLI >= 0.9 genes": [],
+   "ClinVar P/LP same-type CNVs (RO>=50%)": 0,
+   "ClinVar VUS/conflicting (RO>=50%)": 0,
+   "ClinVar benign same-type CNVs (RO>=50%)": 5,
+   "ClinVar examples": [
+    "VCV000147015 (Benign, RO 0.98)",
+    "VCV000146955 (Benign, RO 0.98)",
+    "VCV000149437 (Likely benign, RO 0.82)",
+    "VCV000147032 (Benign, RO 0.79)"
+   ],
+   "ClinVar P/LP SNVs/indels inside": 0,
+   "gnomAD SV max AF (same type, RO>=50%)": 0.35,
+   "DGV Gold max frequency (same type, RO>=50%)": 0.161369,
+   "segdup fraction": 0.553
+  },
+  {
+   "cnv_id": "P3_22q11_DEL",
+   "hg38": "chr22:20,675,713-22,125,606",
+   "ClinGen HI": [
+    {
+     "item": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.199,
+     "overlap": "partial (20%)",
+     "named gene": "TBX1",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL))",
+     "score": 2,
+     "kind": "region",
+     "covered": 0.594,
+     "overlap": "partial (59%)",
+     "named gene": "CRKL",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SERPIND1",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SNAP29",
+     "score": 30,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "CRKL",
+     "score": 1,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46533 (22q11.21 population region (gnomAD-SV_v2.1_DEL_22_181532))",
+     "score": 40,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46532 (22q11.21 population region (gnomAD-SV_v2.1_DEL_22_181459))",
+     "score": 40,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46730 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77049))",
+     "score": 40,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46729 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77047))",
+     "score": 40,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46731 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77050))",
+     "score": 40,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37397 (22q11.2 recurrent region (distal type I, D-E or D-F))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.532,
+     "overlap": "partial (53%)",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "TOP3B",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "ClinGen TS": [
+    {
+     "item": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1))",
+     "score": 3,
+     "kind": "region",
+     "covered": 0.199,
+     "overlap": "partial (20%)",
+     "named gene": "TBX1",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL))",
+     "score": 1,
+     "kind": "region",
+     "covered": 0.594,
+     "overlap": "partial (59%)",
+     "named gene": "CRKL",
+     "named gene inside CNV": true
+    },
+    {
+     "item": "SERPIND1",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "SNAP29",
+     "score": "Not yet evaluated",
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "CRKL",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46533 (22q11.21 population region (gnomAD-SV_v2.1_DEL_22_181532))",
+     "score": 0,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46532 (22q11.21 population region (gnomAD-SV_v2.1_DEL_22_181459))",
+     "score": 0,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46730 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77049))",
+     "score": 0,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46729 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77047))",
+     "score": 0,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-46731 (22q11.21 population region (DGV_Gold_Standard_June_2021_gssvL77050))",
+     "score": 0,
+     "kind": "region",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "ISCA-37397 (22q11.2 recurrent region (distal type I, D-E or D-F))",
+     "score": 1,
+     "kind": "region",
+     "covered": 0.532,
+     "overlap": "partial (53%)",
+     "named gene": "",
+     "named gene inside CNV": false
+    },
+    {
+     "item": "TOP3B",
+     "score": 0,
+     "kind": "gene",
+     "covered": 1.0,
+     "overlap": "complete",
+     "named gene": "",
+     "named gene inside CNV": false
+    }
+   ],
+   "gene-disease (Definitive/Strong)": [
+    "LZTR1",
+    "SERPIND1"
+   ],
+   "pLI >= 0.9 genes": [
+    "HIC2",
+    "MAPK1"
+   ],
+   "ClinVar P/LP same-type CNVs (RO>=50%)": 4,
+   "ClinVar VUS/conflicting (RO>=50%)": 1,
+   "ClinVar benign same-type CNVs (RO>=50%)": 0,
+   "ClinVar examples": [
+    "VCV000057332 (Pathogenic, RO 0.67)",
+    "VCV000150486 (Pathogenic, RO 0.67)",
+    "VCV000148420 (Pathogenic, RO 0.66)",
+    "VCV000145120 (Pathogenic, RO 0.60)"
+   ],
+   "ClinVar P/LP SNVs/indels inside": 904,
+   "gnomAD SV max AF (same type, RO>=50%)": 0.0,
+   "DGV Gold max frequency (same type, RO>=50%)": 0.0,
+   "segdup fraction": 0.355
+  },
+  {
+   "cnv_id": "P3_UGT2B17_DEL",
+   "hg38": "chr4:68,509,283-68,619,282",
+   "ClinGen HI": [],
+   "ClinGen TS": [],
+   "gene-disease (Definitive/Strong)": [],
+   "pLI >= 0.9 genes": [],
+   "ClinVar P/LP same-type CNVs (RO>=50%)": 0,
+   "ClinVar VUS/conflicting (RO>=50%)": 0,
+   "ClinVar benign same-type CNVs (RO>=50%)": 5,
+   "ClinVar examples": [
+    "VCV000147015 (Benign, RO 0.98)",
+    "VCV000146955 (Benign, RO 0.98)",
+    "VCV000149437 (Likely benign, RO 0.82)",
+    "VCV000147032 (Benign, RO 0.79)"
+   ],
+   "ClinVar P/LP SNVs/indels inside": 0,
+   "gnomAD SV max AF (same type, RO>=50%)": 0.35,
+   "DGV Gold max frequency (same type, RO>=50%)": 0.161369,
+   "segdup fraction": 0.553
+  }
+ ],
+ "tesseract_group_mapping": [
+  {
+   "TESSERACT group": "Variant identity",
+   "channels": 2,
+   "our public track(s)": "our CNV interval + type (DEL/DUP)",
+   "covered here?": "yes"
+  },
+  {
+   "TESSERACT group": "Gene structure",
+   "channels": 6,
+   "our public track(s)": "mane (MANE genes, exons)",
+   "covered here?": "yes"
+  },
+  {
+   "TESSERACT group": "Gene constraint",
+   "channels": 7,
+   "our public track(s)": "pliByGene (pLI, LOEUF)",
+   "covered here?": "partly"
+  },
+  {
+   "TESSERACT group": "Dosage sensitivity",
+   "channels": 13,
+   "our public track(s)": "clinGenHaplo, clinGenTriplo, clinGenGeneDisease",
+   "covered here?": "partly"
+  },
+  {
+   "TESSERACT group": "Conservation",
+   "channels": 9,
+   "our public track(s)": "phastConsElements100way",
+   "covered here?": "partly"
+  },
+  {
+   "TESSERACT group": "Integrated scores",
+   "channels": 6,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Histone marks (ESC)",
+   "channels": 9,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Regulatory marks (ESC)",
+   "channels": 6,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Blood epigenome",
+   "channels": 5,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Regulatory elements",
+   "channels": 9,
+   "our public track(s)": "encodeCcreCombined",
+   "covered here?": "partly"
+  },
+  {
+   "TESSERACT group": "Chromatin structure",
+   "channels": 2,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Sequence context",
+   "channels": 1,
+   "our public track(s)": "-",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "Known pathogenic",
+   "channels": 2,
+   "our public track(s)": "clinvarCnv (P/LP), clinvarMain (P/LP)",
+   "covered here?": "yes"
+  },
+  {
+   "TESSERACT group": "Population frequency",
+   "channels": 1,
+   "our public track(s)": "- (TESSERACT uses gnomAD SNV AF; we did not download it)",
+   "covered here?": "no"
+  },
+  {
+   "TESSERACT group": "NOT an input",
+   "channels": 0,
+   "our public track(s)": "gnomadStructuralVariants, dgvGold (population SV frequency - excluded on purpose)",
+   "covered here?": "-"
+  },
+  {
+   "TESSERACT group": "NOT an input",
+   "channels": 0,
+   "our public track(s)": "genomicSuperDups (we use it to judge breakpoint reliability)",
+   "covered here?": "-"
+  }
+ ],
+ "evidence_tables": {
+  "P1_22q11_DEL": [
+   {
+    "evidence": "DNA read depth (hg19)",
+    "value": "CN 1, mean log2 -0.99, 433 bins, 2,550 kb",
+    "evidence direction": "technical: CNV present"
+   },
+   {
+    "evidence": "Coordinates",
+    "value": "hg19 chr22:18,915,001-21,465,000 -> hg38 chr22:18,927,488-21,110,711",
+    "evidence direction": "technical"
+   },
+   {
+    "evidence": "Liftover check",
+    "value": "117 CrossMap piece(s); genes only in hg19: ['FAM246B', 'FAM246C', 'GGTLC3', 'RIMBP3', 'TMEM191B']",
+    "evidence direction": "caution: breakpoints in segmental duplications"
+   },
+   {
+    "evidence": "Protein-coding genes (hg38 MANE)",
+    "value": "43: AIFM3, ARVCF, C22orf39, CCDC188, CDC45, CLDN5, CLTCL1, COMT \u2026",
+    "evidence direction": "towards pathogenic (\u2265 25 genes)"
+   },
+   {
+    "evidence": "Dosage-sensitive genes/regions (ClinGen)",
+    "value": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1)) 3 (near-complete (>= 95%)); TBX1 1 (complete); ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL)) 2 (complete); CRKL 1 (complete)",
+    "evidence direction": "towards pathogenic (score-3 HI item \u2265 95% inside)"
+   },
+   {
+    "evidence": "Matched RNA (synthetic)",
+    "value": "32.0/43.0 genes expressed; median log2FC -0.85",
+    "evidence direction": "supports a dosage effect (not pathogenicity)"
+   },
+   {
+    "evidence": "Population frequency (gnomAD SV, DGV Gold)",
+    "value": "max 0.0% (same type, \u2265 50% reciprocal overlap)",
+    "evidence direction": "neutral (rare or absent)"
+   },
+   {
+    "evidence": "ClinVar CNVs (same type, RO \u2265 50%)",
+    "value": "111 P/LP, 5 VUS/conflicting, 0 benign; e.g. VCV004796185 (Pathogenic, RO 1.00), VCV004820057 (Pathogenic, RO 0.99), VCV002574134 (Pathogenic, RO 0.99)",
+    "evidence direction": "mostly towards pathogenic (some VUS/benign records)"
+   },
+   {
+    "evidence": "TESSERACT-CNV score",
+    "value": "not run (adapter not configured)",
+    "evidence direction": "not available"
+   },
+   {
+    "evidence": "Inheritance / phenotype",
+    "value": "parents not tested; phenotype in Step 0",
+    "evidence direction": "not assessed (needs parental testing and clinical review)"
+   }
+  ],
+  "P2_PMP22_DUP": [
+   {
+    "evidence": "DNA read depth (hg19)",
+    "value": "CN 3, mean log2 +0.55, 8 bins, 40 kb",
+    "evidence direction": "technical: CNV present"
+   },
+   {
+    "evidence": "Coordinates",
+    "value": "hg19 chr17:15,130,001-15,170,000 -> hg38 chr17:15,226,684-15,266,683",
+    "evidence direction": "technical"
+   },
+   {
+    "evidence": "Liftover check",
+    "value": "1 CrossMap piece(s); genes only in hg19: none",
+    "evidence direction": "technical: OK"
+   },
+   {
+    "evidence": "Protein-coding genes (hg38 MANE)",
+    "value": "1: PMP22",
+    "evidence direction": "neutral (gene number)"
+   },
+   {
+    "evidence": "Dosage-sensitive genes/regions (ClinGen)",
+    "value": "ISCA-37436 (17p12 recurrent (HNPP/CMT1A) region (includes PMP22)) 3 (partial (3%))",
+    "evidence direction": "towards pathogenic (contains PMP22, the gene named in a score-3 TS region; but PMP22's own gene-level TS score is 0 - read the curation)"
+   },
+   {
+    "evidence": "Matched RNA (synthetic)",
+    "value": "1.0/1.0 genes expressed; median log2FC 0.55",
+    "evidence direction": "supports a dosage effect (not pathogenicity)"
+   },
+   {
+    "evidence": "Population frequency (gnomAD SV, DGV Gold)",
+    "value": "max 0.0% (same type, \u2265 50% reciprocal overlap)",
+    "evidence direction": "neutral (rare or absent)"
+   },
+   {
+    "evidence": "ClinVar CNVs (same type, RO \u2265 50%)",
+    "value": "5 P/LP, 0 VUS/conflicting, 0 benign; e.g. VCV004082242 (Pathogenic, RO 0.89), VCV000660675 (Pathogenic, RO 0.80), VCV000237630 (Pathogenic, RO 0.77)",
+    "evidence direction": "towards pathogenic (similar P/LP records)"
+   },
+   {
+    "evidence": "TESSERACT-CNV score",
+    "value": "not run (adapter not configured)",
+    "evidence direction": "not available"
+   },
+   {
+    "evidence": "Inheritance / phenotype",
+    "value": "parents not tested; phenotype in Step 0",
+    "evidence direction": "not assessed (needs parental testing and clinical review)"
+   }
+  ],
+  "P2_UGT2B17_DEL": [
+   {
+    "evidence": "DNA read depth (hg19)",
+    "value": "CN 1, mean log2 -1.08, 19 bins, 110 kb",
+    "evidence direction": "technical: CNV present"
+   },
+   {
+    "evidence": "Coordinates",
+    "value": "hg19 chr4:69,375,001-69,485,000 -> hg38 chr4:68,509,283-68,619,282",
+    "evidence direction": "technical"
+   },
+   {
+    "evidence": "Liftover check",
+    "value": "1 CrossMap piece(s); genes only in hg19: none",
+    "evidence direction": "caution: breakpoints in segmental duplications"
+   },
+   {
+    "evidence": "Protein-coding genes (hg38 MANE)",
+    "value": "1: UGT2B17",
+    "evidence direction": "neutral (gene number)"
+   },
+   {
+    "evidence": "Dosage-sensitive genes/regions (ClinGen)",
+    "value": "none with score 1-3",
+    "evidence direction": "neutral (no score-3 dosage item)"
+   },
+   {
+    "evidence": "Matched RNA (synthetic)",
+    "value": "1.0/1.0 genes expressed; median log2FC -0.37",
+    "evidence direction": "weak/unclear dosage effect"
+   },
+   {
+    "evidence": "Population frequency (gnomAD SV, DGV Gold)",
+    "value": "max 35.0% (same type, \u2265 50% reciprocal overlap)",
+    "evidence direction": "towards benign (common, \u2265 1%)"
+   },
+   {
+    "evidence": "ClinVar CNVs (same type, RO \u2265 50%)",
+    "value": "0 P/LP, 0 VUS/conflicting, 5 benign; e.g. VCV000147015 (Benign, RO 0.98), VCV000146955 (Benign, RO 0.98), VCV000149437 (Likely benign, RO 0.82)",
+    "evidence direction": "towards benign (similar benign records)"
+   },
+   {
+    "evidence": "TESSERACT-CNV score",
+    "value": "not run (adapter not configured)",
+    "evidence direction": "not available"
+   },
+   {
+    "evidence": "Inheritance / phenotype",
+    "value": "parents not tested; phenotype in Step 0",
+    "evidence direction": "not assessed (needs parental testing and clinical review)"
+   }
+  ],
+  "P3_22q11_DEL": [
+   {
+    "evidence": "DNA read depth (hg19)",
+    "value": "CN 1, mean log2 -0.99, 211 bins, 1,450 kb",
+    "evidence direction": "technical: CNV present"
+   },
+   {
+    "evidence": "Coordinates",
+    "value": "hg19 chr22:21,030,001-22,480,000 -> hg38 chr22:20,675,713-22,125,606",
+    "evidence direction": "technical"
+   },
+   {
+    "evidence": "Liftover check",
+    "value": "97 CrossMap piece(s); genes only in hg19: none",
+    "evidence direction": "caution: breakpoints in segmental duplications"
+   },
+   {
+    "evidence": "Protein-coding genes (hg38 MANE)",
+    "value": "24: AIFM3, CCDC116, CRKL, FAM246A, HIC2, LRRC74B, LZTR1, MAPK1 \u2026",
+    "evidence direction": "neutral (gene number)"
+   },
+   {
+    "evidence": "Dosage-sensitive genes/regions (ClinGen)",
+    "value": "ISCA-37446 (22q11.2 recurrent (DGS) region (proximal, A-B, A-C, or A-D) (includes TBX1)) 3 (partial (20%)); ISCA-37516 (22q11.2 recurrent region (central, B-D or C-D) (includes CRKL)) 2 (partial (59%)); CRKL 1 (complete); ISCA-37397 (22q11.2 recurrent region (distal type I, D-E or D-F)) 3 (partial (53%))",
+    "evidence direction": "uncertain (partial overlap with a score-3 HI region)"
+   },
+   {
+    "evidence": "Matched RNA (synthetic)",
+    "value": "19.0/24.0 genes expressed; median log2FC -0.8",
+    "evidence direction": "supports a dosage effect (not pathogenicity)"
+   },
+   {
+    "evidence": "Population frequency (gnomAD SV, DGV Gold)",
+    "value": "max 0.0% (same type, \u2265 50% reciprocal overlap)",
+    "evidence direction": "neutral (rare or absent)"
+   },
+   {
+    "evidence": "ClinVar CNVs (same type, RO \u2265 50%)",
+    "value": "4 P/LP, 1 VUS/conflicting, 0 benign; e.g. VCV000057332 (Pathogenic, RO 0.67), VCV000150486 (Pathogenic, RO 0.67), VCV000148420 (Pathogenic, RO 0.66)",
+    "evidence direction": "mostly towards pathogenic (some VUS/benign records)"
+   },
+   {
+    "evidence": "TESSERACT-CNV score",
+    "value": "not run (adapter not configured)",
+    "evidence direction": "not available"
+   },
+   {
+    "evidence": "Inheritance / phenotype",
+    "value": "parents not tested; phenotype in Step 0",
+    "evidence direction": "not assessed (needs parental testing and clinical review)"
+   }
+  ],
+  "P3_UGT2B17_DEL": [
+   {
+    "evidence": "DNA read depth (hg19)",
+    "value": "CN 0, mean log2 -2.93, 19 bins, 110 kb",
+    "evidence direction": "technical: CNV present"
+   },
+   {
+    "evidence": "Coordinates",
+    "value": "hg19 chr4:69,375,001-69,485,000 -> hg38 chr4:68,509,283-68,619,282",
+    "evidence direction": "technical"
+   },
+   {
+    "evidence": "Liftover check",
+    "value": "1 CrossMap piece(s); genes only in hg19: none",
+    "evidence direction": "caution: breakpoints in segmental duplications"
+   },
+   {
+    "evidence": "Protein-coding genes (hg38 MANE)",
+    "value": "1: UGT2B17",
+    "evidence direction": "neutral (gene number)"
+   },
+   {
+    "evidence": "Dosage-sensitive genes/regions (ClinGen)",
+    "value": "none with score 1-3",
+    "evidence direction": "neutral (no score-3 dosage item)"
+   },
+   {
+    "evidence": "Matched RNA (synthetic)",
+    "value": "1.0/1.0 genes expressed; median log2FC -3.75",
+    "evidence direction": "supports the call (no RNA)"
+   },
+   {
+    "evidence": "Population frequency (gnomAD SV, DGV Gold)",
+    "value": "max 35.0% (same type, \u2265 50% reciprocal overlap)",
+    "evidence direction": "towards benign (common, \u2265 1%)"
+   },
+   {
+    "evidence": "ClinVar CNVs (same type, RO \u2265 50%)",
+    "value": "0 P/LP, 0 VUS/conflicting, 5 benign; e.g. VCV000147015 (Benign, RO 0.98), VCV000146955 (Benign, RO 0.98), VCV000149437 (Likely benign, RO 0.82)",
+    "evidence direction": "towards benign (similar benign records)"
+   },
+   {
+    "evidence": "TESSERACT-CNV score",
+    "value": "not run (adapter not configured)",
+    "evidence direction": "not available"
+   },
+   {
+    "evidence": "Inheritance / phenotype",
+    "value": "parents not tested; phenotype in Step 0",
+    "evidence direction": "not assessed (needs parental testing and clinical review)"
+   }
+  ]
+ },
+ "provenance": {
+  "public_data": {
+   "description": "Provenance of every public file downloaded for Practice 2",
+   "items": {
+    "hg19_reference_windows": {
+     "file": "data/ref/hg19_cnv_windows.fa.gz",
+     "how": "UCSC REST API getData/sequence (hg19), uppercased, embedded in full-length N-masked chromosomes",
+     "chrom_lengths_hg19": {
+      "chr4": 191154276,
+      "chr17": 81195210,
+      "chr22": 51304566
+     },
+     "downloads": [
+      {
+       "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr22;start=18000000;end=23000000",
+       "retrieved_utc": "2026-10-14T15:35:39+00:00",
+       "downloadTime": "2026:10:14T15:35:37Z",
+       "dataTime": null,
+       "length": 5000000,
+       "window_1based": "chr22:18000001-23000000",
+       "N_bases": 100021
+      },
+      {
+       "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr17;start=14600000;end=15700000",
+       "retrieved_utc": "2026-10-14T15:35:40+00:00",
+       "downloadTime": "2026:10:14T15:35:39Z",
+       "dataTime": null,
+       "length": 1100000,
+       "window_1based": "chr17:14600001-15700000",
+       "N_bases": 0
+      },
+      {
+       "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg19;chrom=chr4;start=69000000;end=69800000",
+       "retrieved_utc": "2026-10-14T15:35:41+00:00",
+       "downloadTime": "2026:10:14T15:35:41Z",
+       "dataTime": null,
+       "length": 800000,
+       "window_1based": "chr4:69000001-69800000",
+       "N_bases": 0
+      }
+     ]
+    },
+    "chain_hg19ToHg38": {
+     "file": "data/ref/hg19ToHg38.over.chain.gz",
+     "url": "https://hgdownload.soe.ucsc.edu/goldenPath/hg19/liftOver/hg19ToHg38.over.chain.gz",
+     "retrieved_utc": "2026-10-14T15:35:44+00:00",
+     "last_modified": "Wed, 01 Jan 2014 07:08:46 GMT",
+     "bytes": 227698
+    },
+    "genes_hg19": {
+     "file": "data/annotation/genes_hg19_refseqselect_windows.tsv",
+     "track": "hg19 ncbiRefSeqSelect (NCBI RefSeq Select and MANE subset); NM_ (protein-coding) transcripts only; one row per gene",
+     "downloads": [
+      {
+       "genome": "hg19",
+       "track": "ncbiRefSeqSelect",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:54+00:00",
+       "downloadTime": "2026:10:14T15:35:53Z",
+       "dataTime": "2024-09-18T08:29:04",
+       "bigDataUrl": null,
+       "itemsReturned": 77,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "ncbiRefSeqSelect",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:54+00:00",
+       "downloadTime": "2026:10:14T15:35:54Z",
+       "dataTime": "2024-09-18T08:29:04",
+       "bigDataUrl": null,
+       "itemsReturned": 8,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "ncbiRefSeqSelect",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=ncbiRefSeqSelect;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:55+00:00",
+       "downloadTime": "2026:10:14T15:35:55Z",
+       "dataTime": "2024-09-18T08:29:04",
+       "bigDataUrl": null,
+       "itemsReturned": 7,
+       "maxItemsLimit": false
+      }
+     ],
+     "n_genes": 92
+    },
+    "genomicSuperDups_hg19": {
+     "file": "data/tracks_hg19/genomicSuperDups_hg19_windows.tsv.gz",
+     "track": "hg19 genomicSuperDups",
+     "downloads": [
+      {
+       "genome": "hg19",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:56+00:00",
+       "downloadTime": "2026:10:14T15:35:55Z",
+       "dataTime": "2011-09-26T08:15:55",
+       "bigDataUrl": null,
+       "itemsReturned": 525,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:56+00:00",
+       "downloadTime": "2026:10:14T15:35:56Z",
+       "dataTime": "2011-09-26T08:15:55",
+       "bigDataUrl": null,
+       "itemsReturned": 16,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=genomicSuperDups;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:57+00:00",
+       "downloadTime": "2026:10:14T15:35:57Z",
+       "dataTime": "2011-09-26T08:15:55",
+       "bigDataUrl": null,
+       "itemsReturned": 28,
+       "maxItemsLimit": false
+      }
+     ],
+     "n_items": 569
+    },
+    "clinvarCnv_hg19": {
+     "file": "data/tracks_hg19/clinvarCnv_hg19_windows.tsv.gz",
+     "track": "hg19 clinvarCnv",
+     "downloads": [
+      {
+       "genome": "hg19",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr22;start=18000000;end=23000000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:58+00:00",
+       "downloadTime": "2026:10:14T15:35:57Z",
+       "dataTime": "2015-01-26T08:03:15",
+       "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 912,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr17;start=14600000;end=15700000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:59+00:00",
+       "downloadTime": "2026:10:14T15:35:58Z",
+       "dataTime": "2015-01-26T08:03:15",
+       "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 175,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg19",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg19;track=clinvarCnv;chrom=chr4;start=69000000;end=69800000;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:35:59+00:00",
+       "downloadTime": "2026:10:14T15:35:59Z",
+       "dataTime": "2015-01-26T08:03:15",
+       "bigDataUrl": "/gbdb/hg19/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 56,
+       "maxItemsLimit": false
+      }
+     ],
+     "n_items": 1143
+    },
+    "genes_hg38_mane": {
+     "file": "data/annotation/genes_hg38_mane_select.tsv.gz",
+     "track": "hg38 mane (MANE Select, protein_coding only; MANE Plus Clinical rows dropped)",
+     "version_files": {
+      "MANE (hg38 mane track)": {
+       "url": "https://hgdownload.soe.ucsc.edu/gbdb/hg38/mane/README_versions.txt",
+       "text": "MANE Version\t1.5\nNCBI RefSeq Annotation Release\tGCF_000001405.40-RS_2025_08\nEnsembl Release\t116"
+      },
+      "ClinGen dosage map (hg38)": {
+       "url": "https://hgdownload.soe.ucsc.edu/gbdb/hg38/bbi/clinGen/clinGenDosageVersion.txt",
+       "text": "ClinGen Dosage Sensitivity Map, 28 Apr,2026"
+      }
+     },
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr1;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:36:37+00:00",
+       "downloadTime": "2026:10:14T15:36:00Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 2010,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr2;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:37:14+00:00",
+       "downloadTime": "2026:10:14T15:36:37Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1226,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr3;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:38:19+00:00",
+       "downloadTime": "2026:10:14T15:37:15Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1044,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr4;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:12+00:00",
+       "downloadTime": "2026:10:14T15:38:20Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 745,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr5;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:13+00:00",
+       "downloadTime": "2026:10:14T15:39:12Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 865,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr6;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:14+00:00",
+       "downloadTime": "2026:10:14T15:39:13Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1010,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr7;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:15+00:00",
+       "downloadTime": "2026:10:14T15:39:14Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 891,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr8;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:16+00:00",
+       "downloadTime": "2026:10:14T15:39:15Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 685,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr9;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:17+00:00",
+       "downloadTime": "2026:10:14T15:39:16Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 758,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr10;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:18+00:00",
+       "downloadTime": "2026:10:14T15:39:17Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 715,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr11;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:19+00:00",
+       "downloadTime": "2026:10:14T15:39:18Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1278,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr12;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:20+00:00",
+       "downloadTime": "2026:10:14T15:39:19Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1012,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr13;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:20+00:00",
+       "downloadTime": "2026:10:14T15:39:20Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 318,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr14;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:21+00:00",
+       "downloadTime": "2026:10:14T15:39:21Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 591,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr15;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:22+00:00",
+       "downloadTime": "2026:10:14T15:39:22Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 572,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr16;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:23+00:00",
+       "downloadTime": "2026:10:14T15:39:22Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 816,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr17;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:24+00:00",
+       "downloadTime": "2026:10:14T15:39:24Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1139,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr18;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:25+00:00",
+       "downloadTime": "2026:10:14T15:39:25Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 262,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr19;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:26+00:00",
+       "downloadTime": "2026:10:14T15:39:26Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 1387,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr20;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:27+00:00",
+       "downloadTime": "2026:10:14T15:39:26Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 526,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr21;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:28+00:00",
+       "downloadTime": "2026:10:14T15:39:27Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 215,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:28+00:00",
+       "downloadTime": "2026:10:14T15:39:28Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 425,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chrX;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:29+00:00",
+       "downloadTime": "2026:10:14T15:39:29Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 840,
+       "maxItemsLimit": false
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chrY;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:39:30+00:00",
+       "downloadTime": "2026:10:14T15:39:30Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 43,
+       "maxItemsLimit": false
+      }
+     ],
+     "n_genes": 19229
+    },
+    "tracks_hg38": {
+     "dir": "data/tracks_hg38",
+     "provenance": "data/tracks_hg38/provenance_tracks_hg38.json",
+     "regions": [
+      {
+       "region_id": "22q11_proximal",
+       "chrom": "chr22",
+       "start0": 17784681,
+       "end": 21665821,
+       "core_start0": 18339129,
+       "core_end": 21111373,
+       "flank_bp": 554448
+      },
+      {
+       "region_id": "PMP22",
+       "chrom": "chr17",
+       "start0": 15179776,
+       "end": 15315357,
+       "core_start0": 15229776,
+       "core_end": 15265357,
+       "flank_bp": 50000
+      },
+      {
+       "region_id": "UGT2B17",
+       "chrom": "chr4",
+       "start0": 68459450,
+       "end": 68667530,
+       "core_start0": 68509450,
+       "core_end": 68617530,
+       "flank_bp": 50000
+      },
+      {
+       "region_id": "22q11_distal",
+       "chrom": "chr22",
+       "start0": 20385019,
+       "end": 22417451,
+       "core_start0": 20675366,
+       "core_end": 22127104,
+       "flank_bp": 290347
+      }
+     ],
+     "skipped": {
+      "decipher": "DECIPHER CNVs: protectedData=True in /list/tracks (restricted; cannot be downloaded via the API)"
+     }
+    }
+   }
+  },
+  "tracks_hg38": {
+   "retrieved_utc": "2026-10-14T15:44:59+00:00",
+   "regions": [
+    {
+     "region_id": "22q11_proximal",
+     "chrom": "chr22",
+     "start0": 17784681,
+     "end": 21665821,
+     "core_start0": 18339129,
+     "core_end": 21111373,
+     "flank_bp": 554448
+    },
+    {
+     "region_id": "PMP22",
+     "chrom": "chr17",
+     "start0": 15179776,
+     "end": 15315357,
+     "core_start0": 15229776,
+     "core_end": 15265357,
+     "flank_bp": 50000
+    },
+    {
+     "region_id": "UGT2B17",
+     "chrom": "chr4",
+     "start0": 68459450,
+     "end": 68667530,
+     "core_start0": 68509450,
+     "core_end": 68617530,
+     "flank_bp": 50000
+    },
+    {
+     "region_id": "22q11_distal",
+     "chrom": "chr22",
+     "start0": 20385019,
+     "end": 22417451,
+     "core_start0": 20675366,
+     "core_end": 22127104,
+     "flank_bp": 290347
+    }
+   ],
+   "tracks": {
+    "mane": {
+     "why": "genes (MANE Select/Plus Clinical transcripts)",
+     "file": "data/tracks_hg38/mane.tsv.gz",
+     "n_items_downloaded": 95,
+     "n_items_kept": 95,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:02+00:00",
+       "downloadTime": "2026:10:14T15:45:02Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 61,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:02+00:00",
+       "downloadTime": "2026:10:14T15:45:02Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 2,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:03+00:00",
+       "downloadTime": "2026:10:14T15:45:03Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 3,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "mane",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:03+00:00",
+       "downloadTime": "2026:10:14T15:45:03Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+       "itemsReturned": 29,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "clinGenHaplo": {
+     "why": "ClinGen haploinsufficiency (HI) scores, genes and regions",
+     "file": "data/tracks_hg38/clinGenHaplo.tsv.gz",
+     "n_items_downloaded": 37,
+     "n_items_kept": 37,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "clinGenHaplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:04+00:00",
+       "downloadTime": "2026:10:14T15:45:04Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+       "itemsReturned": 22,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenHaplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:04+00:00",
+       "downloadTime": "2026:10:14T15:45:04Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+       "itemsReturned": 2,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenHaplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:05+00:00",
+       "downloadTime": "2026:10:14T15:45:05Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+       "itemsReturned": 0,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenHaplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:05+00:00",
+       "downloadTime": "2026:10:14T15:45:05Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+       "itemsReturned": 13,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "clinGenTriplo": {
+     "why": "ClinGen triplosensitivity (TS) scores, genes and regions",
+     "file": "data/tracks_hg38/clinGenTriplo.tsv.gz",
+     "n_items_downloaded": 37,
+     "n_items_kept": 37,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "clinGenTriplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:06+00:00",
+       "downloadTime": "2026:10:14T15:45:06Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+       "itemsReturned": 22,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenTriplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:06+00:00",
+       "downloadTime": "2026:10:14T15:45:06Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+       "itemsReturned": 2,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenTriplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:07+00:00",
+       "downloadTime": "2026:10:14T15:45:07Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+       "itemsReturned": 0,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenTriplo",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:07+00:00",
+       "downloadTime": "2026:10:14T15:45:07Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+       "itemsReturned": 13,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "clinGenGeneDisease": {
+     "why": "ClinGen gene-disease validity",
+     "file": "data/tracks_hg38/clinGenGeneDisease.tsv.gz",
+     "n_items_downloaded": 11,
+     "n_items_kept": 11,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "clinGenGeneDisease",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:08+00:00",
+       "downloadTime": "2026:10:14T15:45:08Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+       "itemsReturned": 7,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenGeneDisease",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:09+00:00",
+       "downloadTime": "2026:10:14T15:45:08Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+       "itemsReturned": 1,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenGeneDisease",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:09+00:00",
+       "downloadTime": "2026:10:14T15:45:09Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+       "itemsReturned": 0,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinGenGeneDisease",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:10+00:00",
+       "downloadTime": "2026:10:14T15:45:10Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+       "itemsReturned": 3,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "pliByGene": {
+     "why": "gnomAD v2.1.1 LoF constraint (pLI, LOEUF) by gene",
+     "file": "data/tracks_hg38/pliByGene.tsv.gz",
+     "n_items_downloaded": 91,
+     "n_items_kept": 91,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "pliByGene",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:10+00:00",
+       "downloadTime": "2026:10:14T15:45:10Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+       "itemsReturned": 59,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "pliByGene",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:11+00:00",
+       "downloadTime": "2026:10:14T15:45:11Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+       "itemsReturned": 2,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "pliByGene",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:11+00:00",
+       "downloadTime": "2026:10:14T15:45:11Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+       "itemsReturned": 3,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "pliByGene",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:12+00:00",
+       "downloadTime": "2026:10:14T15:45:12Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+       "itemsReturned": 27,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "clinvarCnv": {
+     "why": "ClinVar CNVs >= 50 bp",
+     "file": "data/tracks_hg38/clinvarCnv.tsv.gz",
+     "n_items_downloaded": 704,
+     "n_items_kept": 704,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:13+00:00",
+       "downloadTime": "2026:10:14T15:45:12Z",
+       "dataTime": "2015-01-21T01:26:15",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 356,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:13+00:00",
+       "downloadTime": "2026:10:14T15:45:13Z",
+       "dataTime": "2015-01-21T01:26:15",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 63,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:14+00:00",
+       "downloadTime": "2026:10:14T15:45:14Z",
+       "dataTime": "2015-01-21T01:26:15",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 28,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarCnv",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:14+00:00",
+       "downloadTime": "2026:10:14T15:45:14Z",
+       "dataTime": "2015-01-21T01:26:15",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+       "itemsReturned": 257,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "clinvarMain": {
+     "why": "ClinVar SNVs/indels < 50 bp, kept only Pathogenic / Likely pathogenic",
+     "file": "data/tracks_hg38/clinvarMain.tsv.gz",
+     "n_items_downloaded": 23641,
+     "n_items_kept": 2205,
+     "filter": "clinSign Pathogenic/Likely pathogenic only (no conflicting/benign/uncertain)",
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "clinvarMain",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:16+00:00",
+       "downloadTime": "2026:10:14T15:45:15Z",
+       "dataTime": "2015-01-21T01:26:24",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+       "itemsReturned": 15271,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarMain",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:17+00:00",
+       "downloadTime": "2026:10:14T15:45:17Z",
+       "dataTime": "2015-01-21T01:26:24",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+       "itemsReturned": 474,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarMain",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:18+00:00",
+       "downloadTime": "2026:10:14T15:45:18Z",
+       "dataTime": "2015-01-21T01:26:24",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+       "itemsReturned": 203,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "clinvarMain",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:20+00:00",
+       "downloadTime": "2026:10:14T15:45:18Z",
+       "dataTime": "2015-01-21T01:26:24",
+       "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+       "itemsReturned": 7693,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "phastConsElements100way": {
+     "why": "conserved elements (100 vertebrates)",
+     "file": "data/tracks_hg38/phastConsElements100way.tsv.gz",
+     "n_items_downloaded": 23746,
+     "n_items_kept": 23746,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "phastConsElements100way",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:21+00:00",
+       "downloadTime": "2026:10:14T15:45:20Z",
+       "dataTime": "2015-05-08T08:25:45",
+       "bigDataUrl": null,
+       "itemsReturned": 14727,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "phastConsElements100way",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:21+00:00",
+       "downloadTime": "2026:10:14T15:45:21Z",
+       "dataTime": "2015-05-08T08:25:45",
+       "bigDataUrl": null,
+       "itemsReturned": 396,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "phastConsElements100way",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:22+00:00",
+       "downloadTime": "2026:10:14T15:45:22Z",
+       "dataTime": "2015-05-08T08:25:45",
+       "bigDataUrl": null,
+       "itemsReturned": 561,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "phastConsElements100way",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:23+00:00",
+       "downloadTime": "2026:10:14T15:45:22Z",
+       "dataTime": "2015-05-08T08:25:45",
+       "bigDataUrl": null,
+       "itemsReturned": 8062,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "encodeCcreCombined": {
+     "why": "ENCODE3 candidate cis-regulatory elements",
+     "file": "data/tracks_hg38/encodeCcreCombined.tsv.gz",
+     "n_items_downloaded": 2544,
+     "n_items_kept": 2544,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "encodeCcreCombined",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:24+00:00",
+       "downloadTime": "2026:10:14T15:45:23Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+       "itemsReturned": 1595,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "encodeCcreCombined",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:24+00:00",
+       "downloadTime": "2026:10:14T15:45:24Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+       "itemsReturned": 65,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "encodeCcreCombined",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:25+00:00",
+       "downloadTime": "2026:10:14T15:45:24Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+       "itemsReturned": 42,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "encodeCcreCombined",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:25+00:00",
+       "downloadTime": "2026:10:14T15:45:25Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+       "itemsReturned": 842,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "genomicSuperDups": {
+     "why": "segmental duplications (>1 kb, >90% identity)",
+     "file": "data/tracks_hg38/genomicSuperDups.tsv.gz",
+     "n_items_downloaded": 831,
+     "n_items_kept": 831,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:26+00:00",
+       "downloadTime": "2026:10:14T15:45:26Z",
+       "dataTime": "2014-10-14T16:20:55",
+       "bigDataUrl": null,
+       "itemsReturned": 518,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:26+00:00",
+       "downloadTime": "2026:10:14T15:45:26Z",
+       "dataTime": "2014-10-14T16:20:55",
+       "bigDataUrl": null,
+       "itemsReturned": 0,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:27+00:00",
+       "downloadTime": "2026:10:14T15:45:27Z",
+       "dataTime": "2014-10-14T16:20:55",
+       "bigDataUrl": null,
+       "itemsReturned": 2,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "genomicSuperDups",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:28+00:00",
+       "downloadTime": "2026:10:14T15:45:27Z",
+       "dataTime": "2014-10-14T16:20:55",
+       "bigDataUrl": null,
+       "itemsReturned": 311,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "gnomadStructuralVariants": {
+     "why": "gnomAD v4.1 SVs (population frequency; NOT a TESSERACT input)",
+     "file": "data/tracks_hg38/gnomadStructuralVariants.tsv.gz",
+     "n_items_downloaded": 5551,
+     "n_items_kept": 5551,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "gnomadStructuralVariants",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:29+00:00",
+       "downloadTime": "2026:10:14T15:45:28Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+       "itemsReturned": 3199,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "gnomadStructuralVariants",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:29+00:00",
+       "downloadTime": "2026:10:14T15:45:29Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+       "itemsReturned": 75,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "gnomadStructuralVariants",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:30+00:00",
+       "downloadTime": "2026:10:14T15:45:30Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+       "itemsReturned": 260,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "gnomadStructuralVariants",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:31+00:00",
+       "downloadTime": "2026:10:14T15:45:30Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+       "itemsReturned": 2017,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    },
+    "dgvGold": {
+     "why": "DGV Gold Standard CNVs (population; NOT a TESSERACT input)",
+     "file": "data/tracks_hg38/dgvGold.tsv.gz",
+     "n_items_downloaded": 200,
+     "n_items_kept": 200,
+     "filter": null,
+     "downloads": [
+      {
+       "genome": "hg38",
+       "track": "dgvGold",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:32+00:00",
+       "downloadTime": "2026:10:14T15:45:32Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+       "itemsReturned": 102,
+       "maxItemsLimit": false,
+       "region_id": "22q11_proximal"
+      },
+      {
+       "genome": "hg38",
+       "track": "dgvGold",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:33+00:00",
+       "downloadTime": "2026:10:14T15:45:33Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+       "itemsReturned": 5,
+       "maxItemsLimit": false,
+       "region_id": "PMP22"
+      },
+      {
+       "genome": "hg38",
+       "track": "dgvGold",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:34+00:00",
+       "downloadTime": "2026:10:14T15:45:33Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+       "itemsReturned": 17,
+       "maxItemsLimit": false,
+       "region_id": "UGT2B17"
+      },
+      {
+       "genome": "hg38",
+       "track": "dgvGold",
+       "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+       "retrieved_utc": "2026-10-14T15:45:34+00:00",
+       "downloadTime": "2026:10:14T15:45:34Z",
+       "dataTime": null,
+       "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+       "itemsReturned": 76,
+       "maxItemsLimit": false,
+       "region_id": "22q11_distal"
+      }
+     ]
+    }
+   },
+   "skipped": {
+    "decipher": "DECIPHER CNVs: protectedData=True in /list/tracks (restricted; cannot be downloaded via the API)"
+   },
+   "track_meta": {
+    "mane": {
+     "shortLabel": "MANE",
+     "longLabel": "MANE Select Plus Clinical: Representative transcript from RefSeq & GENCODE",
+     "type": "bigGenePred",
+     "dataVersion": "/gbdb/hg38/mane/README_versions.txt",
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb"
+    },
+    "clinGenHaplo": {
+     "shortLabel": "ClinGen Haploinsufficiency",
+     "longLabel": "ClinGen Dosage Sensitivity Map - Haploinsufficiency",
+     "type": "bigBed 9 +",
+     "dataVersion": "/gbdb/$D/bbi/clinGen/clinGenDosageVersion.txt",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb"
+    },
+    "clinGenTriplo": {
+     "shortLabel": "ClinGen Triplosensitivity",
+     "longLabel": "ClinGen Dosage Sensitivity Map - Triplosensitivity",
+     "type": "bigBed 9 +",
+     "dataVersion": "/gbdb/$D/bbi/clinGen/clinGenDosageVersion.txt",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb"
+    },
+    "clinGenGeneDisease": {
+     "shortLabel": "ClinGen Validity",
+     "longLabel": "ClinGen Gene-Disease Validity Classification",
+     "type": "bigBed 9 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb"
+    },
+    "pliByGene": {
+     "shortLabel": "Gene LoF",
+     "longLabel": "gnomAD Predicted Loss of Function Constraint Metrics By Gene (LOEUF and pLI) v2.1.1",
+     "type": "bigBed 12 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb"
+    },
+    "clinvarCnv": {
+     "shortLabel": "ClinVar CNVs",
+     "longLabel": "ClinVar Copy Number Variants >= 50bp",
+     "type": "bigBed 12 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb"
+    },
+    "clinvarMain": {
+     "shortLabel": "ClinVar SNVs",
+     "longLabel": "ClinVar Short Nucleotide Variants < 50bp",
+     "type": "bigBed 12 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb"
+    },
+    "phastConsElements100way": {
+     "shortLabel": "100 Vert. El",
+     "longLabel": "100 vertebrates Conserved Elements",
+     "type": "bed 5 .",
+     "dataVersion": null,
+     "bigDataUrl": null
+    },
+    "encodeCcreCombined": {
+     "shortLabel": "ENCODE3 cCREs",
+     "longLabel": "ENCODE3 Registry of candidate Cis-Regulatory Elements (cCREs)",
+     "type": "bigBed 9 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb"
+    },
+    "genomicSuperDups": {
+     "shortLabel": "Segmental Dups",
+     "longLabel": "Duplications of >1000 Bases of Non-RepeatMasked Sequence",
+     "type": "bed 6 +",
+     "dataVersion": null,
+     "bigDataUrl": null
+    },
+    "gnomadStructuralVariants": {
+     "shortLabel": "gnomAD Structural Variants",
+     "longLabel": "Genome Aggregation Database (gnomAD) - Structural Variants v4.1",
+     "type": "bigBed 9 +",
+     "dataVersion": "Release 4.1 (November 01, 2023)",
+     "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb"
+    },
+    "dgvGold": {
+     "shortLabel": "DGV Gold Standard",
+     "longLabel": "Database of Genomic Variants: Gold Standard Variants",
+     "type": "bigBed 12 +",
+     "dataVersion": null,
+     "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb"
+    }
+   }
+  }
+ },
+ "figures": [
+  "p2_fig_caller_steps.png",
+  "p2_fig_cnv_profiles.png",
+  "p2_fig_liftover.png",
+  "p2_fig_rna_dosage.png",
+  "p2_fig_tesseract_image.png",
+  "p2_fig_tracks_22q11.png",
+  "p2_fig_tracks_pmp22.png",
+  "p2_fig_wrong_build.png"
+ ],
+ "file_manifest": [
+  {
+   "path": "data/provenance_public_data.json",
+   "bytes": 17335
+  },
+  {
+   "path": "data/ref/hg19ToHg38.over.chain.gz",
+   "bytes": 227698
+  },
+  {
+   "path": "data/ref/hg19_cnv_windows.fa.gz",
+   "bytes": 3038417
+  },
+  {
+   "path": "data/ref/hg19_cnv_windows.fa.gz.fai",
+   "bytes": 85
+  },
+  {
+   "path": "data/ref/hg19_cnv_windows.fa.gz.gzi",
+   "bytes": 80664
+  },
+  {
+   "path": "data/ref/windows_hg19.bed",
+   "bytes": 133
+  },
+  {
+   "path": "data/tracks_hg38/clinGenGeneDisease.tsv.gz",
+   "bytes": 1012
+  },
+  {
+   "path": "data/tracks_hg38/clinGenHaplo.tsv.gz",
+   "bytes": 1730
+  },
+  {
+   "path": "data/tracks_hg38/clinGenTriplo.tsv.gz",
+   "bytes": 1568
+  },
+  {
+   "path": "data/tracks_hg38/clinvarCnv.tsv.gz",
+   "bytes": 66487
+  },
+  {
+   "path": "data/tracks_hg38/clinvarMain.tsv.gz",
+   "bytes": 228229
+  },
+  {
+   "path": "data/tracks_hg38/dgvGold.tsv.gz",
+   "bytes": 165422
+  },
+  {
+   "path": "data/tracks_hg38/encodeCcreCombined.tsv.gz",
+   "bytes": 69612
+  },
+  {
+   "path": "data/tracks_hg38/genomicSuperDups.tsv.gz",
+   "bytes": 43841
+  },
+  {
+   "path": "data/tracks_hg38/gnomadStructuralVariants.tsv.gz",
+   "bytes": 267312
+  },
+  {
+   "path": "data/tracks_hg38/mane.tsv.gz",
+   "bytes": 8776
+  },
+  {
+   "path": "data/tracks_hg38/phastConsElements100way.tsv.gz",
+   "bytes": 205224
+  },
+  {
+   "path": "data/tracks_hg38/pliByGene.tsv.gz",
+   "bytes": 8280
+  },
+  {
+   "path": "data/tracks_hg38/provenance_tracks_hg38.json",
+   "bytes": 30213
+  },
+  {
+   "path": "data/annotation/genes_hg19_refseqselect_windows.tsv",
+   "bytes": 6135
+  },
+  {
+   "path": "data/annotation/genes_hg38_mane_select.tsv.gz",
+   "bytes": 561811
+  },
+  {
+   "path": "data/results/cnv_calls_hg19.bed",
+   "bytes": 197
+  },
+  {
+   "path": "data/results/cnv_calls_hg19.tsv",
+   "bytes": 371
+  },
+  {
+   "path": "data/results/cnv_calls_hg38.bed",
+   "bytes": 197
+  },
+  {
+   "path": "data/results/liftover_a.log",
+   "bytes": 85
+  },
+  {
+   "path": "data/results/liftover_a_pieces_hg38.bed",
+   "bytes": 8480
+  },
+  {
+   "path": "data/results/liftover_a_pieces_hg38.bed.unmap",
+   "bytes": 0
+  },
+  {
+   "path": "data/results/liftover_b.log",
+   "bytes": 85
+  },
+  {
+   "path": "data/results/liftover_b_breakpoints_hg19.bed",
+   "bytes": 424
+  },
+  {
+   "path": "data/results/liftover_b_breakpoints_hg38.bed",
+   "bytes": 424
+  },
+  {
+   "path": "data/results/liftover_b_breakpoints_hg38.bed.unmap",
+   "bytes": 0
+  },
+  {
+   "path": "data/results/planted_breakpoints_hg19.bed",
+   "bytes": 370
+  },
+  {
+   "path": "data/results/planted_breakpoints_hg38.bed",
+   "bytes": 370
+  },
+  {
+   "path": "data/results/planted_breakpoints_hg38.bed.unmap",
+   "bytes": 0
+  },
+  {
+   "path": "data/results/planted_hg19.bed",
+   "bytes": 165
+  },
+  {
+   "path": "data/results/planted_pieces_hg38.bed",
+   "bytes": 9740
+  },
+  {
+   "path": "data/results/planted_pieces_hg38.bed.unmap",
+   "bytes": 0
+  },
+  {
+   "path": "data/results/tesseract_input_hg38.tsv",
+   "bytes": 306
+  },
+  {
+   "path": "data/results/tesseract_segments_template_hg38.tsv",
+   "bytes": 3054
+  },
+  {
+   "path": "data/pon/pon_bincounts_hg19_5kb.tsv.gz",
+   "bytes": 19388
+  },
+  {
+   "path": "data/pon/pon_build_info.json",
+   "bytes": 847
+  },
+  {
+   "path": "data/tracks_hg19/clinvarCnv_hg19_windows.tsv.gz",
+   "bytes": 120432
+  },
+  {
+   "path": "data/tracks_hg19/genomicSuperDups_hg19_windows.tsv.gz",
+   "bytes": 29739
+  },
+  {
+   "path": "data/truth/planted_cnvs_hg19.bed",
+   "bytes": 311
+  },
+  {
+   "path": "data/truth/planted_cnvs_hg19.tsv",
+   "bytes": 2330
+  },
+  {
+   "path": "data/truth/rna_truth_cnv_genes.tsv",
+   "bytes": 7299
+  },
+  {
+   "path": "data/fastq/C1_R1.fastq.gz",
+   "bytes": 5559604
+  },
+  {
+   "path": "data/fastq/C1_R2.fastq.gz",
+   "bytes": 5889469
+  },
+  {
+   "path": "data/fastq/P1_R1.fastq.gz",
+   "bytes": 4897521
+  },
+  {
+   "path": "data/fastq/P1_R2.fastq.gz",
+   "bytes": 5190151
+  },
+  {
+   "path": "data/fastq/P2_R1.fastq.gz",
+   "bytes": 5195650
+  },
+  {
+   "path": "data/fastq/P2_R2.fastq.gz",
+   "bytes": 5505100
+  },
+  {
+   "path": "data/fastq/P3_R1.fastq.gz",
+   "bytes": 5474821
+  },
+  {
+   "path": "data/fastq/P3_R2.fastq.gz",
+   "bytes": 5797389
+  },
+  {
+   "path": "data/rna/counts_hg38_mane.tsv.gz",
+   "bytes": 634491
+  },
+  {
+   "path": "data/rna/samples.tsv",
+   "bytes": 1049
+  },
+  {
+   "path": "results/notebook_figures/step2_gc_effect.png",
+   "bytes": 69291
+  },
+  {
+   "path": "results/figures/p2_fig_caller_steps.png",
+   "bytes": 140950
+  },
+  {
+   "path": "results/figures/p2_fig_cnv_profiles.png",
+   "bytes": 433171
+  },
+  {
+   "path": "results/figures/p2_fig_liftover.png",
+   "bytes": 137850
+  },
+  {
+   "path": "results/figures/p2_fig_rna_dosage.png",
+   "bytes": 239686
+  },
+  {
+   "path": "results/figures/p2_fig_tesseract_image.png",
+   "bytes": 147868
+  },
+  {
+   "path": "results/figures/p2_fig_tracks_22q11.png",
+   "bytes": 220022
+  },
+  {
+   "path": "results/figures/p2_fig_tracks_pmp22.png",
+   "bytes": 180117
+  },
+  {
+   "path": "results/figures/p2_fig_wrong_build.png",
+   "bytes": 127951
+  },
+  {
+   "path": "scripts/build_pon.py",
+   "bytes": 2359
+  },
+  {
+   "path": "scripts/cnvlib.py",
+   "bytes": 3144
+  },
+  {
+   "path": "scripts/config.py",
+   "bytes": 5301
+  },
+  {
+   "path": "scripts/fetch_public_data.py",
+   "bytes": 14589
+  },
+  {
+   "path": "scripts/make_all.sh",
+   "bytes": 796
+  },
+  {
+   "path": "scripts/make_truth.py",
+   "bytes": 2510
+  },
+  {
+   "path": "scripts/p2_figures.py",
+   "bytes": 29334
+  },
+  {
+   "path": "scripts/run_notebook_inprocess.py",
+   "bytes": 4164
+  },
+  {
+   "path": "scripts/simulate_dna.py",
+   "bytes": 7440
+  },
+  {
+   "path": "scripts/simulate_rna.py",
+   "bytes": 6336
+  },
+  {
+   "path": "scripts/ucsc_api.py",
+   "bytes": 3114
+  },
+  {
+   "path": "fonts/FONT_LICENSE.txt",
+   "bytes": 396
+  },
+  {
+   "path": "fonts/SUIT-Bold.ttf",
+   "bytes": 589892
+  },
+  {
+   "path": "fonts/SUIT-Regular.ttf",
+   "bytes": 594324
+  }
+ ]
+}

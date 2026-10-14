@@ -1,0 +1,1329 @@
+{
+ "tool_versions": {
+  "samtools": "1.24",
+  "bcftools": "1.24",
+  "htslib (bgzip/tabix)": "1.24",
+  "minimap2": "2.31-r1302",
+  "fastp": "1.4.0",
+  "python": "3.12.15",
+  "pysam": "0.24.1",
+  "pandas": "3.0.6",
+  "numpy": "2.5.4"
+ },
+ "reference": {
+  "file": "data/ref/chr11_GRCh38_betaglobin.fa.gz",
+  "chr11_length": 135086622,
+  "window": "chr11:5200001-5300000",
+  "base_at_5227002": "T",
+  "chr11:5226991-5227010": "CAGACTTCTCCTCAGGAGTC"
+ },
+ "read_pairs": {
+  "S01": 10400,
+  "S02": 10400,
+  "S03": 10415
+ },
+ "fastp": {
+  "S01": {
+   "reads (R1+R2)": 20800,
+   "Q20 %": 96.8,
+   "Q30 %": 88.7,
+   "mean length": 150,
+   "GC %": 38.8,
+   "reads failing fastp filters": 0
+  },
+  "S02": {
+   "reads (R1+R2)": 20800,
+   "Q20 %": 96.8,
+   "Q30 %": 88.8,
+   "mean length": 150,
+   "GC %": 38.9,
+   "reads failing fastp filters": 0
+  },
+  "S03": {
+   "reads (R1+R2)": 20830,
+   "Q20 %": 96.8,
+   "Q30 %": 88.7,
+   "mean length": 150,
+   "GC %": 38.9,
+   "reads failing fastp filters": 0
+  }
+ },
+ "quality_curve_S01": {
+  "R1_mean_by_cycle": [
+   35.775,
+   35.7568,
+   36.3619,
+   36.3643,
+   36.336,
+   36.4149,
+   36.3367,
+   36.3022,
+   36.3224,
+   36.3414,
+   36.3569,
+   36.3541,
+   36.3269,
+   36.2904,
+   36.3047,
+   36.3987,
+   36.3043,
+   36.3012,
+   36.272,
+   36.3029,
+   36.3122,
+   36.2907,
+   36.2993,
+   36.3135,
+   36.3324,
+   36.2685,
+   36.3142,
+   36.2344,
+   36.2767,
+   36.279,
+   36.2372,
+   36.2089,
+   36.2736,
+   36.2434,
+   36.2037,
+   36.1869,
+   36.2633,
+   36.2552,
+   36.1832,
+   36.1548,
+   36.218,
+   36.1662,
+   36.216,
+   36.1471,
+   36.102,
+   36.0633,
+   36.09,
+   36.136,
+   36.073,
+   36.0073,
+   36.083,
+   36.0214,
+   36.0573,
+   36.0967,
+   35.9974,
+   35.9626,
+   36.0128,
+   35.9086,
+   36.0059,
+   35.9649,
+   36.0034,
+   35.9197,
+   35.967,
+   35.8287,
+   35.8548,
+   35.8346,
+   35.8846,
+   35.8518,
+   35.9268,
+   35.8015,
+   35.8265,
+   35.817,
+   35.6587,
+   35.6492,
+   35.7413,
+   35.6594,
+   35.6462,
+   35.608,
+   35.6315,
+   35.6286,
+   35.5637,
+   35.5448,
+   35.5161,
+   35.5119,
+   35.4638,
+   35.4109,
+   35.5038,
+   35.3612,
+   35.3907,
+   35.4673,
+   35.345,
+   35.2856,
+   35.2168,
+   35.3905,
+   35.2631,
+   35.337,
+   35.2358,
+   35.0681,
+   35.1368,
+   35.1777,
+   35.151,
+   35.0494,
+   35.0213,
+   34.9477,
+   35.0334,
+   34.9749,
+   34.9485,
+   34.9999,
+   34.8811,
+   34.7954,
+   34.8253,
+   34.765,
+   34.6914,
+   34.734,
+   34.7214,
+   34.639,
+   34.5613,
+   34.4929,
+   34.5491,
+   34.4735,
+   34.4933,
+   34.3534,
+   34.2915,
+   34.342,
+   34.3154,
+   34.2729,
+   34.3084,
+   34.2478,
+   34.2164,
+   34.1402,
+   34.1929,
+   33.9058,
+   33.9546,
+   33.8738,
+   33.8525,
+   33.8522,
+   33.7936,
+   33.786,
+   33.5851,
+   33.614,
+   33.7067,
+   33.5486,
+   33.4962,
+   33.5038,
+   33.4535,
+   33.2876,
+   33.3803,
+   33.5068,
+   33.133,
+   33.1703
+  ],
+  "R2_mean_by_cycle": [
+   35.6754,
+   35.7754,
+   36.3836,
+   36.4067,
+   36.3471,
+   36.3479,
+   36.3378,
+   36.4406,
+   36.366,
+   36.4073,
+   36.3519,
+   36.3865,
+   36.3841,
+   36.3333,
+   36.3362,
+   36.3516,
+   36.2668,
+   36.3079,
+   36.2966,
+   36.3052,
+   36.2806,
+   36.3147,
+   36.3089,
+   36.2629,
+   36.2492,
+   36.2983,
+   36.2618,
+   36.2572,
+   36.1933,
+   36.2226,
+   36.1873,
+   36.1761,
+   36.1853,
+   36.1586,
+   36.1307,
+   36.1812,
+   36.1089,
+   36.1235,
+   36.0979,
+   36.0854,
+   36.05,
+   36.0811,
+   36.1224,
+   36.0052,
+   36.0736,
+   36.0501,
+   35.9471,
+   36.0262,
+   35.9867,
+   35.9507,
+   35.9312,
+   35.9704,
+   35.8806,
+   35.8462,
+   35.9395,
+   35.9073,
+   35.8508,
+   35.7647,
+   35.8057,
+   35.7355,
+   35.747,
+   35.7528,
+   35.7055,
+   35.6855,
+   35.6904,
+   35.6494,
+   35.5343,
+   35.5924,
+   35.4603,
+   35.5189,
+   35.506,
+   35.4222,
+   35.4708,
+   35.4726,
+   35.4428,
+   35.3713,
+   35.3418,
+   35.358,
+   35.2947,
+   35.1289,
+   35.1861,
+   35.1369,
+   35.2192,
+   35.1336,
+   35.0497,
+   35.0087,
+   34.8821,
+   35.0044,
+   34.8959,
+   34.9591,
+   34.9139,
+   34.9086,
+   34.7712,
+   34.8473,
+   34.821,
+   34.6379,
+   34.6576,
+   34.6529,
+   34.6363,
+   34.4309,
+   34.5785,
+   34.4301,
+   34.4495,
+   34.2915,
+   34.3022,
+   34.1933,
+   34.3192,
+   34.0328,
+   34.2243,
+   34.0288,
+   34.0171,
+   33.9801,
+   34.0069,
+   33.8726,
+   33.7939,
+   33.8799,
+   33.7711,
+   33.5547,
+   33.5579,
+   33.5813,
+   33.5724,
+   33.5095,
+   33.3818,
+   33.4156,
+   33.2636,
+   33.0986,
+   33.1623,
+   33.1403,
+   33.0988,
+   33.0854,
+   32.9286,
+   32.9463,
+   32.7868,
+   32.6887,
+   32.664,
+   32.5177,
+   32.6269,
+   32.5176,
+   32.4071,
+   32.2453,
+   32.1082,
+   31.9793,
+   32.1552,
+   32.1246,
+   31.8839,
+   31.9975,
+   31.6663,
+   31.8129,
+   31.4316,
+   31.6864
+  ]
+ },
+ "alignment": {
+  "S01": {
+   "reads": 20800,
+   "% mapped": 100.0,
+   "% properly paired": 100.0,
+   "mean fragment length": 377.7
+  },
+  "S02": {
+   "reads": 20800,
+   "% mapped": 100.0,
+   "% properly paired": 100.0,
+   "mean fragment length": 378.9
+  },
+  "S03": {
+   "reads": 20830,
+   "% mapped": 100.0,
+   "% properly paired": 100.0,
+   "mean fragment length": 378.9
+  }
+ },
+ "duplicates": {
+  "duplicate_pct": {
+   "S01": 3.86,
+   "S02": 3.86,
+   "S03": 3.99
+  },
+  "jackpot": {
+   "sample": "S03",
+   "pos": 5214982,
+   "ref": "G",
+   "alt": "C",
+   "copies_with_identical_ends": 15,
+   "read_start": 5214922,
+   "mate_start": 5215173,
+   "counts_before_markdup": {
+    "C": 15,
+    "G": 37
+   },
+   "counts_after_markdup": {
+    "C": 1,
+    "G": 37
+   }
+  }
+ },
+ "coverage": {
+  "S01": {
+   "mean_depth": 30.0,
+   "pct_window_ge20x": 96.8,
+   "pct_window_lt10x": 0.9,
+   "mean_depth_lowcov_interval": 6.9
+  },
+  "S02": {
+   "mean_depth": 30.0,
+   "pct_window_ge20x": 97.3,
+   "pct_window_lt10x": 0.8,
+   "mean_depth_lowcov_interval": 8.5
+  },
+  "S03": {
+   "mean_depth": 30.0,
+   "pct_window_ge20x": 96.2,
+   "pct_window_lt10x": 1.1,
+   "mean_depth_lowcov_interval": 9.0
+  }
+ },
+ "coverage_interval": {
+  "low_coverage_interval": "chr11:5291001-5292000",
+  "bin_size": 500
+ },
+ "genotype_likelihood_example": {
+  "sample": "S02",
+  "pos": 5227002,
+  "n_ref_T": 17,
+  "n_alt_A": 12,
+  "epsilon": 0.001,
+  "log10_likelihood_by_hand": {
+   "0/0": -36.01,
+   "0/1": -8.73,
+   "1/1": -51.01
+  },
+  "PL_by_hand": {
+   "0/0": 273,
+   "0/1": 0,
+   "1/1": 423
+  },
+  "PL_bcftools": {
+   "0/0": 227,
+   "0/1": 0,
+   "1/1": 255
+  }
+ },
+ "hbb_pileup": {
+  "S01": {
+   "T (ref)": 0,
+   "A (alt)": 25,
+   "VAF": 1.0
+  },
+  "S02": {
+   "T (ref)": 17,
+   "A (alt)": 12,
+   "VAF": 0.41
+  },
+  "S03": {
+   "T (ref)": 20,
+   "A (alt)": 17,
+   "VAF": 0.46
+  }
+ },
+ "hbb_site": {
+  "pos": 5227002,
+  "ref": "T",
+  "alt": "A",
+  "QUAL": 700.35,
+  "samples": {
+   "S01": {
+    "GT": "1/1",
+    "DP": 25,
+    "AD": [
+     0,
+     25
+    ],
+    "GQ": 74,
+    "PL": [
+     255,
+     75,
+     0
+    ]
+   },
+   "S02": {
+    "GT": "0/1",
+    "DP": 29,
+    "AD": [
+     17,
+     12
+    ],
+    "GQ": 127,
+    "PL": [
+     227,
+     0,
+     255
+    ]
+   },
+   "S03": {
+    "GT": "0/1",
+    "DP": 37,
+    "AD": [
+     20,
+     17
+    ],
+    "GQ": 127,
+    "PL": [
+     255,
+     0,
+     255
+    ]
+   }
+  },
+  "pileup_counts": {
+   "S01": {
+    "T (ref)": 0,
+    "A (alt)": 25,
+    "VAF": 1.0
+   },
+   "S02": {
+    "T (ref)": 17,
+    "A (alt)": 12,
+    "VAF": 0.41
+   },
+   "S03": {
+    "T (ref)": 20,
+    "A (alt)": 17,
+    "VAF": 0.46
+   }
+  }
+ },
+ "record_counts": {
+  "raw": 33,
+  "normalised": 34,
+  "PASS": 33
+ },
+ "normalisation": {
+  "examples": {
+   "1-bp deletion in a run of 8 T": {
+    "before": [
+     [
+      5239407,
+      "CTTTTTTTT",
+      "CTTTTTTT"
+     ]
+    ],
+    "after": [
+     [
+      5239407,
+      "CT",
+      "C"
+     ]
+    ]
+   },
+   "2-bp insertion in a CA repeat": {
+    "before": [
+     [
+      5230685,
+      "TCACACACACACACAC",
+      "TCACACACACACACACAC"
+     ]
+    ],
+    "after": [
+     [
+      5230685,
+      "T",
+      "TCA"
+     ]
+    ]
+   },
+   "multi-allelic SNV": {
+    "before": [
+     [
+      5245200,
+      "G",
+      "A,C"
+     ]
+    ],
+    "after": [
+     [
+      5245200,
+      "G",
+      "A"
+     ],
+     [
+      5245200,
+      "G",
+      "C"
+     ]
+    ]
+   }
+  },
+  "multiallelic_before_split": {
+   "pos": 5245200,
+   "ref": "G",
+   "alt": "A,C",
+   "GT": {
+    "S01": "1/2",
+    "S02": "0/1",
+    "S03": "0/2"
+   },
+   "AD": {
+    "S01": [
+     0,
+     12,
+     7
+    ],
+    "S02": [
+     14,
+     19,
+     0
+    ],
+    "S03": [
+     26,
+     0,
+     12
+    ]
+   }
+  },
+  "multiallelic_after_split": [
+   {
+    "pos": 5245200,
+    "ref": "G",
+    "alt": "A",
+    "GT": {
+     "S01": "1/0",
+     "S02": "0/1",
+     "S03": "0/0"
+    },
+    "AD": {
+     "S01": [
+      0,
+      12
+     ],
+     "S02": [
+      14,
+      19
+     ],
+     "S03": [
+      26,
+      0
+     ]
+    }
+   },
+   {
+    "pos": 5245200,
+    "ref": "G",
+    "alt": "C",
+    "GT": {
+     "S01": "0/1",
+     "S02": "0/0",
+     "S03": "0/1"
+    },
+    "AD": {
+     "S01": [
+      0,
+      7
+     ],
+     "S02": [
+      14,
+      0
+     ],
+     "S03": [
+      26,
+      12
+     ]
+    }
+   }
+  ],
+  "truth_demo": [
+   {
+    "comparison": "raw calls vs raw truth",
+    "shared": 31,
+    "only in calls": 2,
+    "only in truth": 2
+   },
+   {
+    "comparison": "normalised calls vs raw truth",
+    "shared": 31,
+    "only in calls": 3,
+    "only in truth": 2
+   },
+   {
+    "comparison": "normalised calls vs normalised truth",
+    "shared": 34,
+    "only in calls": 0,
+    "only in truth": 0
+   }
+  ],
+  "truth_raw_homopolymer_deletion": [
+   [
+    5239414,
+    "TT",
+    "T"
+   ]
+  ],
+  "truth_normalised_homopolymer_deletion": [
+   [
+    5239407,
+    "CT",
+    "C"
+   ]
+  ]
+ },
+ "filtering": {
+  "site_filter": "QUAL<30 || INFO/DP<30 -> FILTER=LowQual (soft)",
+  "genotype_filter": "FMT/DP<10 | FMT/GQ<20 -> GT=./.",
+  "records": 34,
+  "PASS": 33,
+  "failed_sites": [
+   {
+    "pos": 5291568,
+    "ref": "A",
+    "alt": "T",
+    "filter": [
+     "LowQual"
+    ],
+    "QUAL": 95.1,
+    "INFO_DP": 23
+   }
+  ],
+  "genotypes_set_missing": {
+   "S01": 1,
+   "S02": 1,
+   "S03": 1
+  }
+ },
+ "low_coverage_true_variant": {
+  "pos": 5291568,
+  "ref": "A",
+  "alt": "T",
+  "carrier": "S03",
+  "truth_GT": "0/1",
+  "called_GT": "0/1",
+  "FMT_DP": 8,
+  "AD": [
+   3,
+   5
+  ],
+  "GQ": 78,
+  "QUAL": 95.09,
+  "INFO_DP": 23,
+  "FILTER_after": [
+   "LowQual"
+  ],
+  "GT_after_filters": "./.",
+  "removed_by_filters": true
+ },
+ "benchmark": [
+  {
+   "scenario": "main pipeline",
+   "sample": "S01",
+   "TP": 28,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 28,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline",
+   "sample": "S02",
+   "TP": 21,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 21,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline",
+   "sample": "S03",
+   "TP": 22,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 22,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline",
+   "sample": "all",
+   "TP": 71,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 71,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no duplicate marking",
+   "sample": "S01",
+   "TP": 28,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 28,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no duplicate marking",
+   "sample": "S02",
+   "TP": 21,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 21,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no duplicate marking",
+   "sample": "S03",
+   "TP": 22,
+   "FP": 1,
+   "FN": 0,
+   "GT_match": 22,
+   "precision": 0.957,
+   "recall": 1.0,
+   "F1": 0.978,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no duplicate marking",
+   "sample": "all",
+   "TP": 71,
+   "FP": 1,
+   "FN": 0,
+   "GT_match": 71,
+   "precision": 0.986,
+   "recall": 1.0,
+   "F1": 0.993,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no base-quality minimum (-Q 0)",
+   "sample": "S01",
+   "TP": 28,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 28,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no base-quality minimum (-Q 0)",
+   "sample": "S02",
+   "TP": 21,
+   "FP": 1,
+   "FN": 0,
+   "GT_match": 21,
+   "precision": 0.955,
+   "recall": 1.0,
+   "F1": 0.977,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no base-quality minimum (-Q 0)",
+   "sample": "S03",
+   "TP": 22,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 22,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "no base-quality minimum (-Q 0)",
+   "sample": "all",
+   "TP": 71,
+   "FP": 1,
+   "FN": 0,
+   "GT_match": 71,
+   "precision": 0.986,
+   "recall": 1.0,
+   "F1": 0.993,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline + filters",
+   "sample": "S01",
+   "TP": 28,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 28,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline + filters",
+   "sample": "S02",
+   "TP": 21,
+   "FP": 0,
+   "FN": 0,
+   "GT_match": 21,
+   "precision": 1.0,
+   "recall": 1.0,
+   "F1": 1.0,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline + filters",
+   "sample": "S03",
+   "TP": 21,
+   "FP": 0,
+   "FN": 1,
+   "GT_match": 21,
+   "precision": 1.0,
+   "recall": 0.955,
+   "F1": 0.977,
+   "GT concordance": 1.0
+  },
+  {
+   "scenario": "main pipeline + filters",
+   "sample": "all",
+   "TP": 70,
+   "FP": 0,
+   "FN": 1,
+   "GT_match": 70,
+   "precision": 1.0,
+   "recall": 0.986,
+   "F1": 0.993,
+   "GT concordance": 1.0
+  }
+ ],
+ "benchmark_errors": [
+  {
+   "scenario": "no duplicate marking",
+   "sample": "S03",
+   "type": "FP",
+   "pos": 5214982,
+   "ref": "G",
+   "alt": "C",
+   "planted_event": "ARTIFACT_JACKPOT"
+  },
+  {
+   "scenario": "no base-quality minimum (-Q 0)",
+   "sample": "S02",
+   "type": "FP",
+   "pos": 5257081,
+   "ref": "G",
+   "alt": "T",
+   "planted_event": "ARTIFACT_LOWBQ"
+  },
+  {
+   "scenario": "main pipeline + filters",
+   "sample": "S03",
+   "type": "FN",
+   "pos": 5291568,
+   "ref": "A",
+   "alt": "T",
+   "planted_event": "LOWCOV_HET"
+  }
+ ],
+ "low_bq_artifact": {
+  "sample": "S02",
+  "pos": 5257081,
+  "ref": "G",
+  "alt": "T",
+  "base_quality_of_error": 12,
+  "counts_Q13": {
+   "G": 14
+  },
+  "counts_Q0": {
+   "G": 14,
+   "T": 18
+  },
+  "call_with_Q0": {
+   "QUAL": 19.79,
+   "GT": "0/1",
+   "AD": [
+    14,
+    18
+   ]
+  },
+  "called_in_main_pipeline": false
+ },
+ "trio": {
+  "mendelian2_summary": {
+   "sites_ref_only": "0",
+   "sites_many_als": "0",
+   "sites_fail": "0",
+   "sites_no_GT": "0",
+   "sites_not_diploid": "0",
+   "sites_no_rule": "0",
+   "sites_missing": "1",
+   "sites_merr": "1",
+   "sites_good": "32"
+  },
+  "mendelian_error_sites": [
+   5272758
+  ],
+  "de_novo_candidate": {
+   "pos": 5272758,
+   "ref": "G",
+   "alt": "A",
+   "QUAL": 138.0,
+   "FILTER": [
+    "PASS"
+   ],
+   "S01": {
+    "GT": "0/1",
+    "DP": 25,
+    "AD": [
+     16,
+     9
+    ],
+    "GQ": 127,
+    "all_reads_any_quality": {
+     "A": 9,
+     "G": 17
+    }
+   },
+   "S02": {
+    "GT": "0/0",
+    "DP": 27,
+    "AD": [
+     27,
+     0
+    ],
+    "GQ": 86,
+    "all_reads_any_quality": {
+     "G": 27
+    }
+   },
+   "S03": {
+    "GT": "0/0",
+    "DP": 19,
+    "AD": [
+     19,
+     0
+    ],
+    "GQ": 62,
+    "all_reads_any_quality": {
+     "G": 21
+    }
+   }
+  },
+  "recessive_model_hits": [
+   5227002
+  ]
+ },
+ "naming": {
+  "HBB c.20": {
+   "genomic": "chr11:5227002 T>A",
+   "HGVS_g": "NC_000011.10:g.5227002T>A",
+   "HGVS_c": "NM_000518.5(HBB):c.20A>T",
+   "HGVS_p": "p.(Glu7Val)",
+   "codon_change": "GAG>GTG"
+  },
+  "HBB c.9": {
+   "genomic": "chr11:5227013 A>G",
+   "HGVS_g": "NC_000011.10:g.5227013A>G",
+   "HGVS_c": "NM_000518.5(HBB):c.9T>C",
+   "HGVS_p": "p.(His3=)",
+   "codon_change": "CAT>CAC"
+  }
+ },
+ "vep_rest": {
+  "retrieved": true,
+  "date_utc": "2026-10-14",
+  "url": "https://rest.ensembl.org/vep/human/region/11:5227002-5227002:1/A?content-type=application/json&AlphaMissense=1&CADD=1&SpliceAI=1&mane=1&hgvs=1",
+  "ensembl_release": 116,
+  "rest_api_version": "15.12",
+  "assembly": "GRCh38",
+  "most_severe_consequence": "missense_variant",
+  "transcript": "ENST00000335295",
+  "mane_select": "NM_000518.5",
+  "consequence_terms": [
+   "missense_variant"
+  ],
+  "codons": "gAg/gTg",
+  "amino_acids": "E/V",
+  "HGVSc": "ENST00000335295.4:c.20A>T",
+  "HGVSp": "ENSP00000333994.3:p.Glu7Val",
+  "CADD_phred": 14.4,
+  "AlphaMissense": {
+   "am_class": "likely_benign",
+   "am_pathogenicity": 0.2229
+  },
+  "SpliceAI": {
+   "SYMBOL": "HBB",
+   "DS_AG": 0,
+   "DP_DG": 17,
+   "DS_DG": 0,
+   "DP_DL": -34,
+   "DP_AG": -8,
+   "DS_AL": 0,
+   "DP_AL": 37,
+   "DS_DL": 0
+  },
+  "SIFT": [
+   "deleterious_low_confidence",
+   0
+  ],
+  "colocated_ids": [
+   "CD830010",
+   "CM097155",
+   "CM880038",
+   "rs334"
+  ]
+ },
+ "runtime_seconds_until_here": 16.5,
+ "synthetic_data_note": "All reads and genotypes are synthetic (seed 20261015); see data/provenance/.",
+ "commands_used": [
+  {
+   "step": "Step 0 \u00b7 Setup and tool versions",
+   "commands": "samtools --version | head -n 1\nbcftools --version | head -n 1\nminimap2 --version\nfastp --version 2>&1\nbgzip --version | head -n 1"
+  },
+  {
+   "step": "Step 1 \u00b7 1a. The reference genome",
+   "commands": "# columns of the .fai index: sequence name and its length\ncut -f 1,2 data/ref/chr11_GRCh38_betaglobin.fa.gz.fai\n# one base: the sickle cell position (samtools uses 1-based positions: the first base is 1)\nsamtools faidx data/ref/chr11_GRCh38_betaglobin.fa.gz chr11:5227002-5227002\n# 20 bases around it\nsamtools faidx data/ref/chr11_GRCh38_betaglobin.fa.gz chr11:5226991-5227010"
+  },
+  {
+   "step": "Step 1 \u00b7 1b. The reads (FASTQ)",
+   "commands": "# the first FASTQ record of the child's R1 file\ngzip -cd data/fastq/S01_R1.fastq.gz | head -n 4"
+  },
+  {
+   "step": "Step 1 \u00b7 1c. Read quality control (QC) with fastp",
+   "commands": "for S in S01 S02 S03; do\n  fastp -i data/fastq/${S}_R1.fastq.gz -I data/fastq/${S}_R2.fastq.gz \\\n        -j results/qc/${S}.fastp.json -h results/qc/${S}.fastp.html -w 2 \\\n        2> results/logs/${S}.fastp.log\n  echo \"${S}: report written to results/qc/${S}.fastp.html\"\ndone"
+  },
+  {
+   "step": "Step 2 \u00b7 Align the reads to the reference",
+   "commands": "for S in S01 S02 S03; do\n  minimap2 -ax sr -t 2 -R \"@RG\\tID:${S}\\tSM:${S}\\tLB:${S}_lib1\\tPL:ILLUMINA\" \\\n      data/ref/chr11_GRCh38_betaglobin.fa.gz \\\n      data/fastq/${S}_R1.fastq.gz data/fastq/${S}_R2.fastq.gz \\\n      2> results/logs/${S}.minimap2.log \\\n    | samtools sort -o results/bam/${S}.sorted.bam - 2> results/logs/${S}.sort.log\n  samtools index results/bam/${S}.sorted.bam\ndone\nls -lh results/bam/"
+  },
+  {
+   "step": "Step 2 \u00b7 Align the reads to the reference",
+   "commands": "# The BAM header: @SQ = reference sequence, @RG = read group (note SM:S01)\nsamtools view -H results/bam/S01.sorted.bam | grep -E \"^@(SQ|RG)\"\n# One aligned read covering the HBB site. Columns: name, FLAG, chromosome, start position,\n# mapping quality (MAPQ), CIGAR (150M = 150 bases aligned), mate chromosome (= same), mate position, fragment length\nsamtools view results/bam/S01.sorted.bam chr11:5227002-5227002 | head -n 1 | cut -f 1-9"
+  },
+  {
+   "step": "Step 3 \u00b7 Mark PCR duplicates",
+   "commands": "for S in S01 S02 S03; do\n  samtools collate -O -u results/bam/${S}.sorted.bam results/bam/${S}.collate_tmp \\\n    | samtools fixmate -m -u - - \\\n    | samtools sort -u - 2> results/logs/${S}.sort2.log \\\n    | samtools markdup -s -f results/qc/${S}.markdup_stats.txt - results/bam/${S}.markdup.bam \\\n      2> results/logs/${S}.markdup.log\n  samtools index results/bam/${S}.markdup.bam\ndone\ngrep -E \"^(READ|DUPLICATE PAIR|DUPLICATE TOTAL)\" results/qc/S03.markdup_stats.txt"
+  },
+  {
+   "step": "Step 4 \u00b7 Coverage (depth)",
+   "commands": "samtools depth -a -H -r chr11:5200001-5300000 \\\n    results/bam/S01.markdup.bam results/bam/S02.markdup.bam results/bam/S03.markdup.bam \\\n    -o results/coverage/depth.tsv\nhead -n 3 results/coverage/depth.tsv\nwc -l < results/coverage/depth.tsv"
+  },
+  {
+   "step": "Step 5 \u00b7 Pileup at *HBB* and genotype likelihoods",
+   "commands": "samtools mpileup -B -f data/ref/chr11_GRCh38_betaglobin.fa.gz -r chr11:5227002-5227002 \\\n    results/bam/S01.markdup.bam results/bam/S02.markdup.bam results/bam/S03.markdup.bam"
+  },
+  {
+   "step": "Step 6 \u00b7 Joint variant calling with bcftools",
+   "commands": "bcftools mpileup -f data/ref/chr11_GRCh38_betaglobin.fa.gz -r chr11:5200001-5300000 \\\n    -Q 13 -a AD,DP -Ou \\\n    results/bam/S01.markdup.bam results/bam/S02.markdup.bam results/bam/S03.markdup.bam \\\n    2> results/logs/mpileup_main.log \\\n  | bcftools call -m -v -a GQ --ploidy GRCh38 -Oz -o results/vcf/trio.calls.raw.vcf.gz \\\n    2> results/logs/call_main.log\nbcftools index -f -t results/vcf/trio.calls.raw.vcf.gz\necho \"variant records: $(bcftools view -H results/vcf/trio.calls.raw.vcf.gz 2>> results/logs/warnings.log | wc -l)\""
+  },
+  {
+   "step": "Step 6 \u00b7 Joint variant calling with bcftools",
+   "commands": "bcftools view -h results/vcf/trio.calls.raw.vcf.gz 2>> results/logs/warnings.log | grep -E \"^##FORMAT|^#CHROM\"\necho \"--- the HBB record:\"\nbcftools view -H -r chr11:5227002 results/vcf/trio.calls.raw.vcf.gz 2>> results/logs/warnings.log"
+  },
+  {
+   "step": "Step 7 \u00b7 Normalise the variants",
+   "commands": "bcftools norm -f data/ref/chr11_GRCh38_betaglobin.fa.gz -m -any \\\n    results/vcf/trio.calls.raw.vcf.gz -Oz -o results/vcf/trio.calls.norm.vcf.gz \\\n    2> results/logs/norm_main.log\nbcftools index -f -t results/vcf/trio.calls.norm.vcf.gz\ngrep \"Lines\" results/logs/norm_main.log"
+  },
+  {
+   "step": "Step 7 \u00b7 Normalise the variants",
+   "commands": "bcftools norm -f data/ref/chr11_GRCh38_betaglobin.fa.gz -m -any \\\n    data/truth/truth_raw_unnormalised.vcf.gz -Oz -o results/vcf/truth_raw.norm.vcf.gz \\\n    2> results/logs/norm_truth.log\ngrep \"Lines\" results/logs/norm_truth.log"
+  },
+  {
+   "step": "Step 8 \u00b7 Filter the calls",
+   "commands": "# 1) site level: mark sites with QUAL < 30 or fewer than 30 reads in the whole family\nbcftools filter -s LowQual -e 'QUAL<30 || INFO/DP<30' \\\n    results/vcf/trio.calls.norm.vcf.gz -Oz -o results/vcf/trio.calls.sitefilt.vcf.gz \\\n    2>> results/logs/warnings.log\n# 2) genotype level: a person's genotype becomes ./. if that person has DP < 10 or GQ < 20\nbcftools filter -S . -e 'FMT/DP<10 | FMT/GQ<20' \\\n    results/vcf/trio.calls.sitefilt.vcf.gz -Oz -o results/vcf/trio.calls.filtered.vcf.gz \\\n    2>> results/logs/warnings.log\nbcftools index -f -t results/vcf/trio.calls.filtered.vcf.gz\necho \"FILTER column:\"; bcftools query -f '%FILTER\\n' results/vcf/trio.calls.filtered.vcf.gz 2>> results/logs/warnings.log | sort | uniq -c"
+  },
+  {
+   "step": "Step 9 \u00b7 Benchmark the calls against the truth",
+   "commands": "REF=data/ref/chr11_GRCh38_betaglobin.fa.gz\n# scenario: no duplicate marking - use the sorted BAM files, in which no read is flagged as duplicate\nbcftools mpileup -f $REF -r chr11:5200001-5300000 -Q 13 -a AD,DP -Ou \\\n    results/bam/S01.sorted.bam results/bam/S02.sorted.bam results/bam/S03.sorted.bam 2>> results/logs/warnings.log \\\n  | bcftools call -m -v -a GQ --ploidy GRCh38 -Ou 2>> results/logs/warnings.log \\\n  | bcftools norm -f $REF -m -any -Oz -o results/vcf/scenario_no_markdup.vcf.gz 2>> results/logs/warnings.log\n# scenario: -Q 0 - keep every base, whatever its quality\nbcftools mpileup -f $REF -r chr11:5200001-5300000 -Q 0 -a AD,DP -Ou \\\n    results/bam/S01.markdup.bam results/bam/S02.markdup.bam results/bam/S03.markdup.bam 2>> results/logs/warnings.log \\\n  | bcftools call -m -v -a GQ --ploidy GRCh38 -Ou 2>> results/logs/warnings.log \\\n  | bcftools norm -f $REF -m -any -Oz -o results/vcf/scenario_Q0.vcf.gz 2>> results/logs/warnings.log\nfor f in results/vcf/scenario_no_markdup.vcf.gz results/vcf/scenario_Q0.vcf.gz; do\n  bcftools index -f -t $f\n  echo \"$f: $(bcftools view -H $f 2>> results/logs/warnings.log | wc -l) records\"\ndone"
+  },
+  {
+   "step": "Step 10 \u00b7 Use the family: trio analysis",
+   "commands": "cat data/trio.ped\necho \"--- sample order in the VCF:\"\nbcftools query -l results/vcf/trio.calls.filtered.vcf.gz 2>> results/logs/warnings.log | paste -sd ' ' -\necho \"--- Mendelian check:\"\nbcftools +mendelian2 results/vcf/trio.calls.filtered.vcf.gz -P data/trio.ped --rules GRCh38 \\\n    2>> results/logs/warnings.log | grep -E \"^(sites_good|sites_merr|sites_missing)\"\necho \"--- sites with a Mendelian error:\"\nbcftools +mendelian2 results/vcf/trio.calls.filtered.vcf.gz -P data/trio.ped --rules GRCh38 -m e \\\n    2>> results/logs/warnings.log \\\n  | bcftools query -f '%CHROM:%POS %REF>%ALT [ %SAMPLE=%GT (AD %AD)]\\n' 2>> results/logs/warnings.log"
+  },
+  {
+   "step": "Step 10 \u00b7 Use the family: trio analysis",
+   "commands": "# Recessive model: child (GT[0] = S01) homozygous ALT, father (GT[1]) and mother (GT[2]) heterozygous\nbcftools view -H -f PASS -i 'GT[0]=\"AA\" && GT[1]=\"het\" && GT[2]=\"het\"' \\\n    results/vcf/trio.calls.filtered.vcf.gz 2>> results/logs/warnings.log | cut -f 1-6"
+  }
+ ],
+ "commands_used_note": "Shell commands exactly as run in the %%bash cells of the executed notebook. Python Check cells additionally call samtools flagstat -O json, samtools stats, samtools flags, samtools mpileup -B, bcftools mpileup/query and bcftools +mendelian2 through sh(); see the notebook.",
+ "other_commands": {
+  "rebuild data": "python scripts/generate_data.py   # seed 20261015; add --download to re-fetch from UCSC",
+  "slide figures": "python scripts/make_slide_figures.py --font-dir <folder with SUIT-Regular.ttf and SUIT-Bold.ttf>"
+ },
+ "notebook_runtime_seconds": 16.8,
+ "notebook_runtime_note": "All 49 code cells run top-to-bottom in one IPython process; about 17 s in total on the build machine, of which the optional Ensembl VEP query (Step 11, with up to 3 attempts) took most; without it about 6-7 s.",
+ "provenance": {
+  "retrieved_utc": "2026:10:14T15:33:38Z",
+  "sources": [
+   {
+    "what": "GRCh38 chr11:5200001-5300000 sequence",
+    "url": "https://api.genome.ucsc.edu/getData/sequence?genome=hg38;chrom=chr11;start=5200000;end=5300000",
+    "genome": "hg38",
+    "downloadTime": "2026:10:14T15:33:38Z",
+    "md5_uppercase_window": "bc97ff5fc4a16b0c4788e8456d5a1575"
+   },
+   {
+    "what": "MANE transcripts in the window (UCSC hg38 track 'mane')",
+    "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr11;start=5200000;end=5300000",
+    "downloadTime": "2026:10:14T15:33:39Z",
+    "track_dataTime": "2025-12-08T05:11:03",
+    "dataVersion_file": "https://hgdownload.soe.ucsc.edu/gbdb/hg38/mane/README_versions.txt",
+    "dataVersion": [
+     "MANE Version: 1.5",
+     "NCBI RefSeq Annotation Release: GCF_000001405.40-RS_2025_08",
+     "Ensembl Release: 116"
+    ]
+   },
+   {
+    "what": "chr11 length",
+    "value": 135086622,
+    "url": "https://api.genome.ucsc.edu/list/chromosomes?genome=hg38"
+   }
+  ],
+  "seed": 20261015,
+  "simulation": {
+   "read_length": 150,
+   "fragment_length": "N(380,60) clipped to [220,700]",
+   "target_depth_unique": 30,
+   "duplicate_fraction": 0.04,
+   "quality_bins": {
+    "37": "F",
+    "25": ":",
+    "11": ",",
+    "2": "#"
+   },
+   "lowcov_interval": "chr11:5291001-5292000",
+   "lowcov_keep_fraction": 0.27,
+   "artifacts": {
+    "jackpot": {
+     "pos": 5214982,
+     "ref": "G",
+     "alt": "C"
+    },
+    "lowbq": {
+     "pos": 5257081,
+     "ref": "G",
+     "alt": "T"
+    }
+   }
+  },
+  "per_sample_simulation": [
+   {
+    "sample": "S01",
+    "unique_fragments": 10000,
+    "random_duplicates": 400,
+    "fragments_rejected_lowcov": 106,
+    "substitution_errors": 21495,
+    "read_pairs": 10400,
+    "dry_run_fragment_depth_at_lowcov_het": 7,
+    "dry_run_fragment_depth_at_lowbq_site": 32
+   },
+   {
+    "sample": "S02",
+    "unique_fragments": 10000,
+    "random_duplicates": 400,
+    "fragments_rejected_lowcov": 105,
+    "substitution_errors": 20989,
+    "lowbq_pairs_covering": 34,
+    "lowbq_pairs_with_error": 20,
+    "read_pairs": 10400,
+    "dry_run_fragment_depth_at_lowcov_het": 8,
+    "dry_run_fragment_depth_at_lowbq_site": 32
+   },
+   {
+    "sample": "S03",
+    "unique_fragments": 10000,
+    "random_duplicates": 400,
+    "fragments_rejected_lowcov": 114,
+    "jackpot_copies": 15,
+    "jackpot_fragment_start": 5214922,
+    "jackpot_fragment_length": 401,
+    "substitution_errors": 21511,
+    "read_pairs": 10415,
+    "dry_run_fragment_depth_at_lowcov_het": 8,
+    "dry_run_fragment_depth_at_lowbq_site": 20
+   }
+  ]
+ },
+ "figures": [
+  {
+   "file": "results/figures/p1_fig_quality.png",
+   "width_in": 6.0,
+   "height_in": 3.2
+  },
+  {
+   "file": "results/figures/p1_fig_depth.png",
+   "width_in": 12.0,
+   "height_in": 3.0
+  },
+  {
+   "file": "results/figures/p1_fig_duplicates.png",
+   "width_in": 6.0,
+   "height_in": 3.4
+  },
+  {
+   "file": "results/figures/p1_fig_pileup_hbb.png",
+   "width_in": 6.0,
+   "height_in": 3.4
+  },
+  {
+   "file": "results/figures/p1_fig_genotype_likelihood.png",
+   "width_in": 6.0,
+   "height_in": 3.0
+  },
+  {
+   "file": "results/figures/p1_fig_benchmark.png",
+   "width_in": 6.0,
+   "height_in": 3.4
+  }
+ ],
+ "design_notes": [
+  "Main pipeline sets bcftools mpileup -Q 13 explicitly; bcftools 1.24's own default is -Q 1 (samtools mpileup default is 13).",
+  "The planted systematic low-quality error (S02, chr11:5257081 G>T) uses base quality 12 in 20 of 34 read pairs (~59%): in tests, bcftools 1.24 never called quality-8 errors even at 70% of reads, so Q8/~30% could not produce the intended false call with -Q 0.",
+  "With bcftools' default (-Q 1) the same false call appears as with -Q 0.",
+  "The low-coverage SNV and the low-quality error positions were chosen by the generator from a dry run of the fragment sampling (same random streams) so that the carrier has ~8x and S02 ~32x."
+ ]
+}

@@ -1,0 +1,9 @@
+sample	role	sex	age	phenotype	tissue	library_reads	data_type
+P1	patient	M	6	congenital heart defect; speech delay (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	25371719	synthetic
+P2	patient	F	32	slowly progressive distal weakness; slowed nerve conduction (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	28667518	synthetic
+P3	patient	M	9	mild learning difficulties; parents untested (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	30724242	synthetic
+C1	control	F	35	unaffected control (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	26329879	synthetic
+C2	control	M	41	unaffected control (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	21590238	synthetic
+C3	control	F	29	unaffected control (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	20781064	synthetic
+C4	control	M	52	unaffected control (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	30779501	synthetic
+C5	control	F	38	unaffected control (fictional)	fibroblast-like (SYNTHETIC baseline, not GTEx)	18817949	synthetic
