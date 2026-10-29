@@ -1,0 +1,82 @@
+{
+ "ols_with_batch(sig,fdp,tp)": [
+  282,
+  0.039,
+  271
+ ],
+ "ols_no_batch(sig,fdp,tp)": [
+  271,
+  0.0332,
+  262
+ ],
+ "ols_null_p05_with_batch": 0.0352,
+ "deseq_null_p05": 0.0409,
+ "deseq_null_p01": 0.0107,
+ "volcano_fdp": 0.0035,
+ "max_mlog10_padj": 71.8,
+ "top8": [
+  "CRISPLD2",
+  "ALOX15B",
+  "ZBTB16",
+  "TSC22D3",
+  "MT2A",
+  "BPIFB2",
+  "PNMA6E",
+  "APOBEC3G"
+ ],
+ "genes": 8000,
+ "restricted_genes": 352,
+ "libsize_M": [
+  17.7,
+  13.8,
+  11.5,
+  18.8,
+  13.1,
+  21.7,
+  11.7,
+  26.1,
+  18.0,
+  25.9,
+  24.2,
+  24.9
+ ],
+ "missing_gr": [],
+ "tested": 7392,
+ "untested": 608,
+ "sig_fdr05": 396,
+ "sig_fdr05_no_batch": 367,
+ "up": 177,
+ "down": 106,
+ "fdp_among_sig": 0.0581,
+ "planted_de": 600,
+ "pc_var": [
+  38.9,
+  23.0,
+  6.0,
+  5.5
+ ],
+ "pc_corr_condition": [
+  1.0,
+  0.09,
+  0.01
+ ],
+ "pc_corr_batch": [
+  0.09,
+  1.0,
+  0.03
+ ],
+ "size_factors": [
+  1.021,
+  0.811,
+  0.663,
+  1.035,
+  0.722,
+  1.195,
+  0.647,
+  1.457,
+  0.992,
+  1.345,
+  1.261,
+  1.288
+ ]
+}

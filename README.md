@@ -84,6 +84,31 @@ access is needed except for two optional steps. See
 [`day4-VariantCalling/README.md`](day4-VariantCalling/README.md) for the slide-to-notebook mapping,
 the TESSERACT-CNV adapter and where the answers are.
 
+### [`day5-visualization/`](day5-visualization) — Day 5 (10/27): data visualization in genetics and genomics
+
+A 90-minute practice in pairs for the Day 5 lecture *Data visualization in genetics and genomics*. Students start with
+small tables they can read by eye, then move to realistic simulated data: they run the test or method a real analysis
+would use, check the result against the planted answer, and only then draw the figure
+(Question → Test → Check → Visualize).
+
+* **Core for everyone** (`practice.ipynb`) — diagnose eight misleading figures; make simple figures from small tables
+  (Anscombe's quartet, mapping rates, one gene in two groups, cell-type composition, a time course, 60,000 CpGs); B1 compares
+  two groups with n = 4 and n = 40 per group; B2 takes bulk RNA-seq of dexamethasone-treated airway smooth-muscle cells from
+  counts to a volcano plot, with a sequencing batch to handle.
+* **One elective per pair** (`electives/`) — GWAS with ancestry stratification, single-cell embeddings, copy number at
+  22q11.2, a variant-caller benchmark, classifier evaluation at 3.5% prevalence, and a TP53 lollipop plot.
+
+```bash
+cd day5-visualization
+conda env create -f environment.yml && conda activate dataviz-practice
+cd dataviz_practice && jupyter lab
+```
+
+Requires Python 3.11+ with numpy, pandas, scipy, matplotlib, scikit-learn, umap-learn and adjustText (or
+`pip install -r dataviz_practice/requirements.txt`). No network access is needed; the core notebook runs in about
+10 seconds and each elective in under a minute. See [`day5-visualization/README.md`](day5-visualization/README.md)
+for the slide-to-notebook mapping, the timing and where the answers are.
+
 ## Real data vs teaching data
 
 The `chr11` sequence in both mini-references is genuine UCSC sequence, the gene models are
@@ -100,6 +125,12 @@ tracks (ClinGen, ClinVar, gnomAD, DGV, ENCODE), each with its provenance recorde
 CNVs sit at public ClinVar and LOVD loci so that they can be checked against real records. The people,
 phenotypes, reads, genotypes and RNA counts are synthetic, and the evidence tables are teaching
 exercises, not classifications.
+
+Day 5 builds every dataset on real anchors: hg38 chromosome lengths and MANE Select genes, glucocorticoid-response genes
+reported by Himes et al. (2014), AMD loci reported by Fritsche et al. (2016), UCSC segmental duplications and the ClinGen
+region ISCA-37446 at 22q11.2, the TP53 protein (UniProt P04637) and Anscombe's published quartet. The counts, genotypes,
+cells, scores and variant calls are synthetic, each generated with a fixed seed and a planted answer, so that every
+figure can be checked against the truth.
 
 **No output of these materials is a clinical result.** A public variant site is used for its
 coordinates only, because those coordinates are documented on both assemblies.
@@ -136,3 +167,13 @@ python scripts/generate_data.py      # rebuilds data/ from the saved UCSC downlo
 cd ../practice2_cnv_tesseract
 bash scripts/make_all.sh             # re-downloads the public inputs and rebuilds the synthetic data
 ```
+
+Day 5:
+
+```bash
+cd day5-visualization/dataviz_practice
+bash build/make_data.sh              # rebuilds data/ byte for byte (fixed seeds; needs pydeseq2)
+```
+
+The notebook builders and the lecture-figure scripts are described in
+[`day5-visualization/dataviz_practice/build/README.md`](day5-visualization/dataviz_practice/build/README.md).

@@ -1,0 +1,9 @@
+sample	event	chrom	start	end	type	copy_number	purity	expected_log2	note
+patient	22q11.2_LCR22A-D_deletion	chr22	18717064	21342616	DEL	1	1	-1	heterozygous, constitutional; NAHR between chr22:18,709,565-18,725,027 (LCR22A) and chr22:21,335,351-21,350,332 (LCR22D), 99.67% identity; contains ClinGen ISCA-37446 chr22:18,924,718-21,111,383
+tumour	chr7_gain	chr7	0	159345973	GAIN	3	0.6	0.3785	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr8p_loss	chr8	0	45200000	LOSS	1	0.6	-0.5146	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr8q_gain	chr8	45200000	145138636	GAIN	3	0.6	0.3785	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr13_gain	chr13	0	114364328	GAIN	3	0.6	0.3785	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr17p_loss	chr17	0	24500000	LOSS	1	0.6	-0.5146	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr18q_loss	chr18	17900000	80373285	LOSS	1	0.6	-0.5146	arm boundary = middle of the gene-free centromere gap (approximate)
+tumour	chr20q_gain	chr20	28500000	64444167	GAIN	4	0.6	0.6781	arm boundary = middle of the gene-free centromere gap (approximate)

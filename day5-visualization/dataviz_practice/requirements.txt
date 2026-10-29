@@ -1,0 +1,11 @@
+# D5 data-visualization practice. Minimum versions = the oldest set tested (see README.md, "Tested with").
+numpy>=1.26
+pandas>=2.2
+scipy>=1.11
+matplotlib>=3.8
+scikit-learn>=1.4
+umap-learn>=0.5.5
+adjustText>=1.2
+jupyterlab
+# Optional, only for the DESeq2 re-run in Step B2.5b:
+# pydeseq2>=0.5

@@ -1,0 +1,91 @@
+{
+ "description": "Planted design and reference values for data/classifier_scores.tsv (practice B7). SIMULATED data.",
+ "seed": 20261035,
+ "n": 16000,
+ "n_pathogenic": 560,
+ "prevalence": 0.035,
+ "design": {
+  "Q_HI": 0.95,
+  "MU_HI": 4.2,
+  "MU_LO": 0.8,
+  "H_NEG": 0.045,
+  "MU_HARD_NEG": 2.3,
+  "K": 2.0,
+  "C": -1.909543,
+  "DELTA_TRAIN": 1.0,
+  "W_A": 1.0,
+  "NOISE_A": 1.3,
+  "model_A": "percentile of W_A*d + NOISE_A*noise (a rank, not a probability)",
+  "model_B": "expit((logit p_true(x) - C) / K); x = d on calibration/test, d +/- DELTA_TRAIN on train"
+ },
+ "planted_calibration_map": {
+  "formula": "true probability = expit(K * logit(score_B) + C)",
+  "points": {
+   "0.1": 0.001826,
+   "0.2": 0.009174,
+   "0.3": 0.02649,
+   "0.4": 0.061776,
+   "0.5": 0.129032,
+   "0.6": 0.25,
+   "0.7": 0.446469,
+   "0.8": 0.703297,
+   "0.9": 0.923077
+  }
+ },
+ "per_split": {
+  "train": {
+   "n": 9600,
+   "n_pathogenic": 336,
+   "prevalence": 0.035,
+   "AUROC_A": 0.935835,
+   "AUROC_B": 0.997074,
+   "AP_A": 0.566847,
+   "AP_B": 0.973775
+  },
+  "calibration": {
+   "n": 3200,
+   "n_pathogenic": 112,
+   "prevalence": 0.035,
+   "AUROC_A": 0.96855,
+   "AUROC_B": 0.992355,
+   "AP_A": 0.600389,
+   "AP_B": 0.896452
+  },
+  "test": {
+   "n": 3200,
+   "n_pathogenic": 112,
+   "prevalence": 0.035,
+   "AUROC_A": 0.936928,
+   "AUROC_B": 0.966622,
+   "AP_A": 0.550642,
+   "AP_B": 0.832889
+  }
+ },
+ "test": {
+  "brier_raw_B": 0.027386,
+  "brier_calibrated_B": 0.012668,
+  "brier_true_probability": 0.01192,
+  "AUROC_calibrated_B": 0.960586,
+  "mae_vs_p_true_raw_B": 0.10529,
+  "mae_vs_p_true_calibrated_B": 0.004926,
+  "isotonic_steps": 10
+ },
+ "threshold": {
+  "target_precision": 0.9,
+  "chosen_on": "calibration",
+  "cut_score_B": 0.779526,
+  "calibration": {
+   "n_called": 91,
+   "TP": 82,
+   "precision": 0.901099,
+   "recall": 0.732143
+  },
+  "test": {
+   "n_called": 84,
+   "TP": 71,
+   "precision": 0.845238,
+   "recall": 0.633929
+  },
+  "calibrated_probability_at_cut": 0.76
+ }
+}

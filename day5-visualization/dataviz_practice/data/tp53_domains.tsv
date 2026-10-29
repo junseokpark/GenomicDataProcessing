@@ -1,0 +1,5 @@
+domain	short	aa_start	aa_end	length_aa	source
+Transactivation	TAD	1	61	61	IARC TP53 Database convention (other databases differ by a few residues)
+Proline-rich	PRD	64	92	29	IARC TP53 Database convention (other databases differ by a few residues)
+DNA-binding	DBD	94	292	199	IARC TP53 Database convention (other databases differ by a few residues)
+Tetramerisation	TET	325	356	32	IARC TP53 Database convention (other databases differ by a few residues)

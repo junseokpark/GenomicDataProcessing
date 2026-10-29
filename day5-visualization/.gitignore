@@ -1,0 +1,15 @@
+# Files the notebooks write stay local; solutions/executed/ shows every expected output.
+dataviz_practice/results/*
+!dataviz_practice/results/README.md
+
+# Written when the notebooks or slide figures are rebuilt (see dataviz_practice/build/README.md)
+dataviz_practice/practice_executed.ipynb
+dataviz_practice/electives/*_executed.ipynb
+dataviz_practice/build/slide_figs/
+dataviz_practice/build/contact_sheet_*.png
+
+# caches and editor files
+.numba_cache/
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store

@@ -1,0 +1,627 @@
+{
+ "description": "Planted design and reference values for data/variant_callsets.tsv (practice B6). SIMULATED data.",
+ "seed": 20261034,
+ "genome_build": "hg38",
+ "chrom": "chr20",
+ "window_bed": [
+  10000000,
+  16000000
+ ],
+ "window_1based": "chr20:10,000,001-16,000,000",
+ "hc_bp": 5332659,
+ "context_bp": {
+  "unique": 4665043,
+  "homopolymer_tr": 157769,
+  "segdup_lowmap": 240862,
+  "high_gc": 268985
+ },
+ "context_bp_share_of_hc": {
+  "unique": 0.874806,
+  "homopolymer_tr": 0.029585,
+  "segdup_lowmap": 0.045167,
+  "high_gc": 0.050441
+ },
+ "n_blocks": {
+  "segdup_lowmap": 10,
+  "high_gc": 70,
+  "homopolymer_tr": 5000,
+  "non_hc_gaps": 110
+ },
+ "design": {
+  "n_truth": 4800,
+  "context_share": {
+   "unique": 0.8,
+   "homopolymer_tr": 0.1,
+   "segdup_lowmap": 0.05,
+   "high_gc": 0.05
+  },
+  "p_indel": {
+   "unique": 0.105,
+   "homopolymer_tr": 0.52,
+   "segdup_lowmap": 0.09,
+   "high_gc": 0.08
+  },
+  "rho_error_correlation": {
+   "unique": 0.5,
+   "homopolymer_tr": 0.6,
+   "segdup_lowmap": 0.75,
+   "high_gc": 0.7
+  },
+  "caller_loading": {
+   "GATK": 1.0,
+   "DeepVariant": 0.4,
+   "FreeBayes": 1.0,
+   "Strelka2": 1.0
+  },
+  "recall": {
+   "unique|SNV": {
+    "GATK": 0.99,
+    "DeepVariant": 0.995,
+    "FreeBayes": 0.985,
+    "Strelka2": 0.99
+   },
+   "unique|indel": {
+    "GATK": 0.96,
+    "DeepVariant": 0.98,
+    "FreeBayes": 0.92,
+    "Strelka2": 0.945
+   },
+   "homopolymer_tr|SNV": {
+    "GATK": 0.96,
+    "DeepVariant": 0.98,
+    "FreeBayes": 0.94,
+    "Strelka2": 0.96
+   },
+   "homopolymer_tr|indel": {
+    "GATK": 0.82,
+    "DeepVariant": 0.92,
+    "FreeBayes": 0.7,
+    "Strelka2": 0.79
+   },
+   "segdup_lowmap|SNV": {
+    "GATK": 0.88,
+    "DeepVariant": 0.92,
+    "FreeBayes": 0.86,
+    "Strelka2": 0.87
+   },
+   "segdup_lowmap|indel": {
+    "GATK": 0.78,
+    "DeepVariant": 0.84,
+    "FreeBayes": 0.72,
+    "Strelka2": 0.75
+   },
+   "high_gc|SNV": {
+    "GATK": 0.93,
+    "DeepVariant": 0.97,
+    "FreeBayes": 0.9,
+    "Strelka2": 0.93
+   },
+   "high_gc|indel": {
+    "GATK": 0.85,
+    "DeepVariant": 0.91,
+    "FreeBayes": 0.78,
+    "Strelka2": 0.83
+   }
+  },
+  "fp_design": [
+   {
+    "context": "unique",
+    "callers": "GATK",
+    "expected": 35,
+    "planted": 30,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "unique",
+    "callers": "DeepVariant",
+    "expected": 4,
+    "planted": 4,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "unique",
+    "callers": "FreeBayes",
+    "expected": 75,
+    "planted": 75,
+    "share_SNV": 0.7
+   },
+   {
+    "context": "unique",
+    "callers": "Strelka2",
+    "expected": 35,
+    "planted": 32,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "unique",
+    "callers": "GATK+FreeBayes",
+    "expected": 5,
+    "planted": 4,
+    "share_SNV": 0.7
+   },
+   {
+    "context": "unique",
+    "callers": "FreeBayes+Strelka2",
+    "expected": 6,
+    "planted": 3,
+    "share_SNV": 0.7
+   },
+   {
+    "context": "unique",
+    "callers": "GATK+Strelka2",
+    "expected": 4,
+    "planted": 6,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "GATK",
+    "expected": 20,
+    "planted": 27,
+    "share_SNV": 0.2
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "DeepVariant",
+    "expected": 3,
+    "planted": 0,
+    "share_SNV": 0.2
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "FreeBayes",
+    "expected": 55,
+    "planted": 53,
+    "share_SNV": 0.15
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "Strelka2",
+    "expected": 22,
+    "planted": 22,
+    "share_SNV": 0.2
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "GATK+FreeBayes",
+    "expected": 8,
+    "planted": 5,
+    "share_SNV": 0.1
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "FreeBayes+Strelka2",
+    "expected": 9,
+    "planted": 7,
+    "share_SNV": 0.1
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "GATK+FreeBayes+Strelka2",
+    "expected": 5,
+    "planted": 4,
+    "share_SNV": 0.1
+   },
+   {
+    "context": "homopolymer_tr",
+    "callers": "GATK+DeepVariant+FreeBayes+Strelka2",
+    "expected": 3,
+    "planted": 5,
+    "share_SNV": 0.1
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK",
+    "expected": 10,
+    "planted": 14,
+    "share_SNV": 0.9
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "DeepVariant",
+    "expected": 2,
+    "planted": 1,
+    "share_SNV": 0.9
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "FreeBayes",
+    "expected": 18,
+    "planted": 20,
+    "share_SNV": 0.9
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "Strelka2",
+    "expected": 8,
+    "planted": 10,
+    "share_SNV": 0.9
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK+FreeBayes",
+    "expected": 5,
+    "planted": 7,
+    "share_SNV": 0.9
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK+FreeBayes+Strelka2",
+    "expected": 10,
+    "planted": 7,
+    "share_SNV": 0.95
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK+DeepVariant+FreeBayes",
+    "expected": 4,
+    "planted": 4,
+    "share_SNV": 0.95
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "DeepVariant+FreeBayes+Strelka2",
+    "expected": 3,
+    "planted": 4,
+    "share_SNV": 0.95
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK+DeepVariant+Strelka2",
+    "expected": 3,
+    "planted": 1,
+    "share_SNV": 0.95
+   },
+   {
+    "context": "segdup_lowmap",
+    "callers": "GATK+DeepVariant+FreeBayes+Strelka2",
+    "expected": 28,
+    "planted": 24,
+    "share_SNV": 0.95
+   },
+   {
+    "context": "high_gc",
+    "callers": "GATK",
+    "expected": 8,
+    "planted": 6,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "high_gc",
+    "callers": "DeepVariant",
+    "expected": 2,
+    "planted": 2,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "high_gc",
+    "callers": "FreeBayes",
+    "expected": 14,
+    "planted": 19,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "high_gc",
+    "callers": "Strelka2",
+    "expected": 8,
+    "planted": 8,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "high_gc",
+    "callers": "GATK+FreeBayes",
+    "expected": 3,
+    "planted": 3,
+    "share_SNV": 0.8
+   },
+   {
+    "context": "high_gc",
+    "callers": "GATK+DeepVariant+FreeBayes+Strelka2",
+    "expected": 3,
+    "planted": 3,
+    "share_SNV": 0.85
+   }
+  ]
+ },
+ "n_rows": 5210,
+ "n_truth": 4800,
+ "n_false_calls": 410,
+ "n_truth_by_context": {
+  "unique": 3850,
+  "homopolymer_tr": 468,
+  "segdup_lowmap": 241,
+  "high_gc": 241
+ },
+ "n_truth_by_type": {
+  "SNV": 4089,
+  "indel": 711
+ },
+ "n_truth_missed_by_all": 8,
+ "missed_by_all_by_context": {
+  "unique": 0,
+  "homopolymer_tr": 1,
+  "segdup_lowmap": 4,
+  "high_gc": 3
+ },
+ "per_caller": {
+  "GATK": {
+   "all": {
+    "calls": 4782,
+    "TP": 4632,
+    "FP": 150,
+    "FN": 168,
+    "precision": 0.968632,
+    "recall": 0.965,
+    "F1": 0.966813
+   },
+   "SNV": {
+    "calls": 4101,
+    "TP": 3995,
+    "FP": 106,
+    "FN": 94,
+    "precision": 0.974153,
+    "recall": 0.977011,
+    "F1": 0.97558
+   },
+   "indel": {
+    "calls": 681,
+    "TP": 637,
+    "FP": 44,
+    "FN": 74,
+    "precision": 0.935389,
+    "recall": 0.895921,
+    "F1": 0.91523
+   },
+   "recall_by_context": {
+    "unique": 0.985455,
+    "homopolymer_tr": 0.884615,
+    "segdup_lowmap": 0.842324,
+    "high_gc": 0.917012
+   }
+  },
+  "DeepVariant": {
+   "all": {
+    "calls": 4787,
+    "TP": 4739,
+    "FP": 48,
+    "FN": 61,
+    "precision": 0.989973,
+    "recall": 0.987292,
+    "F1": 0.98863
+   },
+   "SNV": {
+    "calls": 4093,
+    "TP": 4051,
+    "FP": 42,
+    "FN": 38,
+    "precision": 0.989739,
+    "recall": 0.990707,
+    "F1": 0.990222
+   },
+   "indel": {
+    "calls": 694,
+    "TP": 688,
+    "FP": 6,
+    "FN": 23,
+    "precision": 0.991354,
+    "recall": 0.967651,
+    "F1": 0.979359
+   },
+   "recall_by_context": {
+    "unique": 0.994545,
+    "homopolymer_tr": 0.963675,
+    "segdup_lowmap": 0.941909,
+    "high_gc": 0.962656
+   }
+  },
+  "FreeBayes": {
+   "all": {
+    "calls": 4808,
+    "TP": 4561,
+    "FP": 247,
+    "FN": 239,
+    "precision": 0.948627,
+    "recall": 0.950208,
+    "F1": 0.949417
+   },
+   "SNV": {
+    "calls": 4127,
+    "TP": 3968,
+    "FP": 159,
+    "FN": 121,
+    "precision": 0.961473,
+    "recall": 0.970408,
+    "F1": 0.96592
+   },
+   "indel": {
+    "calls": 681,
+    "TP": 593,
+    "FP": 88,
+    "FN": 118,
+    "precision": 0.870778,
+    "recall": 0.834037,
+    "F1": 0.852011
+   },
+   "recall_by_context": {
+    "unique": 0.978182,
+    "homopolymer_tr": 0.801282,
+    "segdup_lowmap": 0.863071,
+    "high_gc": 0.879668
+   }
+  },
+  "Strelka2": {
+   "all": {
+    "calls": 4767,
+    "TP": 4631,
+    "FP": 136,
+    "FN": 169,
+    "precision": 0.971471,
+    "recall": 0.964792,
+    "F1": 0.96812
+   },
+   "SNV": {
+    "calls": 4102,
+    "TP": 3999,
+    "FP": 103,
+    "FN": 90,
+    "precision": 0.97489,
+    "recall": 0.97799,
+    "F1": 0.976438
+   },
+   "indel": {
+    "calls": 665,
+    "TP": 632,
+    "FP": 33,
+    "FN": 79,
+    "precision": 0.950376,
+    "recall": 0.888889,
+    "F1": 0.918605
+   },
+   "recall_by_context": {
+    "unique": 0.987013,
+    "homopolymer_tr": 0.873932,
+    "segdup_lowmap": 0.86722,
+    "high_gc": 0.883817
+   }
+  }
+ },
+ "upset_top10": [
+  {
+   "callers": "all four",
+   "count": 4399,
+   "true": 4367
+  },
+  {
+   "callers": "FreeBayes",
+   "count": 169,
+   "true": 2
+  },
+  {
+   "callers": "GATK+DeepVariant+Strelka2",
+   "count": 121,
+   "true": 120
+  },
+  {
+   "callers": "GATK",
+   "count": 79,
+   "true": 2
+  },
+  {
+   "callers": "Strelka2",
+   "count": 76,
+   "true": 4
+  },
+  {
+   "callers": "DeepVariant+FreeBayes+Strelka2",
+   "count": 73,
+   "true": 69
+  },
+  {
+   "callers": "GATK+DeepVariant+FreeBayes",
+   "count": 67,
+   "true": 63
+  },
+  {
+   "callers": "GATK+FreeBayes+Strelka2",
+   "count": 44,
+   "true": 33
+  },
+  {
+   "callers": "DeepVariant",
+   "count": 39,
+   "true": 32
+  },
+  {
+   "callers": "GATK+DeepVariant",
+   "count": 38,
+   "true": 38
+  }
+ ],
+ "largest_intersection": "all four",
+ "all_four": {
+  "n": 4399,
+  "TP": 4367,
+  "FP": 32,
+  "precision": 0.992726,
+  "FP_by_context": {
+   "unique": 0,
+   "homopolymer_tr": 5,
+   "segdup_lowmap": 24,
+   "high_gc": 3
+  }
+ },
+ "single_caller": {
+  "n": 363,
+  "TP": 40,
+  "precision": 0.110193,
+  "per_caller": {
+   "GATK": {
+    "n": 79,
+    "TP": 2
+   },
+   "DeepVariant": {
+    "n": 39,
+    "TP": 32
+   },
+   "FreeBayes": {
+    "n": 169,
+    "TP": 2
+   },
+   "Strelka2": {
+    "n": 76,
+    "TP": 4
+   }
+  }
+ },
+ "deepvariant_only": {
+  "n": 39,
+  "TP": 32
+ },
+ "consensus": {
+  ">=1": {
+   "calls": 5202,
+   "TP": 4792,
+   "FP": 410,
+   "FN": 8,
+   "precision": 0.921184,
+   "recall": 0.998333,
+   "F1": 0.958208
+  },
+  ">=2": {
+   "calls": 4839,
+   "TP": 4752,
+   "FP": 87,
+   "FN": 48,
+   "precision": 0.982021,
+   "recall": 0.99,
+   "F1": 0.985994
+  },
+  ">=3": {
+   "calls": 4704,
+   "TP": 4652,
+   "FP": 52,
+   "FN": 148,
+   "precision": 0.988946,
+   "recall": 0.969167,
+   "F1": 0.978956
+  },
+  "=4": {
+   "calls": 4399,
+   "TP": 4367,
+   "FP": 32,
+   "FN": 433,
+   "precision": 0.992726,
+   "recall": 0.909792,
+   "F1": 0.949451
+  }
+ },
+ "shared_fp_min_callers": 3,
+ "shared_fp_by_context": {
+  "unique": 0,
+  "homopolymer_tr": 9,
+  "segdup_lowmap": 40,
+  "high_gc": 3
+ },
+ "n_shared_fp": 52,
+ "shared_fp_top_context_planted": "segdup_lowmap"
+}

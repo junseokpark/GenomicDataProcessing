@@ -1,0 +1,821 @@
+{
+ "retrieved_utc": "2026-10-14T15:44:59+00:00",
+ "regions": [
+  {
+   "region_id": "22q11_proximal",
+   "chrom": "chr22",
+   "start0": 17784681,
+   "end": 21665821,
+   "core_start0": 18339129,
+   "core_end": 21111373,
+   "flank_bp": 554448
+  },
+  {
+   "region_id": "PMP22",
+   "chrom": "chr17",
+   "start0": 15179776,
+   "end": 15315357,
+   "core_start0": 15229776,
+   "core_end": 15265357,
+   "flank_bp": 50000
+  },
+  {
+   "region_id": "UGT2B17",
+   "chrom": "chr4",
+   "start0": 68459450,
+   "end": 68667530,
+   "core_start0": 68509450,
+   "core_end": 68617530,
+   "flank_bp": 50000
+  },
+  {
+   "region_id": "22q11_distal",
+   "chrom": "chr22",
+   "start0": 20385019,
+   "end": 22417451,
+   "core_start0": 20675366,
+   "core_end": 22127104,
+   "flank_bp": 290347
+  }
+ ],
+ "tracks": {
+  "mane": {
+   "why": "genes (MANE Select/Plus Clinical transcripts)",
+   "file": "data/tracks_hg38/mane.tsv.gz",
+   "n_items_downloaded": 95,
+   "n_items_kept": 95,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:02+00:00",
+     "downloadTime": "2026:10:14T15:45:02Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 61,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:02+00:00",
+     "downloadTime": "2026:10:14T15:45:02Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 2,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:03+00:00",
+     "downloadTime": "2026:10:14T15:45:03Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 3,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "mane",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=mane;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:03+00:00",
+     "downloadTime": "2026:10:14T15:45:03Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/mane/mane.bb",
+     "itemsReturned": 29,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "clinGenHaplo": {
+   "why": "ClinGen haploinsufficiency (HI) scores, genes and regions",
+   "file": "data/tracks_hg38/clinGenHaplo.tsv.gz",
+   "n_items_downloaded": 37,
+   "n_items_kept": 37,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "clinGenHaplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:04+00:00",
+     "downloadTime": "2026:10:14T15:45:04Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+     "itemsReturned": 22,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenHaplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:04+00:00",
+     "downloadTime": "2026:10:14T15:45:04Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+     "itemsReturned": 2,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenHaplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:05+00:00",
+     "downloadTime": "2026:10:14T15:45:05Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+     "itemsReturned": 0,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenHaplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenHaplo;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:05+00:00",
+     "downloadTime": "2026:10:14T15:45:05Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb",
+     "itemsReturned": 13,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "clinGenTriplo": {
+   "why": "ClinGen triplosensitivity (TS) scores, genes and regions",
+   "file": "data/tracks_hg38/clinGenTriplo.tsv.gz",
+   "n_items_downloaded": 37,
+   "n_items_kept": 37,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "clinGenTriplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:06+00:00",
+     "downloadTime": "2026:10:14T15:45:06Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+     "itemsReturned": 22,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenTriplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:06+00:00",
+     "downloadTime": "2026:10:14T15:45:06Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+     "itemsReturned": 2,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenTriplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:07+00:00",
+     "downloadTime": "2026:10:14T15:45:07Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+     "itemsReturned": 0,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenTriplo",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenTriplo;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:07+00:00",
+     "downloadTime": "2026:10:14T15:45:07Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb",
+     "itemsReturned": 13,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "clinGenGeneDisease": {
+   "why": "ClinGen gene-disease validity",
+   "file": "data/tracks_hg38/clinGenGeneDisease.tsv.gz",
+   "n_items_downloaded": 11,
+   "n_items_kept": 11,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "clinGenGeneDisease",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:08+00:00",
+     "downloadTime": "2026:10:14T15:45:08Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+     "itemsReturned": 7,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenGeneDisease",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:09+00:00",
+     "downloadTime": "2026:10:14T15:45:08Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+     "itemsReturned": 1,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenGeneDisease",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:09+00:00",
+     "downloadTime": "2026:10:14T15:45:09Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+     "itemsReturned": 0,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinGenGeneDisease",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinGenGeneDisease;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:10+00:00",
+     "downloadTime": "2026:10:14T15:45:10Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb",
+     "itemsReturned": 3,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "pliByGene": {
+   "why": "gnomAD v2.1.1 LoF constraint (pLI, LOEUF) by gene",
+   "file": "data/tracks_hg38/pliByGene.tsv.gz",
+   "n_items_downloaded": 91,
+   "n_items_kept": 91,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "pliByGene",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:10+00:00",
+     "downloadTime": "2026:10:14T15:45:10Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+     "itemsReturned": 59,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "pliByGene",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:11+00:00",
+     "downloadTime": "2026:10:14T15:45:11Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+     "itemsReturned": 2,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "pliByGene",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:11+00:00",
+     "downloadTime": "2026:10:14T15:45:11Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+     "itemsReturned": 3,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "pliByGene",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=pliByGene;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:12+00:00",
+     "downloadTime": "2026:10:14T15:45:12Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb",
+     "itemsReturned": 27,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "clinvarCnv": {
+   "why": "ClinVar CNVs >= 50 bp",
+   "file": "data/tracks_hg38/clinvarCnv.tsv.gz",
+   "n_items_downloaded": 704,
+   "n_items_kept": 704,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:13+00:00",
+     "downloadTime": "2026:10:14T15:45:12Z",
+     "dataTime": "2015-01-21T01:26:15",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 356,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:13+00:00",
+     "downloadTime": "2026:10:14T15:45:13Z",
+     "dataTime": "2015-01-21T01:26:15",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 63,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:14+00:00",
+     "downloadTime": "2026:10:14T15:45:14Z",
+     "dataTime": "2015-01-21T01:26:15",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 28,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarCnv",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarCnv;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:14+00:00",
+     "downloadTime": "2026:10:14T15:45:14Z",
+     "dataTime": "2015-01-21T01:26:15",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb",
+     "itemsReturned": 257,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "clinvarMain": {
+   "why": "ClinVar SNVs/indels < 50 bp, kept only Pathogenic / Likely pathogenic",
+   "file": "data/tracks_hg38/clinvarMain.tsv.gz",
+   "n_items_downloaded": 23641,
+   "n_items_kept": 2205,
+   "filter": "clinSign Pathogenic/Likely pathogenic only (no conflicting/benign/uncertain)",
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "clinvarMain",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:16+00:00",
+     "downloadTime": "2026:10:14T15:45:15Z",
+     "dataTime": "2015-01-21T01:26:24",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+     "itemsReturned": 15271,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarMain",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:17+00:00",
+     "downloadTime": "2026:10:14T15:45:17Z",
+     "dataTime": "2015-01-21T01:26:24",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+     "itemsReturned": 474,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarMain",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:18+00:00",
+     "downloadTime": "2026:10:14T15:45:18Z",
+     "dataTime": "2015-01-21T01:26:24",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+     "itemsReturned": 203,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "clinvarMain",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=clinvarMain;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:20+00:00",
+     "downloadTime": "2026:10:14T15:45:18Z",
+     "dataTime": "2015-01-21T01:26:24",
+     "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb",
+     "itemsReturned": 7693,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "phastConsElements100way": {
+   "why": "conserved elements (100 vertebrates)",
+   "file": "data/tracks_hg38/phastConsElements100way.tsv.gz",
+   "n_items_downloaded": 23746,
+   "n_items_kept": 23746,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "phastConsElements100way",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:21+00:00",
+     "downloadTime": "2026:10:14T15:45:20Z",
+     "dataTime": "2015-05-08T08:25:45",
+     "bigDataUrl": null,
+     "itemsReturned": 14727,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "phastConsElements100way",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:21+00:00",
+     "downloadTime": "2026:10:14T15:45:21Z",
+     "dataTime": "2015-05-08T08:25:45",
+     "bigDataUrl": null,
+     "itemsReturned": 396,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "phastConsElements100way",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:22+00:00",
+     "downloadTime": "2026:10:14T15:45:22Z",
+     "dataTime": "2015-05-08T08:25:45",
+     "bigDataUrl": null,
+     "itemsReturned": 561,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "phastConsElements100way",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=phastConsElements100way;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:23+00:00",
+     "downloadTime": "2026:10:14T15:45:22Z",
+     "dataTime": "2015-05-08T08:25:45",
+     "bigDataUrl": null,
+     "itemsReturned": 8062,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "encodeCcreCombined": {
+   "why": "ENCODE3 candidate cis-regulatory elements",
+   "file": "data/tracks_hg38/encodeCcreCombined.tsv.gz",
+   "n_items_downloaded": 2544,
+   "n_items_kept": 2544,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "encodeCcreCombined",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:24+00:00",
+     "downloadTime": "2026:10:14T15:45:23Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+     "itemsReturned": 1595,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "encodeCcreCombined",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:24+00:00",
+     "downloadTime": "2026:10:14T15:45:24Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+     "itemsReturned": 65,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "encodeCcreCombined",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:25+00:00",
+     "downloadTime": "2026:10:14T15:45:24Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+     "itemsReturned": 42,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "encodeCcreCombined",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=encodeCcreCombined;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:25+00:00",
+     "downloadTime": "2026:10:14T15:45:25Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb",
+     "itemsReturned": 842,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "genomicSuperDups": {
+   "why": "segmental duplications (>1 kb, >90% identity)",
+   "file": "data/tracks_hg38/genomicSuperDups.tsv.gz",
+   "n_items_downloaded": 831,
+   "n_items_kept": 831,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:26+00:00",
+     "downloadTime": "2026:10:14T15:45:26Z",
+     "dataTime": "2014-10-14T16:20:55",
+     "bigDataUrl": null,
+     "itemsReturned": 518,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:26+00:00",
+     "downloadTime": "2026:10:14T15:45:26Z",
+     "dataTime": "2014-10-14T16:20:55",
+     "bigDataUrl": null,
+     "itemsReturned": 0,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:27+00:00",
+     "downloadTime": "2026:10:14T15:45:27Z",
+     "dataTime": "2014-10-14T16:20:55",
+     "bigDataUrl": null,
+     "itemsReturned": 2,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "genomicSuperDups",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=genomicSuperDups;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:28+00:00",
+     "downloadTime": "2026:10:14T15:45:27Z",
+     "dataTime": "2014-10-14T16:20:55",
+     "bigDataUrl": null,
+     "itemsReturned": 311,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "gnomadStructuralVariants": {
+   "why": "gnomAD v4.1 SVs (population frequency; NOT a TESSERACT input)",
+   "file": "data/tracks_hg38/gnomadStructuralVariants.tsv.gz",
+   "n_items_downloaded": 5551,
+   "n_items_kept": 5551,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "gnomadStructuralVariants",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:29+00:00",
+     "downloadTime": "2026:10:14T15:45:28Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+     "itemsReturned": 3199,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "gnomadStructuralVariants",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:29+00:00",
+     "downloadTime": "2026:10:14T15:45:29Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+     "itemsReturned": 75,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "gnomadStructuralVariants",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:30+00:00",
+     "downloadTime": "2026:10:14T15:45:30Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+     "itemsReturned": 260,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "gnomadStructuralVariants",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=gnomadStructuralVariants;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:31+00:00",
+     "downloadTime": "2026:10:14T15:45:30Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb",
+     "itemsReturned": 2017,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  },
+  "dgvGold": {
+   "why": "DGV Gold Standard CNVs (population; NOT a TESSERACT input)",
+   "file": "data/tracks_hg38/dgvGold.tsv.gz",
+   "n_items_downloaded": 200,
+   "n_items_kept": 200,
+   "filter": null,
+   "downloads": [
+    {
+     "genome": "hg38",
+     "track": "dgvGold",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr22;start=17784681;end=21665821;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:32+00:00",
+     "downloadTime": "2026:10:14T15:45:32Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+     "itemsReturned": 102,
+     "maxItemsLimit": false,
+     "region_id": "22q11_proximal"
+    },
+    {
+     "genome": "hg38",
+     "track": "dgvGold",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr17;start=15179776;end=15315357;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:33+00:00",
+     "downloadTime": "2026:10:14T15:45:33Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+     "itemsReturned": 5,
+     "maxItemsLimit": false,
+     "region_id": "PMP22"
+    },
+    {
+     "genome": "hg38",
+     "track": "dgvGold",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr4;start=68459450;end=68667530;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:34+00:00",
+     "downloadTime": "2026:10:14T15:45:33Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+     "itemsReturned": 17,
+     "maxItemsLimit": false,
+     "region_id": "UGT2B17"
+    },
+    {
+     "genome": "hg38",
+     "track": "dgvGold",
+     "url": "https://api.genome.ucsc.edu/getData/track?genome=hg38;track=dgvGold;chrom=chr22;start=20385019;end=22417451;maxItemsOutput=-1",
+     "retrieved_utc": "2026-10-14T15:45:34+00:00",
+     "downloadTime": "2026:10:14T15:45:34Z",
+     "dataTime": null,
+     "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb",
+     "itemsReturned": 76,
+     "maxItemsLimit": false,
+     "region_id": "22q11_distal"
+    }
+   ]
+  }
+ },
+ "skipped": {
+  "decipher": "DECIPHER CNVs: protectedData=True in /list/tracks (restricted; cannot be downloaded via the API)"
+ },
+ "track_list": {
+  "url": "https://api.genome.ucsc.edu/list/tracks?genome=hg38;trackLeavesOnly=1",
+  "dataTime": "2026-10-14T08:32:55",
+  "downloadTime": "2026:10:14T15:45:00Z"
+ },
+ "track_meta": {
+  "mane": {
+   "shortLabel": "MANE",
+   "longLabel": "MANE Select Plus Clinical: Representative transcript from RefSeq & GENCODE",
+   "type": "bigGenePred",
+   "dataVersion": "/gbdb/hg38/mane/README_versions.txt",
+   "bigDataUrl": "/gbdb/hg38/mane/mane.bb"
+  },
+  "clinGenHaplo": {
+   "shortLabel": "ClinGen Haploinsufficiency",
+   "longLabel": "ClinGen Dosage Sensitivity Map - Haploinsufficiency",
+   "type": "bigBed 9 +",
+   "dataVersion": "/gbdb/$D/bbi/clinGen/clinGenDosageVersion.txt",
+   "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenHaplo.bb"
+  },
+  "clinGenTriplo": {
+   "shortLabel": "ClinGen Triplosensitivity",
+   "longLabel": "ClinGen Dosage Sensitivity Map - Triplosensitivity",
+   "type": "bigBed 9 +",
+   "dataVersion": "/gbdb/$D/bbi/clinGen/clinGenDosageVersion.txt",
+   "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenTriplo.bb"
+  },
+  "clinGenGeneDisease": {
+   "shortLabel": "ClinGen Validity",
+   "longLabel": "ClinGen Gene-Disease Validity Classification",
+   "type": "bigBed 9 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/bbi/clinGen/clinGenGeneDisease.bb"
+  },
+  "pliByGene": {
+   "shortLabel": "Gene LoF",
+   "longLabel": "gnomAD Predicted Loss of Function Constraint Metrics By Gene (LOEUF and pLI) v2.1.1",
+   "type": "bigBed 12 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/gnomAD/pLI/pliByGene.bb"
+  },
+  "clinvarCnv": {
+   "shortLabel": "ClinVar CNVs",
+   "longLabel": "ClinVar Copy Number Variants >= 50bp",
+   "type": "bigBed 12 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarCnv.bb"
+  },
+  "clinvarMain": {
+   "shortLabel": "ClinVar SNVs",
+   "longLabel": "ClinVar Short Nucleotide Variants < 50bp",
+   "type": "bigBed 12 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/bbi/clinvar/clinvarMain.bb"
+  },
+  "phastConsElements100way": {
+   "shortLabel": "100 Vert. El",
+   "longLabel": "100 vertebrates Conserved Elements",
+   "type": "bed 5 .",
+   "dataVersion": null,
+   "bigDataUrl": null
+  },
+  "encodeCcreCombined": {
+   "shortLabel": "ENCODE3 cCREs",
+   "longLabel": "ENCODE3 Registry of candidate Cis-Regulatory Elements (cCREs)",
+   "type": "bigBed 9 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/encode3/ccre/encodeCcreCombined.bb"
+  },
+  "genomicSuperDups": {
+   "shortLabel": "Segmental Dups",
+   "longLabel": "Duplications of >1000 Bases of Non-RepeatMasked Sequence",
+   "type": "bed 6 +",
+   "dataVersion": null,
+   "bigDataUrl": null
+  },
+  "gnomadStructuralVariants": {
+   "shortLabel": "gnomAD Structural Variants",
+   "longLabel": "Genome Aggregation Database (gnomAD) - Structural Variants v4.1",
+   "type": "bigBed 9 +",
+   "dataVersion": "Release 4.1 (November 01, 2023)",
+   "bigDataUrl": "/gbdb/hg38/gnomAD/v4/structuralVariants/gnomad.v4.1.sv.non_neuro_controls.sites.bb"
+  },
+  "dgvGold": {
+   "shortLabel": "DGV Gold Standard",
+   "longLabel": "Database of Genomic Variants: Gold Standard Variants",
+   "type": "bigBed 12 +",
+   "dataVersion": null,
+   "bigDataUrl": "/gbdb/hg38/dgv/dgvGold.bb"
+  }
+ }
+}
